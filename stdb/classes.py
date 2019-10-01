@@ -25,7 +25,6 @@ import tkinter
 from numpy import pi
 from obspy import UTCDateTime
 
-
 class StDbElement(dict):
     """
     Class that defines the structure of each station entry in the station

@@ -52,6 +52,6 @@ Contains
 '''
 
 from . import kml
-from .convert  import tocsv, fromcsv
 from .io import write_db, load_db
 from .classes import StDbElement, EditMsgBox
+from .convert import tocsv, fromcsv
