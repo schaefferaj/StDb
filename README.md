@@ -31,9 +31,9 @@ git clone https://gitlab.com/uottawa-geophysics/SeismoPy/StDb.git
 cd StDb
 ```
 
-Create the environment from the `stdb_env.yml` file:
+Create the environment and install the dependencies:
 ```bash
-conda env create -f stdb_env.yml
+conda create -n stdb python=3.7 obspy
 ```
 Activate the newly created environment:
 ```bash
@@ -53,18 +53,8 @@ Installation after local or remote (gitlab/github) code updates:
 pip install --upgrade .
 ```
 
-### 2) Building and Installing
-
-Alternatively, you can build and install the project (from the root of the source tree, e.g., inside the cloned `StDb` directory):
-
-```bash
-python setup.py build 
-python setup.py install
-```
-
-
 Please note, if you are actively working on the code, or making frequent edits, it is advisable
-to perform the pip installation with the -e flag. This enables an editable installation, where
+to perform the pip installation with the `-e` flag. This enables an editable installation, where
 symbolic links are used rather than straight copies. This means that any changes made in the
 local folders will be reflected in the packages available on the system.
 
@@ -95,7 +85,7 @@ Python scripts making use of the module for manipulation and creation of databas
 1) Create a database of TA stations by searching IRIS only for those stations with data starting January 2017, within the geographic box defined by (-137,63),(-120,73):
 
 ```bash
-andrew@Iridium:~$ query_fdsn_stdb.py -C BH? -N TA --minlat=63 --maxlat=73 --minlon=-137 --maxlon=-120  --start=2017-01-01 new_list
+$ query_fdsn_stdb.py -C BH? -N TA --minlat=63 --maxlat=73 --minlon=-137 --maxlon=-120  --start=2017-01-01 new_list
 Performing Geographic Box Search:
     LL:   63.0000, -137.0000
     UR:   73.0000, -120.0000
@@ -211,14 +201,14 @@ Network: TA
 
   Pickling (type 2) to new_list.pkl
   Saving csv to: new_list.csv
-andrew@Iridium:~$
+$
 ```
 
 2) View a subset of stations within the database. Use a comma-separated list of keys to selec
 which stations to include in the list.
 
 ```bash
-andrew@Iridium:~$ ls_stdb.py --keys=TA.E,TA.F new_list.pkl
+$ ls_stdb.py --keys=TA.E,TA.F new_list.pkl
 Listing Station Pickle: new_list.pkl
 --------------------------------------------------------------------------
 1) TA.EPYK
@@ -259,5 +249,5 @@ Listing Station Pickle: new_list.pkl
       Azimuth Correction: 0.000000
 
 
-andrew@Iridium:~$
+$
 ```
