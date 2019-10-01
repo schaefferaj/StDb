@@ -25,24 +25,25 @@ Note that `numpy` and `matplotlib` are installed as dependencies of `obspy`. See
 You can create a custom [conda environment](https://conda.io/docs/user-guide/tasks/manage-environments.html)
 where `StDb` can be installed along with its dependencies.
 
+Create the environment and install the dependencies:
+```bash
+conda create -n stdb python=3.7 obspy
+```
+
+Activate the newly created environment:
+```bash
+conda activate stdb
+```
+
+### Installing using pip
+
 Clone the repository:
 ```bash
 git clone https://gitlab.com/uottawa-geophysics/SeismoPy/StDb.git
 cd StDb
 ```
 
-Create the environment and install the dependencies:
-```bash
-conda create -n stdb python=3.7 obspy
-```
-Activate the newly created environment:
-```bash
-conda activate stdb
-```
-
-### 1) Installing using pip
-
-Once the previous steps are performed, you can install `StDb` using pip:
+Activate the environment (if you followed the instructions above), then install `StDb` using pip:
 ```bash
 pip install .
 ```
