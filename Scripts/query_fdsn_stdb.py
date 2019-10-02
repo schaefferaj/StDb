@@ -64,14 +64,8 @@ def get_options():
         help="Debug mode. After the client query is complete (and successful), instead of " \
         "parsing the inventory, it is instead pickled to <station file name>_query_debug.pkl " \
         "which can be loaded in ipython to examine manually.")
-    parser.add_option("-T", "--type", action="store", type="int", dest="dbver", default=2, \
-        help="Specify the station database version type for the pkl file. v2 (specify 2) is " \
-        "default, and give the more updated database with helper functions and more details. " \
-        "v1 (specify 1) gives the older legacy format station database.")
     parser.add_option("-L", "--long-keys", action="store_true", dest="lkey", default=False, \
         help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
-    parser.add_option("-c", "--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
@@ -299,6 +293,7 @@ if __name__=='__main__':
     # Search the Client for stations
     stdout.writelines("Querying client...")
     try:
+        print(opts)
         inv = client.get_stations(network=opts.nets, station=opts.stns, channel=opts.chns, location="*",
                 starttime=opts.stdate, endtime=opts.enddate, 
                 startbefore=opts.stbefore, startafter=opts.stafter, endbefore=opts.endbefore, endafter=opts.endafter, 
@@ -307,8 +302,7 @@ if __name__=='__main__':
                 includeavailability=True, includerestricted=True, level='channel')
         stdout.writelines("Done\n\n")
     except:
-        print (" Error: client query failed. Please Try again...")
-        exit()
+        raise(Exception("client query failed. Please Try again..."))
     
     # Summarize Search
     nstn = 0
@@ -343,7 +337,7 @@ if __name__=='__main__':
         exit()
     
     # Initialize station dictionary
-    stations={}
+    stations = {}
     
     # Loop through results
     for net in inv.networks:
@@ -352,6 +346,7 @@ if __name__=='__main__':
         for stn in net.stations:
             station = stn.code.upper()
             print ("   Station: {0:s}".format(station))
+
             # get standard values
             lat = stn.latitude; lon = stn.longitude; elev = stn.elevation/1000.;
             stdt = stn.start_date; eddt = stn.end_date
@@ -389,22 +384,18 @@ if __name__=='__main__':
                 key = "{0:s}.{1:s}.{2:2s}".format(network, station, chn)
             else:
                 key = "{0:s}.{1:s}".format(network, station)
-            # if not stations.has_key(key):
+
             if key not in stations:
-                if opts.dbver == 2:
-                    stations[key] = StDbElement(network=network, station=station, \
-                        channel=chn, location=locs, latitude=lat, longitude=lon, \
-                        elevation=elev, polarity=1., azcorr=0., startdate=stdt, \
-                        enddate=eddt, restricted_status=stat)
-                else:
-                    stations[key] = [net, stn, lat, lon, chn, stdt, eddt]
+                stations[key] = StDbElement(network=network, station=station, channel=chn, \
+                    location=locs, latitude=lat, longitude=lon, elevation=elev, polarity=1., \
+                    azcorr=0., startdate=stdt, enddate=eddt, restricted_status=stat)
                 print ("    Added as: " + key)
             else:
                 print ("    Warning: " + key + " already exists...Skip")
      
     # Save and Pickle
     print (" ")
-    print ("  Pickling (type {0:d}) to {1:s}.pkl".format(opts.dbver, outp))
+    print ("  Pickling to {0:s}.pkl".format(outp))
     write_db(fname=outp + '.pkl', stdb=stations, binp=opts.use_binary)
 
     # Save csv

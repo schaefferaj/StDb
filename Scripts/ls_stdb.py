@@ -70,8 +70,6 @@ def get_options():
     parser.add_option("--keys", action="store", type=str, dest="keys", default="", \
         help="Specify a comma separated list of keys to return. These can be fragments " \
         "of a key to include all keys matching any fragment.")
-    parser.add_option("-c", "--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file " \
         "size, but more likely to be system independent.")
@@ -114,6 +112,7 @@ if __name__=='__main__':
 
     # Loop through inputs
     for inpickle in inpickles:
+
         # Pickle Already Created...
         print ("Listing Station Pickle: {0:s}".format(inpickle))
         db = load_db(inpickle, binp=opts.use_binary)
@@ -127,6 +126,7 @@ if __name__=='__main__':
         sorted(allkeys)
     
         print(db)
+        
         # Extract key subset
         if len(opts.keys) > 0:
             stkeys = []

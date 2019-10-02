@@ -52,14 +52,12 @@ def get_options():
     parser.add_option("-O","--output-file", type=str, dest="ofile", default="", \
         help="Specify an output file name for the dumped csv format data. If no .csv " \
         "extenion is included, one is added.")
-    parser.add_option("-c", "--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file " \
         "size, but more likely to be system independent.")
 
     # Parse Arguments
-    (opts,args) = parser.parse_args()
+    (opts, args) = parser.parse_args()
 
     # Check input
     if not osp.exists(args[0]):
@@ -91,6 +89,7 @@ if __name__=='__main__':
     # Check input extension extension
     ext = osp.splitext(inpickle)[1]
     if ext == ".pkl":
+        
         # Pickle Already Created...
         db = load_db(inpickle, binp=opts.use_binary)
         

@@ -64,8 +64,6 @@ def get_options():
         help="Turn off random colours (default random on)")
     parser.add_option("-T","--Document-title", action="store", type="string", dest="doctitle", default="", \
         help="KML Document Title")
-    parser.add_option("-c","--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a","--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
@@ -115,7 +113,7 @@ def get_options():
     # return options
     return opts, args
 
-def construct_mdb(inps=[], skeys=[], cpkl=False, binp=True):
+def construct_mdb(inps=[], skeys=[], binp=True):
     from stdb.io import load_db
     
     # Construct Master DB from All Pickles
@@ -123,8 +121,10 @@ def construct_mdb(inps=[], skeys=[], cpkl=False, binp=True):
 
     # Loop through inputs
     for inp in inps:
+
         # Loading
         db = load_db(inp, binp=binp)
+
         # construct station key loop
         allkeys = db.keys()
         sorted(allkeys)
@@ -140,7 +140,7 @@ def construct_mdb(inps=[], skeys=[], cpkl=False, binp=True):
         
         # master
         for key in stkeys:
-            if not mdb.has_key(key):
+            if key not in mdb:
                 mdb[key] = db[key]
 
     return mdb
@@ -152,7 +152,7 @@ def reorder_db(indb={}):
     sorted(keys)
     for key in keys:
         net = indb[key].network
-        if ndb.has_key(net):
+        if net in ndb:
             ndb[net].append(indb[key])
         else:
             ndb[net] = [indb[key]]
@@ -170,7 +170,7 @@ if __name__=='__main__':
     (opts, inpickles) = get_options()
 
     # Get Master Database
-    mdb = construct_mdb(inps=inpickles, skeys=opts.keys, cpkl=opts.use_cPickle, binp=opts.use_binary)
+    mdb = construct_mdb(inps=inpickles, skeys=opts.keys, binp=opts.use_binary)
 
     # Convert Database to Network Sorted
     nets, ndb = reorder_db(indb=mdb)

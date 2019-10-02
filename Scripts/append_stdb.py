@@ -41,21 +41,17 @@ def get_options():
     
     parser = OptionParser(usage="Usage: %prog [options] <station pickle file>", \
         description="Helper program to append new stations to an existing station database.")
-#  parser.add_option("-O","--overwrite",action="store_true",dest="ovr",default=False,help="Overwrite existing Station Key. [Default retains]")
     parser.add_option("-o", "--output-file", action="store", type="str", dest="oname", default="", \
-        help="Specify output file name. Defaults to the input file with ".apd" added to the end.")
+        help="Specify output file name. Defaults to the input file with '.apd' added to the end.")
     parser.add_option("-C", "--complex", action="store_true", dest="complex", default=False, \
         help="Default behaviour only promps for station basics (net,stn,chn,loc,lat,lon,start,end). " \
         "Complex includes additional data (alternate networks, multiple locations, elevation, polarity, " \
         "azimuth correction and restricted status)")
     parser.add_option("-L", "--long-keys", action="store_true", dest="lkey", default=False, \
         help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
-    parser.add_option("-c", "--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, but " \
         "more likely to be system independent.")
-#  parser.add_option("--keys",action="store",type=str,dest="keys",default="",help="Specify a comma separated list of keys to return. These can be fragments of a key to include all keys matching any fragment.")
 
     # Parse Arguments
     (opts, args) = parser.parse_args()
@@ -113,23 +109,23 @@ if __name__=='__main__':
         print("* New Station")
 
         # Get Basic Info
-        net = raw_input("*    Network:   ")
-        stn = raw_input("*    Station:   ")
-        chn = raw_input("*    Channel:   ")[0:2]
-        loc = raw_input("*    LocId:     ")
-        lon = float(raw_input("*    Longitude: "))
-        lat = float(raw_input("*    Latitude:  "))
-        std = UTCDateTime(raw_input("*    Start:     "))
-        edd = UTCDateTime(raw_input("*    End:       "))
+        net = input("*    Network:   ")
+        stn = input("*    Station:   ")
+        chn = input("*    Channel:   ")[0:2]
+        loc = input("*    LocId:     ")
+        lon = float(input("*    Longitude: "))
+        lat = float(input("*    Latitude:  "))
+        std = UTCDateTime(input("*    Start:     "))
+        edd = UTCDateTime(input("*    End:       "))
 
         # Advanced Info
         if opts.complex:
-            altnet = raw_input("*    Alternate Networks: ")
-            addloc = raw_input("*    Additional LocIDs: ")
-            pol = float(raw_input("*    Polarity: "))
-            azcor = float(raw_input("*    Azimuth Correction: "))
-            elev = float(raw_input("*    Elevation: "))
-            res_stat = raw_input("*    Restricted Status: ")
+            altnet = input("*    Alternate Networks: ")
+            addloc = input("*    Additional LocIDs: ")
+            pol = float(input("*    Polarity: "))
+            azcor = float(input("*    Azimuth Correction: "))
+            elev = float(input("*    Elevation: "))
+            res_stat = input("*    Restricted Status: ")
             loc = [loc]
             loc.extend(addloc.split(','))
             altnet = altnet.split(',')
@@ -161,7 +157,7 @@ if __name__=='__main__':
                          polarity=pol, azcorr=azcor, startdate=std, enddate=edd)
 
         # Add key if not present
-        if not db.has_key(nkey):
+        if nkey not in db:
             db[nkey] = NewDbEntry
             addnew = True
             print("* Added to DB")
@@ -173,7 +169,7 @@ if __name__=='__main__':
             print("* New:")
             print(NewDbEntry(10))
             print("--------------")
-            ovr = raw_input("Overwrite Existing? [Y]/N: ")
+            ovr = input("Overwrite Existing? [Y]/N: ")
             if ovr.lower() == "n":
                 print("* Retaining Original")
             else:
@@ -181,7 +177,7 @@ if __name__=='__main__':
                 addnew = True
                 print("* Added to DB")
         print("")
-        newstn = raw_input("* Another Station? [Y]/N: ")
+        newstn = input("* Another Station? [Y]/N: ")
 
     # Were any new stations added?
     if addnew:

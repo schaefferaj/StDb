@@ -48,8 +48,6 @@ def get_options():
         help="Ovewrite output file if it already exists. Default behaviour quits with warning.")
     parser.add_option("-o", "--output-file", action="store", type="str", dest="oname", default="", \
         help="Specify output file name. Defaults to the input file with '.apd' added to the end.")
-    parser.add_option("-c", "--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
@@ -84,7 +82,6 @@ if __name__=='__main__':
     # get options
     (opts, args) = get_options()
 
-
     # Check Output File
     if osp.exists(opts.oname) and not opts.ovr:
         print("Error: Output File exists " + opts.oname)
@@ -104,6 +101,7 @@ if __name__=='__main__':
 
     # Loop adding additional databases
     for ndb in args[1:]:
+
         # load database
         if opts.verb: print(" Adding " + ndb)
         db = load_db(ndb, binp=opts.use_binary)
@@ -114,7 +112,7 @@ if __name__=='__main__':
 
         # Loop through new keys
         for nkey in nkeys:
-            if not tdb.has_key(nkey):
+            if nkey not in tdb:
                 tdb[nkey] = db[nkey]
                 stadd = True
             else:

@@ -45,8 +45,6 @@ def get_options():
         help="Enable verbose output. Default Quiet")
     parser.add_option("--output-name", action="store",type=str, dest="outname", default="", \
         help="Specify the output filename. Default behaviour adds .new to the input file.")
-    parser.add_option("-c", "--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
@@ -74,7 +72,6 @@ def get_options():
     return opts, args[0]
 
 
-
 if __name__=='__main__':
 
     # get options
@@ -82,11 +79,14 @@ if __name__=='__main__':
 
     # Check extension
     ext = osp.splitext(inpickle)[1]
+
     if ext == ".pkl":
+
         # Pickle Already Created...
         if opts.verb: print ("Listing Station Pickle: {0:s}".format(inpickle))
         db = load_db(inpickle, binp=opts.use_binary)
         ndb = {}
+
         # Sort Keys
         stkeys = db.keys()
         sorted(stkeys)

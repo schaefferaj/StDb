@@ -74,8 +74,6 @@ def get_options():
     parser.add_option("-O", "--output-file", type=str, dest="ofile", default="", \
         help="Specify an output file name for the edited database. Default behaviour performs " \
         "the changes in place on the input file.")
-    parser.add_option("-c", "--cPickle", action="store_true", dest="use_cPickle", default=False, \
-        help="Specify pickle format type. Default uses pickle, specify to use cPickle")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
@@ -103,6 +101,7 @@ if __name__=='__main__':
     # Check extension
     ext = osp.splitext(inpickle)[1]
     if ext == ".pkl":
+        
         # Pickle Already Created...
         print ("Listing Station Pickle: {0:s}".format(inpickle))
         db = load_db(inpickle, binp=opts.use_binary)
@@ -143,7 +142,7 @@ if __name__=='__main__':
                         print (db[key](5))
                         tfEdit = True
                     else:
-                        if not db.has_key(nkey):
+                        if nkey not in db:
                             db[nkey] = nel
                             print (" Added " + nkey + ":")
                             print (db[nkey](5))
