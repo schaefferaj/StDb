@@ -1,12 +1,14 @@
 ## StDb: Station Database Module and associated Tools
 
-This python module generates a class instance StDbElement which enables information
-about particular stations to be stored in a format used by other tools in the SeismoPy
-library. It also comes with several helper utilities to generate and view the station
-database files.
+StDb is a package containing tools for building a database of station information
+from geophysical observatories. The code is used through command-line scripts 
+and include several options for querying an online fdsn archive, list 
+the content of an existing station database, merge existing databases, and 
+manually append new station information (e.g., for stations not hosted on
+any fdsn archive). 
 
-Andrew Schaeffer, November 2016
-v1.3.0
+The resulting station dictionary is used in various seismic applications, 
+such as [`SplitPy`](https://github.com/paudetseis/SplitPy) and `RfPy`.
 
 
 ## Installation
