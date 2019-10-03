@@ -22,13 +22,22 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: merge_stdb.py
 
-        Description:
-        Merge multiple st_db files together.
-        Performs a rudimentary check for mulitple keys
-'''
+"""
+Program
+-------
+``merge_stdb.py``
+
+Description
+-----------
+Merge multiple ``StDb`` database files together.
+Performs a rudimentary check for mulitple keys.
+
+Usage
+-----
+``merge_stdb.py -h`` for details on usage
+
+"""
 
 
 import sys

@@ -20,6 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""
+Tools used for loading and writing a station database to and from disk. 
+These functions are used in most scripts bundled with this package. 
+
+"""
+
 import pickle as pickle
 
 def load_db(fname, binp=True):
