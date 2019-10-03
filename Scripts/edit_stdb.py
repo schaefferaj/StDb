@@ -24,9 +24,8 @@
 # encoding: utf-8
 
 """ 
-Program
--------
-``edit_stdb.py``
+Program ``edit_stdb.py``
+------------------------
 
 Description
 -----------

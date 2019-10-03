@@ -24,9 +24,8 @@
 # encoding: utf-8
 
 """
-Program
--------
-``query_fdsn_stdb.py``
+Program ``query_fdsn_stdb.py``
+------------------------------
 
 Description
 -----------

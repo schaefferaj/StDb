@@ -24,9 +24,8 @@
 # encoding: utf-8
 
 """
-Program
--------
-``stdb_to_kml.py``
+Program ``stdb_to_kml.py``
+--------------------------
 
 Description
 -----------
