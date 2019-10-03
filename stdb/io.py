@@ -42,7 +42,7 @@ def load_db(fname, binp=True):
     Returns
     -------
     stdb : :class:`~stdb.classes.StDbElement`
-        Instance of :class:`~stdb.classes.StDbElement`=
+        Instance of :class:`~stdb.classes.StDbElement`
 
     """
 
@@ -64,7 +64,7 @@ def write_db(fname=str, stdb={}, binp=True):
     fname : str
         File name
     stdb : :class:`~stdb.classes.StDbElement`
-        Instance of :class:`~stdb.classes.StDbElement`=
+        Instance of :class:`~stdb.classes.StDbElement`
     binp : bool
         Whether or not to use binary output
 

@@ -30,8 +30,7 @@ Program
 
 Description
 -----------
-Lists databse dictionary contained in a pickled ``StDb` database file.
-
+Lists databse dictionary contained in a pickled ``StDb`` database file.
 The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
 is a two character representation of the desired channel (ex, BH, HH, LH).
 Within each KEY is the set of data used in later programs to define the 
@@ -39,23 +38,123 @@ station information. The data is stored in a dictionary, with each dictionary
 element being an object of class stdb.StDbElement. An item has:
 
 * stdb[stkey]:
-- .station
-- .network
-- .altnet
-- .channel
-- .location
-- .latitude
-- .longitude
-- .elevation
-- .startdate
-- .enddate
-- .polarity
-- .azcorr
-- .status
+
+  - .station
+
+  - .network
+
+  - .altnet
+
+  - .channel
+
+  - .location
+
+  - .latitude
+
+  - .longitude
+
+  - .elevation
+
+  - .startdate
+
+  - .enddate
+
+  - .polarity
+
+  - .azcorr
+  
+  - .status
 
 Usage
 -----
-``ls_stdb.py -h``
+
+.. code-block:: none
+
+    ls_stdb.py -h
+    Usage: ls_stdb.py [options] <station pickle file>
+
+    Helper program to examine the contents of a station pickle file
+
+    Options:
+      -h, --help      show this help message and exit
+      -N, --networks  Use flag to retrieve only the list of networks in the
+                      database
+      --keys=KEYS     Specify a comma separated list of keys to return. These can
+                      be fragments of a key to include all keys matching any
+                      fragment.
+      -a, --ascii     Specify to write ascii Pickle files instead of binary. Ascii
+                      are larger file size, but more likely to be system
+                      independent.
+
+Example
+-------
+
+Assume we have already created a StDb database named new_list.pkl using the example in 
+:mod:`~Scripts.query_fdsn_stdb.py`. List its content:
+
+.. code-block:: none
+
+    $ ls_stdb.py new_list
+    Listing Station Pickle: new_list.pkl
+    TA.M31M
+    --------------------------------------------------------------------------
+    1) TA.M31M
+         Station: TA M31M 
+          Alternate Networks: None
+          Channel: BH ;  Location: --
+          Lon, Lat, Elev:  62.20240, -134.39059,   0.639
+          StartTime: 2015-10-17 00:00:00
+          EndTime:   2599-12-31 23:59:59
+          Status:    open
+          Polarity: 1
+          Azimuth Correction: 0.000000
+
+
+    TA.N32M
+    --------------------------------------------------------------------------
+    2) TA.N32M
+         Station: TA N32M 
+          Alternate Networks: None
+          Channel: BH ;  Location: --
+          Lon, Lat, Elev:  61.15120, -133.08180,   0.816
+          StartTime: 2016-05-11 00:00:00
+          EndTime:   2599-12-31 23:59:59
+          Status:    open
+          Polarity: 1
+          Azimuth Correction: 0.000000
+
+
+    TA.P33M
+    --------------------------------------------------------------------------
+    3) TA.P33M
+         Station: TA P33M 
+          Alternate Networks: None
+          Channel: BH ;  Location: --
+          Lon, Lat, Elev:  60.21140, -132.81740,   1.066
+          StartTime: 2015-10-15 00:00:00
+          EndTime:   2599-12-31 23:59:59
+          Status:    open
+          Polarity: 1
+          Azimuth Correction: 0.000000
+
+Now list only one station key:
+
+.. code-block:: none
+
+    $ ls_stdb.py --keys=TA.P33M new_list
+    Listing Station Pickle: new_list.pkl
+    TA.P33M
+    --------------------------------------------------------------------------
+    1) TA.P33M
+         Station: TA P33M 
+          Alternate Networks: None
+          Channel: BH ;  Location: --
+          Lon, Lat, Elev:  60.21140, -132.81740,   1.066
+          StartTime: 2015-10-15 00:00:00
+          EndTime:   2599-12-31 23:59:59
+          Status:    open
+          Polarity: 1
+          Azimuth Correction: 0.000000
 
 """
 
@@ -128,9 +227,7 @@ if __name__=='__main__':
         # construct station key loop
         allkeys = db.keys()
         sorted(allkeys)
-    
-        print(db)
-        
+     
         # Extract key subset
         if len(opts.keys) > 0:
             stkeys = []
@@ -140,7 +237,6 @@ if __name__=='__main__':
             stkeys = db.keys()
             sorted(stkeys)
         
-        print(stkeys)
         ikey = 0
         for key in stkeys:
             print(key)

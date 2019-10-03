@@ -38,7 +38,27 @@ Use the --keys option to only dump certain keys.
 
 Usage
 -----
-``dump_stdb.py -h``
+
+.. code-block:: none
+
+    dump_stdb.py -h
+    Usage: dump_stdb.py [options] <station pickle file>
+
+    Program to dump the contents of a station database (.pkl) as csv. By default
+    the output is directed to standard out. If a filename is optionally included,
+    then the contents are also dumped to file.
+
+    Options:
+      -h, --help            show this help message and exit
+      --keys=KEYS           Specify a comma separated list of keys to dump. Any
+                            key not specified by this search is not included in
+                            the output.
+      -O OFILE, --output-file=OFILE
+                            Specify an output file name for the dumped csv format
+                            data. If no .csv extenion is included, one is added.
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
 
 """
 

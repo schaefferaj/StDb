@@ -1,5 +1,12 @@
 .DS_Store
-build/
-ToDo
+__pycache__
+
+build
+dist
 *.pyc
 *.egg-info
+
+_build
+*.rst
+Makefile
+make.bat
