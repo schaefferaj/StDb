@@ -39,13 +39,20 @@ conda activate stdb
 
 ### Installing using pip
 
+From the `Pypi` package manager:
+
+```bash
+pip install stdb
+```
+
+or from source:
+
 Clone the repository:
 ```bash
 git clone https://gitlab.com/uottawa-geophysics/SeismoPy/StDb.git
 cd StDb
 ```
 
-Activate the environment (if you followed the instructions above), then install `StDb` using pip:
 ```bash
 pip install .
 ```
@@ -56,13 +63,13 @@ Installation after local or remote (gitlab/github) code updates:
 pip install --upgrade .
 ```
 
-Please note, if you are actively working on the code, or making frequent edits, it is advisable
+<!-- Please note, if you are actively working on the code, or making frequent edits, it is advisable
 to perform the pip installation with the `-e` flag. This enables an editable installation, where
 symbolic links are used rather than straight copies. This means that any changes made in the
 local folders will be reflected in the packages available on the system.
+ -->
 
-
-## Package Contents
+<!-- ## Package Contents
 
 ### StDb Module 
 
@@ -253,4 +260,4 @@ Listing Station Pickle: new_list.pkl
 
 
 $
-```
+``` -->
