@@ -24,9 +24,8 @@
 # encoding: utf-8
 
 """
-Program
--------
-``gen_stdb.py``
+Program ``gen_stdb.py``
+-----------------------
 
 Description
 -----------

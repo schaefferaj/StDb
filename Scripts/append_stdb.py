@@ -24,9 +24,8 @@
 # encoding: utf-8
 
 """
-Program
--------
-``append_stdb.py``
+Program ``append_stdb.py``
+--------------------------
 
 Description
 -----------

@@ -24,9 +24,8 @@
 # encoding: utf-8
 
 """
-Program
--------
-``merge_stdb.py``
+Program ``merge_stdb.py``
+-------------------------
 
 Description
 -----------

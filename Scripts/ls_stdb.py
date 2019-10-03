@@ -24,9 +24,8 @@
 # encoding: utf-8
 
 """ 
-Program
--------
-``ls_stdb.py``
+Program ``ls_stdb.py``
+----------------------
 
 Description
 -----------
