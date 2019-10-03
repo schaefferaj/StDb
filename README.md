@@ -1,5 +1,7 @@
 ## StDb: Station Database Module and associated Tools
 
+![](./stdb/examples/figures/StDb_logo.png)
+
 StDb is a package containing tools for building a database of station information
 from geophysical observatories. The code is used through command-line scripts 
 and include several options for querying an online fdsn archive, list 
