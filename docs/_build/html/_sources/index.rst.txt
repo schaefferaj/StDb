@@ -1,0 +1,60 @@
+.. StDb documentation master file, created by
+   sphinx-quickstart on Thu Oct  3 09:48:02 2019.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+.. figure:: ../stdb/examples/figures/StDb_logo.png
+   :align: center
+
+StDb Tools - documentation
+==========================
+
+StDb is a package containing tools for building a database of station information
+from geophysical observatories. The code is used through command-line scripts 
+and include several options for querying an online fdsn archive, list 
+the content of an existing station database, merge existing databases, and 
+manually append new station information (e.g., for stations not hosted on
+any fdsn archive). 
+
+The resulting station dictionary is used in various seismic applications, 
+such as `SplitPy <https://github.com/paudetseis/SplitPy>`_ and ``RfPy``.
+
+
+Quick links
+"""""""""""
+
+* `Git repositories <https://github.com/schaefferaj/StDb>`_
+
+Getting Started
+"""""""""""""""
+
+.. toctree::
+   :maxdepth: 2
+
+   api
+   database
+
+Modules
+"""""""
+
+.. toctree::
+   :maxdepth: 2
+
+   classes
+   io
+   convert
+   kml
+
+Programs
+""""""""
+
+.. toctree::
+   :maxdepth: 1
+
+   query
+   ls
+   merge
+   gen
+   append
+   edit
+   stdb2kml

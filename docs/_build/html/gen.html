@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Generate Database &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Append New Station" href="append.html" />
+    <link rel="prev" title="Merge Databases" href="merge.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="append.html" title="Append New Station"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="merge.html" title="Merge Databases"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="generate-database">
+<h1>Generate Database<a class="headerlink" href="#generate-database" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-gen-stdb-py">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span></code><a class="headerlink" href="#program-gen-stdb-py" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Create Station Database dictionary from input text file.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ gen_stdb.py -h
+  Usage: gen_stdb.py [options] &lt;station list&gt;
+
+  Script to generate a pickled station database file.
+
+  Options:
+    -h, --help       show this help message and exit
+    -L, --long-keys  Specify Key format. Default is Net.Stn. Long keys are
+                     Net.Stn.Chn
+    -a, --ascii      Specify to write ascii Pickle files instead of binary.
+                     Ascii are larger file size, but more likely to be system
+                     independent.
+
+Input File Type 1 (chS csv):
+NET[:NET2:...],STA,LOC[:LOC2:...],CHN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-
+DD,HH:MM:SS.SSS,lat,lon,elev,pol,azcor,status
+Input File Type 2 (IPO SPC):
+NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
+Output File Types:
+Each element corresponding to each dictionary key is saved as StDb.StbBElement
+class.
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Let’s use the example in <a class="reference internal" href="database.html#database"><span class="std std-ref">Database organization</span></a> and create a database from information
+contained in a &lt;space&gt;-separated file.
+The basic format of the &lt;space&gt;-separated file for some TA stations would look like:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>network</p></td>
+<td><p>station</p></td>
+<td><p>channel</p></td>
+<td><p>latitude</p></td>
+<td><p>longitude</p></td>
+<td><p>elevation</p></td>
+<td><p>startdate</p></td>
+<td><p>enddate</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 8%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>TA</p></td>
+<td><p>M31M</p></td>
+<td><p>BH*</p></td>
+<td><p>62.2024</p></td>
+<td><p>-134.3906</p></td>
+<td><p>0.64</p></td>
+<td><p>2015-10-17</p></td>
+<td><p>2599-12-31</p></td>
+</tr>
+<tr class="row-even"><td><p>TA</p></td>
+<td><p>N32M</p></td>
+<td><p>BH*</p></td>
+<td><p>61.1512</p></td>
+<td><p>-133.0818</p></td>
+<td><p>0.82</p></td>
+<td><p>2016-05-11</p></td>
+<td><p>2599-12-31</p></td>
+</tr>
+<tr class="row-odd"><td><p>TA</p></td>
+<td><p>P33M</p></td>
+<td><p>BH*</p></td>
+<td><p>60.2114</p></td>
+<td><p>-132.8174</p></td>
+<td><p>1.07</p></td>
+<td><p>2015-10-15</p></td>
+<td><p>2599-12-31</p></td>
+</tr>
+</tbody>
+</table>
+<p>We can generate a database using the program:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gen_stdb.py ta_table.txt
+
+Parse Station List ta_table.txt
+Adding key: TA.M31M
+Adding key: TA.N32M
+Adding key: TA.P33M
+  Pickling ta_table.txt.pkl
+</pre></div>
+</div>
+<p>Or if we used the alternative input file format with &lt;comma&gt;-separated values,
+we would get:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gen_stdb.py ta_table.csv
+
+Parse Station List ta_table.csv
+Adding key: TA.M31M
+Adding key: TA.N32M
+Adding key: TA.P33M
+  Pickling ta_table.pkl
+</pre></div>
+</div>
+<p>Now we can check that the databases contain the same list using the program
+<code class="docutils literal notranslate"><span class="pre">ls_stdy.py</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py ta_table.txt.pkl
+
+Listing Station Pickle: ta_table.txt.pkl
+TA.M31M
+--------------------------------------------------------------------------
+1) TA.M31M
+     Station: TA M31M
+      Alternate Networks: None
+      Channel: BH ;  Location:
+      Lon, Lat, Elev:  62.20240, -134.39060,   0.640
+      StartTime: 2015-10-17 00:00:00
+      EndTime:   2599-12-31 00:00:00
+      Status:
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.N32M
+--------------------------------------------------------------------------
+2) TA.N32M
+     Station: TA N32M
+      Alternate Networks: None
+      Channel: BH ;  Location:
+      Lon, Lat, Elev:  61.15120, -133.08180,   0.820
+      StartTime: 2016-05-11 00:00:00
+      EndTime:   2599-12-31 00:00:00
+      Status:
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.P33M
+--------------------------------------------------------------------------
+3) TA.P33M
+     Station: TA P33M
+      Alternate Networks: None
+      Channel: BH ;  Location:
+      Lon, Lat, Elev:  60.21140, -132.81740,   1.070
+      StartTime: 2015-10-15 00:00:00
+      EndTime:   2599-12-31 00:00:00
+      Status:
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+<p>and finally:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py ta_table.pkl
+
+Listing Station Pickle: ta_table.pkl
+TA.M31M
+--------------------------------------------------------------------------
+1) TA.M31M
+     Station: TA M31M
+      Alternate Networks: None
+      Channel: BH ;  Location: &quot;--&quot;
+      Lon, Lat, Elev:  62.20240, -134.39060,   0.640
+      StartTime: 2015-10-17 00:00:00
+      EndTime:   2599-12-31 00:00:00
+      Status:
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.N32M
+--------------------------------------------------------------------------
+2) TA.N32M
+     Station: TA N32M
+      Alternate Networks: None
+      Channel: BH ;  Location: &quot;--&quot;
+      Lon, Lat, Elev:  61.15120, -133.08180,   0.820
+      StartTime: 2016-05-11 00:00:00
+      EndTime:   2599-12-31 00:00:00
+      Status:
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.P33M
+--------------------------------------------------------------------------
+3) TA.P33M
+     Station: TA P33M
+      Alternate Networks: None
+      Channel: BH ;  Location: &quot;--&quot;
+      Lon, Lat, Elev:  60.21140, -132.81740,   1.070
+      StartTime: 2015-10-15 00:00:00
+      EndTime:   2599-12-31 00:00:00
+      Status:
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Generate Database</a><ul>
+<li><a class="reference internal" href="#program-gen-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span></code></a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="merge.html"
+                        title="previous chapter">Merge Databases</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="append.html"
+                        title="next chapter">Append New Station</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/gen.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="append.html" title="Append New Station"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="merge.html" title="Merge Databases"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

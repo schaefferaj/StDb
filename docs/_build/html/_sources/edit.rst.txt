@@ -1,0 +1,35 @@
+Edit Station Info
+=================
+
+Program ``edit_stdb.py``
+------------------------
+
+Description
+-----------
+Edit Station Database Dictionary contained in pickle file.
+
+Usage
+-----
+
+.. code-block::
+
+    $ edit_stdb.py -h
+    Usage: edit_stdb.py [options] <station pickle file>
+
+    Program to make basic modifications to a station database pickle file
+
+    Options:
+      -h, --help            show this help message and exit
+      --keys=KEYS           Specify a comma separated list of keys to return.
+                            These can be fragments of a key to include all keys
+                            matching any fragment.
+      -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+                            Net.Stn.Chn
+      -O OFILE, --output-file=OFILE
+                            Specify an output file name for the edited database.
+                            Default behaviour performs the changes in place on the
+                            input file.
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
+

@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Create Database by Querying FDSN &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="List Database Content" href="ls.html" />
+    <link rel="prev" title="Module kml" href="kml.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ls.html" title="List Database Content"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="kml.html" title="Module kml"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="create-database-by-querying-fdsn">
+<span id="query"></span><h1>Create Database by Querying FDSN<a class="headerlink" href="#create-database-by-querying-fdsn" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-query-fdsn-stdb-py">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb.py</span></code><a class="headerlink" href="#program-query-fdsn-stdb-py" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Program to query a datacenter using the <code class="docutils literal notranslate"><span class="pre">obspy</span></code> fdsn client. All stations
+returned based on the query criteria are saved into a both a <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file and a
+stdb dictionary <code class="docutils literal notranslate"><span class="pre">pickle</span></code> file for future use.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb.py -h
+Usage: query_fdsn_stdb.py [options] &lt;station list filename&gt;
+
+Program to query a datacenter using the obspy fdsn client. All station
+returned in this query are saved into both a csv format 1sls file as well as a
+stationdb (stdb.StDbElement) pickled dictionary. The input argument, &lt;station
+file name&gt; is the prefix for the output file, which is by default &lt;station
+file name&gt;.csv and &lt;station file name&gt;.pkl.
+
+Options:
+  -h, --help            show this help message and exit
+  -D, --debug           Debug mode. After the client query is complete (and
+                        successful), instead of parsing the inventory, it is
+                        instead pickled to &lt;station file name&gt;_query_debug.pkl
+                        which can be loaded in ipython to examine manually.
+  -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+                        Net.Stn.Chn
+  -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                        Ascii are larger file size, but more likely to be
+                        system independent.
+
+  Server Settings:
+    Settings associated with which datacenter to log into.
+
+    --Server=SERVER     Specify the server to connect to. Options include:
+                        BGR, ETH, GEONET, GFZ, INGV, IPGP, IRIS, KOERI, LMU,
+                        NCEDC, NEIP, NERIES, ODC, ORFEUS, RESIF, SCEDC, USGS,
+                        USP. [Default IRIS]
+    --User-Auth=USERAUTH
+                        Enter your IRIS Authentification Username and Password
+                        (--User-Auth=&#39;username:authpassword&#39;) to access and
+                        download restricted data. [Default no user and
+                        password]
+
+  Channel Priority/Selection Settings:
+    Settings associated with selecting the channels to retain.
+
+    --channel-rank=CHNRANK
+                        If requesting more than one type of channel, specify a
+                        comma separated list of the first two lettres of the
+                        desired components to retain. Default is LH &gt; BH &gt; HH
+                        : [ &#39;LH&#39;,&#39;BH&#39;,&#39;HH&#39;]
+
+  Station-Channel Settings:
+    Options to narrow down the specific channels based on network,
+    station, etc
+
+    -N NETS, --networks=NETS
+                        Specify a comma separated list of network codes to
+                        search for [Default *]
+    -S STNS, --stations=STNS
+                        Specify a comma separated list of station names. If
+                        you want wildcards, enclose in quotes [Default *]
+    -C CHNS, --channels=CHNS
+                        Specify a comma separated, wildcarded list of channel
+                        names. [Default LH*,BH*,HH*]
+
+  Geographic Lat/Lon Box Search:
+    Define the coordinates of a lat/lon box in which to select stations.
+    If filled out, takes precedence over values for Radius Search (below).
+
+    --minlat=MINLAT, --min-latitude=MINLAT
+                        Specify minimum latitude to search (must specify all
+                        of minlat, maxlat, minlon, maxlon).
+    --maxlat=MAXLAT, --max-latitude=MAXLAT
+                        Specify maximum latitude to search (must specify all
+                        of minlat, maxlat, minlon, maxlon).
+    --minlon=MINLON, --min-longitude=MINLON
+                        Specify minimum longitude to search (must specify all
+                        of minlat, maxlat, minlon, maxlon).
+    --maxlon=MAXLON, --max-longitude=MAXLON
+                        Specify maximum longitude to search (must specify all
+                        of minlat, maxlat, minlon, maxlon).
+
+  Geographic Radius Search:
+    Central point and min/max radius search settings. Box Search Settings
+    take precedence over radius search.
+
+    --lat=LAT, --latitude=LAT
+                        Specify a Lat (if any of --lon --min-radius and --max-
+                        radius are empty, an error will prompt).
+    --lon=LON, --longitude=LON
+                        Specify a Lon (if any of --lat --min-radius and --max-
+                        radius are empty, an error will prompt).
+    --minr=MINR, --min-radius=MINR
+                        Specify a minimum search radius (in degrees) around
+                        the point defined by --lat and --lon (if any of --lat
+                        --lon and --max-radius are empty, an error will
+                        prompt). [Default 0. degrees]
+    --maxr=MAXR, --max-radius=MAXR
+                        Specify a maximum search radius (in degrees) around
+                        the point defined by --lat and --lon (if any of --lat
+                        --lon and --min-radius are empty, an error will
+                        prompt).
+
+  Fixed Time Range Settings:
+    Find all stations operating within the start and end date/time. If
+    either are filled out, they take precedence over Non-Specific time
+    range search (below)
+
+    --start=STDATE, --start-date=STDATE
+                        Specify the Start Date/Time in a UTCDateTime
+                        compatible String (ie, 2010-01-15 15:15:45.2).
+                        [Default Blank]
+    --end=ENDDATE, --end-date=ENDDATE
+                        Specify the End Date/Time in a UTCDateTime compatible
+                        String (ie, 2010-01-15 15:15:45.2). [Default Blank]
+
+  Non-Specific Time Range Settings:
+    Time settings with less specificity. Ensure that those you specify do
+    not interfere with each other. If above Fixed Range values are set,
+    they will take precedence over these values.
+
+    --start-before=STBEFORE
+                        Specify a Date/Time which stations must start before
+                        (must be UTCDateTime compatible string, ie 2010-01-15
+                        15:15:45.2). [Default empty]
+    --start-after=STAFTER
+                        Specify a Date/Time which stations must start after
+                        (must be UTCDateTime compatible string, ie 2010-01-15
+                        15:15:45.2). [Default empty]
+    --end-before=ENDBEFORE
+                        Specify a Date/Time which stations must end before
+                        (must be UTCDateTime compatible string, ie 2010-01-15
+                        15:15:45.2). [Default empty]
+    --end-after=ENDAFTER
+                        Specify a Date/Time which stations must end after
+                        (must be UTCDateTime compatible string, ie 2010-01-15
+                        15:15:45.2). [Default empty]
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Extract all stations with broadband seismic data (<code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">BH</span></code>) in the TA network (<code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">TA</span></code>)
+in the region delimited by min and max latitudes of 60 to 65 deg, and min anx max longitudes
+of -135 to -120 deg, which hold data recorded since January 1, 2017:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb.py -C BH? -N TA --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 ta_list
+Performing Geographic Box Search:
+    LL:   60.0000, -135.0000
+    UR:   65.0000, -120.0000
+
+Performing Fixed Time Range Search:
+   Start: 2017-01-01 00:00:00
+   End:   2599-12-31 23:59:59
+
+Station/Channel Search Parameters:
+   Network:  TA
+   Stations: *
+   Channels: BH?
+   Channel Rank: LH,BH,HH
+
+Output Files: ta_list.csv and ta_list.pkl
+
+Initializing Client (IRIS)...Done
+
+Querying client...Done
+
+Search Complete:
+  3 stations in 1 networks
+
+Network: TA
+   Station: M31M
+     Lon, Lat, Elev: -134.3906,  62.2024,   0.639
+     Start Date: 2015-10-17 00:00:00
+     End Date:   2599-12-31 23:59:59
+     Status:     open
+     Selected Channel: BH
+     Locations:        --
+    Added as: TA.M31M
+   Station: N32M
+     Lon, Lat, Elev: -133.0818,  61.1512,   0.816
+     Start Date: 2016-05-11 00:00:00
+     End Date:   2599-12-31 23:59:59
+     Status:     open
+     Selected Channel: BH
+     Locations:        --
+    Added as: TA.N32M
+   Station: P33M
+     Lon, Lat, Elev: -132.8174,  60.2114,   1.066
+     Start Date: 2015-10-15 00:00:00
+     End Date:   2599-12-31 23:59:59
+     Status:     open
+     Selected Channel: BH
+     Locations:        --
+    Added as: TA.P33M
+
+  Pickling to ta_list.pkl
+  Saving csv to: ta_list.csv
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Create Database by Querying FDSN</a><ul>
+<li><a class="reference internal" href="#program-query-fdsn-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb.py</span></code></a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="kml.html"
+                        title="previous chapter">Module kml</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="ls.html"
+                        title="next chapter">List Database Content</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/query.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="ls.html" title="List Database Content"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="kml.html" title="Module kml"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>
