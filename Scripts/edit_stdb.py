@@ -31,7 +31,6 @@ Program
 Description
 -----------
 Edit Station Database Dictionary contained in pickle file.
-
 The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
 is a two character representation of the desired channel (ex, BH, HH, LH).
 Within each KEY is the set of data used in later programs to define the 
@@ -39,28 +38,57 @@ station information. The data is stored as a dictionary, with each dictionary
 element being an object of class :class:`~stdb.classes.StDbElement`. An item has:
 
 * stdb[stkey]:
-- .station
-- .network
-- .altnet
-- .channel
-- .location
-- .latitude
-- .longitude
-- .elevation
-- .startdate
-- .enddate
-- .polarity
-- .azcorr
-- .status
-- .stla (compatibility only)
-- .stlo (compatibility only)
-- .cha (compatibility only)
-- .dstart (compatibility only)
-- .dend (compatibility only)
+
+  - .station
+
+  - .network
+
+  - .altnet
+
+  - .channel
+
+  - .location
+
+  - .latitude
+
+  - .longitude
+
+  - .elevation
+
+  - .startdate
+
+  - .enddate
+
+  - .polarity
+
+  - .azcorr
+
+  - .status
 
 Usage
 -----
-``edit_stdb.py -h``
+
+.. code-block:: none
+
+    edit_stdb.py -h
+    Usage: edit_stdb.py [options] <station pickle file>
+
+    Program to make basic modifications to a station database pickle file
+
+    Options:
+      -h, --help            show this help message and exit
+      --keys=KEYS           Specify a comma separated list of keys to return.
+                            These can be fragments of a key to include all keys
+                            matching any fragment.
+      -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+                            Net.Stn.Chn
+      -O OFILE, --output-file=OFILE
+                            Specify an output file name for the edited database.
+                            Default behaviour performs the changes in place on the
+                            input file.
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
 
 """
 

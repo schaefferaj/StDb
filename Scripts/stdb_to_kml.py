@@ -33,10 +33,6 @@ Description
 Convert a station Database from a ``.pkl`` file into a ``.kml`` file for use 
 in plotting in Google Earth.
 
-Usage
------
-``stdb_to_kml.py -h`` for details on usage
-
 Fields in the ``.kml`` file include
 -----------------------------------
 * Latitude
@@ -46,6 +42,37 @@ Fields in the ``.kml`` file include
 * End Time
 * Open?
 * Channels
+
+Usage
+-----
+
+.. code-block:: none
+
+    stdb_to_kml.py -h
+    Usage: stdb_to_kml.py [options] <station pickle file>
+
+    Program to create a KML file for plotting based on the contents of a station
+    pickle file
+
+    Options:
+      -h, --help            show this help message and exit
+      --keys=KEYS           Specify a comma separated list of keys to return.
+                            These can be fragments of a key to include all keys
+                            matching any fragment.
+      -V VERB, -v VERB, --verb-level=VERB
+                            Specify verbosity. Default 0: no output. 1: network
+                            list. 2: include station list.
+      -o OUTFILE, --outfile=OUTFILE
+                            Output kml file
+      -s SCALE, --icon-scale=SCALE
+                            Icon Size Scale (default 1.8)
+      -r, --no-random-colours
+                            Turn off random colours (default random on)
+      -T DOCTITLE, --Document-title=DOCTITLE
+                            KML Document Title
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
 
 """
 

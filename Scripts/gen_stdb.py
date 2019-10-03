@@ -30,15 +30,7 @@ Program
 
 Description
 -----------
-Create Station Database dictionary based on an input file in one of two
-formats:
-
-1) chS csv:          -------Start---------   --------END----------
- NET,STA,locID,CHAN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-DD,HH:MM:SS.SSS,lat,lon
-
-2) IPO SPC                 --Start--- ---END----
- NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
-
+Create Station Database dictionary
 The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
 is a two character representation of the desired channel (ex, BH, HH, LH).
 Within each KEY is the set of data used in later programs to define the 
@@ -46,23 +38,55 @@ station information. The data is stored in a dictionary, with each dictionary
 element being an object of Class :class:`~stdb.classes.StDbElement`. An item has:
 
 * stdb[stkey]:
-- .station
-- .network
-- .altnet
-- .channel
-- .location
-- .latitude
-- .longitude
-- .elevation
-- .startdate
-- .enddate
-- .polarity
-- .azcorr
-- .status
+
+  - .station
+
+  - .network
+
+  - .altnet
+
+  - .channel
+
+  - .location
+
+  - .latitude
+
+  - .longitude
+
+  - .elevation
+
+  - .startdate
+
+  - .enddate
+
+  - .polarity
+
+  - .azcorr
+  
+  - .status
 
 Usage
 -----
-``gen_stdb.py -h``
+
+.. code-block:: none
+
+    gen_stdb.py -h
+    Usage: gen_stdb.py [options] <station list>
+
+    Script to generate a pickled station database file.
+
+    Options:
+      -h, --help       show this help message and exit
+      -L, --long-keys  Specify Key format. Default is Net.Stn. Long keys are
+                       Net.Stn.Chn
+      -a, --ascii      Specify to write ascii Pickle files instead of binary.
+                       Ascii are larger file size, but more likely to be system
+                       independent.
+
+    Input File (IPO SPC):
+    NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
+    Each element corresponding to each dictionary key is saved as stdb.StbBElement
+    class.
 
 """
 
@@ -89,7 +113,6 @@ NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
                                                                                      
 Each element corresponding to each dictionary key is saved as stdb.StbBElement class.
                                                                                        
-Andrew Schaeffer, 25 August 2015
 """)
     parser.add_option("-L", "--long-keys", action="store_true", dest="lkey", default=False, \
         help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
