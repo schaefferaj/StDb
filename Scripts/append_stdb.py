@@ -22,13 +22,21 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: append_stdb.py
 
-        Description:
-        Append new station information to an existing station database.
+"""
+Program
+-------
+``append_stdb.py``
 
-'''
+Description
+-----------
+Append new station information to an existing station database.
+
+Usage
+-----
+``append_stdb.py -h`` for details on usage
+
+"""
 
 import sys
 import os.path as osp

@@ -22,24 +22,32 @@
 
 #!/usr/bin/env python2.7
 # encoding: utf-8
-''' 
-        Program: stdb_to_kml.py
 
-        Description:
-        Convert a station Database from a .pkl file into a kml file for use in plotting
-        in Google Earth.
+"""
+Program
+-------
+``stdb_to_kml.py``
 
-        Included Fields in the kml file include:
-         Latitude
-         Longitude
-         Elevation
-         Start Time
-         End Time
-         Open?
-         Channels
+Description
+-----------
+Convert a station Database from a ``.pkl`` file into a ``.kml`` file for use 
+in plotting in Google Earth.
 
+Usage
+-----
+``stdb_to_kml.py -h`` for details on usage
 
-'''
+Fields in the ``.kml`` file include
+-----------------------------------
+* Latitude
+* Longitude
+* Elevation
+* Start Time
+* End Time
+* Open?
+* Channels
+
+"""
 
 import sys
 import os.path as osp

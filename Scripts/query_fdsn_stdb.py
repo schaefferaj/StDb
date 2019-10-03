@@ -22,17 +22,23 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-    Program: query_fdsn_stdb.py
 
-    Description:
-    Program to query a datacenter using the obspy fdsn client. All stations returned based
-    on the query criteria are saved into a both a csv file and a stdb dictionary pickle file
-    for future use.
-    
-    
-    Andrew Schaeffer, 26 August 2015 
-'''
+"""
+Program
+-------
+``query_fdsn_stdb.py``
+
+Description
+-----------
+Program to query a datacenter using the :mod:``obspy`` fdsn client. All stations 
+returned based on the query criteria are saved into a both a ``.csv`` file and a 
+stdb dictionary ``pickle`` file for future use.
+
+Usage
+-----
+``query_fdsn_stdb.py -h`` for details on usage
+
+"""
 
 import pickle
 from sys import exit

@@ -22,16 +22,25 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: dump_stdb.py
 
-        Description:
-        program to dump a Station Database into CSV format. If an output file is specified, file is dumped there (with .csv
-        extension). Otherwise output is directory to standard output.
-        
-        Use the --keys option to only dump certain keys.
+""" 
+Program
+-------
+``dump_stdb.py``
 
-'''
+Description
+-----------
+Program to dump a Station Database into ``.csv`` format. If an output file is 
+specified, file is dumped there (with ``.csv`` extension). 
+Otherwise output is directored to standard output.
+
+Use the --keys option to only dump certain keys.
+
+Usage
+-----
+``dump_stdb.py -h``
+
+"""
 
 import sys
 import os.path as osp

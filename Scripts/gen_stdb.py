@@ -22,44 +22,49 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: gen_stdb.py
 
-        Description:
-        Create Station Database dictionary based on an input file in one of two
-        formats:
-        1) chS csv:          -------Start---------   --------END----------
-         NET,STA,locID,CHAN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-DD,HH:MM:SS.SSS,lat,lon
-        
-        2) IPO SPC                 --Start--- ---END----
-         NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
+"""
+Program
+-------
+``gen_stdb.py``
 
-        The station dictionary contains keys which are named NET.STA.CHAN, where CHAN
-        is a two character representation of the desired channel (ex, BH, HH, LH).
-        Within each KEY is the set of data used in later programs to define the 
-        station information. The data is stored in a dictionary, with each dictionary 
-        element being an object of Class stdb.StDbElement. An item has:
-            stdb[stkey]:
-                 .station
-                 .network
-                 .altnet
-                 .channel
-                 .location
-                 .latitude
-                 .longitude
-                 .elevation
-                 .startdate
-                 .enddate
-                 .polarity
-                 .azcorr
-                 .status
-                 .stla (compatibility only)
-                 .stlo (compatibility only)
-                 .cha (compatibility only)
-                 .dstart (compatibility only)
-                 .dend (compatibility only)
+Description
+-----------
+Create Station Database dictionary based on an input file in one of two
+formats:
 
-'''
+1) chS csv:          -------Start---------   --------END----------
+ NET,STA,locID,CHAN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-DD,HH:MM:SS.SSS,lat,lon
+
+2) IPO SPC                 --Start--- ---END----
+ NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
+
+The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
+is a two character representation of the desired channel (ex, BH, HH, LH).
+Within each KEY is the set of data used in later programs to define the 
+station information. The data is stored in a dictionary, with each dictionary 
+element being an object of Class :class:`~stdb.classes.StDbElement`. An item has:
+
+* stdb[stkey]:
+- .station
+- .network
+- .altnet
+- .channel
+- .location
+- .latitude
+- .longitude
+- .elevation
+- .startdate
+- .enddate
+- .polarity
+- .azcorr
+- .status
+
+Usage
+-----
+``gen_stdb.py -h``
+
+"""
 
 
 from sys import exit

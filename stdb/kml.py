@@ -19,10 +19,13 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-'''
-Tools related to the creation of a kml file from a station database
 
-'''
+"""
+Tools used in the creation of a kml file from a station database. These
+functions are used in the script ``stdb_to_kml.py``. In a terminal,
+type ``stdb_to_kml.py -h`` for help on usage.
+
+"""
 
 import xml.dom.minidom
 from operator import itemgetter

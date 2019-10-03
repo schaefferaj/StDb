@@ -20,6 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""
+
+This module defines the main class ``StDbElement`` to create a station object, 
+which contains attributes of a single station in the dabase dictionary.
+
+A second class ``TextMessageBox`` allows creation of a message box for GUI
+interaction. This class is used in the script ``edit_stdb.py``. 
+
+"""
 from obspy.geodetics.base import gps2dist_azimuth as epiaz
 import tkinter
 from numpy import pi
