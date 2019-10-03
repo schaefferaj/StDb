@@ -6,7 +6,6 @@ dist
 *.pyc
 *.egg-info
 
-_build
 *.rst
 Makefile
 make.bat

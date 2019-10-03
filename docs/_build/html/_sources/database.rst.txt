@@ -1,0 +1,92 @@
+.. _database:
+
+Database organization
+---------------------
+
+A database created using :mod:`~StDb` is a station dictionary that 
+contains keys named NET.STA.CHAN, where CHAN is a two character representation 
+of the desired channel (ex, BH, HH, LH).
+Within each KEY is the set of data used in later programs to define the 
+station information. The data is stored in a dictionary, with each dictionary 
+element being an object of Class :class:`~stdb.classes.StDbElement`. An item has:
+
+* stdb[NET.STA]:
+
+  - .station
+
+  - .network
+
+  - .altnet
+
+  - .channel
+
+  - .location
+
+  - .latitude
+
+  - .longitude
+
+  - .elevation
+
+  - .startdate
+
+  - .enddate
+
+  - .polarity
+
+  - .azcorr
+  
+  - .status
+
+Example
++++++++
+
+Let's create a database from information contained in a <space>-separated file. 
+The basic format of the <space>-separated file some TA stations would look like 
+(saved in file ``ta_table.txt`` *without* the header):
+
+.. csv-table::
+   :widths: 7, 6, 6, 6, 6, 7, 10, 10
+
+   network, station, channel, latitude, longitude, elevation, startdate, enddate
+   TA,M31M,BH*,62.2024,-134.3906,0.64,2015-10-17,2599-12-31
+   TA,N32M,BH*,61.1512,-133.0818,0.82,2016-05-11,2599-12-31
+   TA,P33M,BH*,60.2114,-132.8174,1.07,2015-10-15,2599-12-31
+
+The second allowed format for the input <comma>-separated text file would look 
+like (saved in file ``ta_table.csv`` *without* the header):
+
+.. csv-table::
+   :widths: 2, 4, 2, 3, 15, 8, 15, 8, 6, 9, 4
+
+   network, station, location, channel, startdate, starttime, enddate, endtime, latitude, longitude, elevation
+   TA,M31M,"--",BH*,2015-10-17,00:00:00,2599-12-31,23:59:59,62.2024,-134.3906,0.64
+   TA,N32M,"--",BH*,2016-05-11,00:00:00,2599-12-31,23:59:59,61.1512,-133.0818,0.82
+   TA,P33M,"--",BH*,2015-10-15,00:00:00,2599-12-31,23:59:59,60.2114,-132.8174,1.07
+
+The corresponding ``StDb`` object is a dictionary containing three items, 
+each with a unique key. The following code was inserted right before 
+pickling to file in ``gen_stdb.py`` called using: ``gen_stdb.py ta_table.txt``
+or ``gen_stdb.py ta_table.csv``
+
+.. code-block:: python
+
+   print(stations.keys())
+   dict_keys(['TA.M31M', 'TA.N32M', 'TA.P33M'])
+
+   pprint.pprint(stations['TA.M31M'])
+   {'altnet': [],
+    'azcorr': 0.0,
+    'channel': 'BH',
+    'elevation': 0.64,
+    'enddate': '2599-12-31',
+    'latitude': 62.2024,
+    'location': '',
+    'longitude': -134.3906,
+    'network': 'TA',
+    'polarity': 1.0,
+    'startdate': '2015-10-17',
+    'station': 'M31M',
+    'status': ''}
+
+

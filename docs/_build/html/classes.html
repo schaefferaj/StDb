@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Classes &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module io" href="io.html" />
+    <link rel="prev" title="Database organization" href="database.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="io.html" title="Module io"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="database.html" title="Database organization"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-stdb.classes">
+<span id="classes"></span><h1>Classes<a class="headerlink" href="#module-stdb.classes" title="Permalink to this headline">¶</a></h1>
+<p>This module defines the main class <code class="docutils literal notranslate"><span class="pre">StDbElement</span></code> to create a station object,
+which contains attributes of a single station in the dabase dictionary.</p>
+<p>A second class <code class="docutils literal notranslate"><span class="pre">TextMessageBox</span></code> allows creation of a message box for GUI
+interaction. This class is used in the script <code class="docutils literal notranslate"><span class="pre">edit_stdb.py</span></code>.</p>
+<div class="section" id="stdbelement">
+<h2>StDbElement<a class="headerlink" href="#stdbelement" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stdb.classes.StDbElement">
+<em class="property">class </em><code class="sig-prename descclassname">stdb.classes.</code><code class="sig-name descname">StDbElement</code><span class="sig-paren">(</span><em class="sig-param">station='', network='', altnet=[], channel='', location=[''], latitude=0.0, longitude=0.0, elevation=0.0, startdate=&lt;class 'obspy.core.utcdatetime.UTCDateTime'&gt;, enddate=&lt;class 'obspy.core.utcdatetime.UTCDateTime'&gt;, polarity=1.0, azcorr=0.0, restricted_status='?'</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.classes.StDbElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that defines the structure of each station entry in the station
+database.</p>
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.station">
+<code class="sig-name descname">station</code><a class="headerlink" href="#stdb.classes.StDbElement.station" title="Permalink to this definition">¶</a></dt>
+<dd><p>Station name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.network">
+<code class="sig-name descname">network</code><a class="headerlink" href="#stdb.classes.StDbElement.network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>std</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.altnet">
+<code class="sig-name descname">altnet</code><a class="headerlink" href="#stdb.classes.StDbElement.altnet" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of alternative networks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.channel">
+<code class="sig-name descname">channel</code><a class="headerlink" href="#stdb.classes.StDbElement.channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Channel name (last digit only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.location">
+<code class="sig-name descname">location</code><a class="headerlink" href="#stdb.classes.StDbElement.location" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of strings for station location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.latitude">
+<code class="sig-name descname">latitude</code><a class="headerlink" href="#stdb.classes.StDbElement.latitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Latitude of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.longitude">
+<code class="sig-name descname">longitude</code><a class="headerlink" href="#stdb.classes.StDbElement.longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Longitude of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.elevation">
+<code class="sig-name descname">elevation</code><a class="headerlink" href="#stdb.classes.StDbElement.elevation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elevation of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.startdate">
+<code class="sig-name descname">startdate</code><a class="headerlink" href="#stdb.classes.StDbElement.startdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start time of station operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.enddate">
+<code class="sig-name descname">enddate</code><a class="headerlink" href="#stdb.classes.StDbElement.enddate" title="Permalink to this definition">¶</a></dt>
+<dd><p>End time of station operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.polarity">
+<code class="sig-name descname">polarity</code><a class="headerlink" href="#stdb.classes.StDbElement.polarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polarity of vertical component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.azcorr">
+<code class="sig-name descname">azcorr</code><a class="headerlink" href="#stdb.classes.StDbElement.azcorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Azimuth correction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.restricted_status">
+<code class="sig-name descname">restricted_status</code><a class="headerlink" href="#stdb.classes.StDbElement.restricted_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the data are restricted for a given station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Classes</a><ul>
+<li><a class="reference internal" href="#stdbelement">StDbElement</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="database.html"
+                        title="previous chapter">Database organization</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="io.html"
+                        title="next chapter">Module io</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/classes.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="io.html" title="Module io"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="database.html" title="Database organization"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Convert Database to KML &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Edit Station Info" href="edit.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="edit.html" title="Edit Station Info"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="convert-database-to-kml">
+<h1>Convert Database to KML<a class="headerlink" href="#convert-database-to-kml" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-stdb-to-kml-py">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span></code><a class="headerlink" href="#program-stdb-to-kml-py" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Convert a station Database from a <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> file into a <code class="docutils literal notranslate"><span class="pre">.kml</span></code> file for use
+in plotting in Google Earth.</p>
+</div>
+<div class="section" id="fields-in-the-kml-file-include">
+<h2>Fields in the <code class="docutils literal notranslate"><span class="pre">.kml</span></code> file include<a class="headerlink" href="#fields-in-the-kml-file-include" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Latitude</p></li>
+<li><p>Longitude</p></li>
+<li><p>Elevation</p></li>
+<li><p>Start Time</p></li>
+<li><p>End Time</p></li>
+<li><p>Open?</p></li>
+<li><p>Channels</p></li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>stdb_to_kml.py -h
+Usage: stdb_to_kml.py [options] &lt;station pickle file&gt;
+
+Program to create a KML file for plotting based on the contents of a station
+pickle file
+
+Options:
+  -h, --help            show this help message and exit
+  --keys=KEYS           Specify a comma separated list of keys to return.
+                        These can be fragments of a key to include all keys
+                        matching any fragment.
+  -V VERB, -v VERB, --verb-level=VERB
+                        Specify verbosity. Default 0: no output. 1: network
+                        list. 2: include station list.
+  -o OUTFILE, --outfile=OUTFILE
+                        Output kml file
+  -s SCALE, --icon-scale=SCALE
+                        Icon Size Scale (default 1.8)
+  -r, --no-random-colours
+                        Turn off random colours (default random on)
+  -T DOCTITLE, --Document-title=DOCTITLE
+                        KML Document Title
+  -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                        Ascii are larger file size, but more likely to be
+                        system independent.
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Convert Database to KML</a><ul>
+<li><a class="reference internal" href="#program-stdb-to-kml-py">Program <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span></code></a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#fields-in-the-kml-file-include">Fields in the <code class="docutils literal notranslate"><span class="pre">.kml</span></code> file include</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="edit.html"
+                        title="previous chapter">Edit Station Info</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/stdb2kml.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="edit.html" title="Edit Station Info"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

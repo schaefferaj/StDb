@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Module convert &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module kml" href="kml.html" />
+    <link rel="prev" title="Module io" href="io.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="kml.html" title="Module kml"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="io.html" title="Module io"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-stdb.convert">
+<span id="module-convert"></span><h1>Module convert<a class="headerlink" href="#module-stdb.convert" title="Permalink to this headline">¶</a></h1>
+<p>Tools used in converting a pickled station database file to comma-separated value
+(.csv) file. These functions are used in most scripts bundled with this package.</p>
+<dl class="function">
+<dt id="stdb.convert.tocsv">
+<code class="sig-prename descclassname">stdb.convert.</code><code class="sig-name descname">tocsv</code><span class="sig-paren">(</span><em class="sig-param">stel=&lt;class 'stdb.classes.StDbElement'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.tocsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subroutine to output an StDbElement to a csv formatted string</p>
+<dl>
+<dt>stel<span class="classifier"><a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a></span></dt><dd><p>Instance of <a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a> to convert to .csv</p>
+</dd>
+</dl>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><strong>csvstr</strong> – String representation of the csv content</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.convert.fromcsv">
+<code class="sig-prename descclassname">stdb.convert.</code><code class="sig-name descname">fromcsv</code><span class="sig-paren">(</span><em class="sig-param">line=''</em>, <em class="sig-param">lkey=False</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.fromcsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subroutine to convert a csv format string into an StDbElement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>str</em>) – Line to read as csv</p></li>
+<li><p><strong>lkey</strong> (<em>bool</em>) – Parameter controlling the length of the key (with or without CHANNEL info)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Key associated with each entry in database</p></li>
+<li><p><strong>entry</strong> (<a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a>) – Instance of <a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a> class</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="io.html"
+                        title="previous chapter">Module io</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="kml.html"
+                        title="next chapter">Module kml</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/convert.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="kml.html" title="Module kml"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="io.html" title="Module io"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

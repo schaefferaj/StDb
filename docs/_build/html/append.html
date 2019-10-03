@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Append New Station &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Edit Station Info" href="edit.html" />
+    <link rel="prev" title="Generate Database" href="gen.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="edit.html" title="Edit Station Info"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gen.html" title="Generate Database"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="append-new-station">
+<h1>Append New Station<a class="headerlink" href="#append-new-station" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-append-stdb-py">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">append_stdb.py</span></code><a class="headerlink" href="#program-append-stdb-py" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Append new station information to an existing station database.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>append_stdb.py -h
+Usage: append_stdb.py [options] &lt;station pickle file&gt;
+
+Helper program to append new stations to an existing station database.
+
+Options:
+  -h, --help            show this help message and exit
+  -o ONAME, --output-file=ONAME
+                        Specify output file name. Defaults to the input file
+                        with &#39;.apd&#39; added to the end.
+  -C, --complex         Default behaviour only promps for station basics
+                        (net,stn,chn,loc,lat,lon,start,end). Complex includes
+                        additional data (alternate networks, multiple
+                        locations, elevation, polarity, azimuth correction and
+                        restricted status)
+  -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+                        Net.Stn.Chn
+  -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                        Ascii are larger file size, but more likely to be
+                        system independent.
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Assume we have created the StDb database containing only one CN station
+(as in the example in <code class="xref py py-mod docutils literal notranslate"><span class="pre">py</span></code>). Let’s append a new
+station to the database with a different network code and using only the basic
+station attributes. Note that the fields (e.g., <code class="docutils literal notranslate"><span class="pre">NY</span></code>, <code class="docutils literal notranslate"><span class="pre">NEW</span></code> below are
+typed in the terminal by the user)</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py cn_list
+Listing Station Pickle: cn_list.pkl
+CN.WHY
+--------------------------------------------------------------------------
+1) CN.WHY
+     Station: CN WHY
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  60.65970, -134.88251,   1.273
+      StartTime: 1994-10-03 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ append_stdb.py cn_list
+********************************
+* New Station
+*    Network:   NY
+*    Station:   NEW
+*    Channel:   BH
+*    LocId:     --
+*    Longitude: -120.
+*    Latitude:  80.
+*    Start:     2018-01-01
+*    End:       2018-06-01
+* Added to DB
+
+* Another Station? [Y]/N: N
+
+Saving new database: cn_list.apd.pkl
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py cn_list.apd
+Listing Station Pickle: cn_list.apd.pkl
+CN.WHY
+--------------------------------------------------------------------------
+1) CN.WHY
+     Station: CN WHY
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  60.65970, -134.88251,   1.273
+      StartTime: 1994-10-03 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+NY.NEW
+--------------------------------------------------------------------------
+2) NY.NEW
+     Station: NY NEW
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  80.00000, -120.00000,   0.000
+      StartTime: 2018-01-01 00:00:00
+      EndTime:   2018-06-01 00:00:00
+      Status:    ?
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Append New Station</a><ul>
+<li><a class="reference internal" href="#program-append-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">append_stdb.py</span></code></a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gen.html"
+                        title="previous chapter">Generate Database</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="edit.html"
+                        title="next chapter">Edit Station Info</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/append.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="edit.html" title="Edit Station Info"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gen.html" title="Generate Database"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

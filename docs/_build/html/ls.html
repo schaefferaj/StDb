@@ -1,0 +1,210 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>List Database Content &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Merge Databases" href="merge.html" />
+    <link rel="prev" title="Create Database by Querying FDSN" href="query.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="merge.html" title="Merge Databases"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="query.html" title="Create Database by Querying FDSN"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="list-database-content">
+<h1>List Database Content<a class="headerlink" href="#list-database-content" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-ls-stdb-py">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">ls_stdb.py</span></code><a class="headerlink" href="#program-ls-stdb-py" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Lists databse dictionary contained in a pickled <code class="docutils literal notranslate"><span class="pre">StDb</span></code> database file.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py -h
+Usage: ls_stdb.py [options] &lt;station pickle file&gt;
+
+Helper program to examine the contents of a station pickle file
+
+Options:
+  -h, --help      show this help message and exit
+  -N, --networks  Use flag to retrieve only the list of networks in the
+                  database
+  --keys=KEYS     Specify a comma separated list of keys to return. These can
+                  be fragments of a key to include all keys matching any
+                  fragment.
+  -a, --ascii     Specify to write ascii Pickle files instead of binary. Ascii
+                  are larger file size, but more likely to be system
+                  independent.
+</pre></div>
+</div>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Assume we have already created a StDb database named <code class="docutils literal notranslate"><span class="pre">ta_list.pkl</span></code> using the example in
+<a class="reference internal" href="query.html#query"><span class="std std-ref">Create Database by Querying FDSN</span></a>. List its content:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py ta_list
+Listing Station Pickle: ta_list.pkl
+TA.M31M
+--------------------------------------------------------------------------
+1) TA.M31M
+     Station: TA M31M
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  62.20240, -134.39059,   0.639
+      StartTime: 2015-10-17 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.N32M
+--------------------------------------------------------------------------
+2) TA.N32M
+     Station: TA N32M
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  61.15120, -133.08180,   0.816
+      StartTime: 2016-05-11 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.P33M
+--------------------------------------------------------------------------
+3) TA.P33M
+     Station: TA P33M
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  60.21140, -132.81740,   1.066
+      StartTime: 2015-10-15 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+<p>List only one station key:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py --keys=TA.P33M new_list
+Listing Station Pickle: new_list.pkl
+TA.P33M
+--------------------------------------------------------------------------
+1) TA.P33M
+     Station: TA P33M
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  60.21140, -132.81740,   1.066
+      StartTime: 2015-10-15 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">List Database Content</a><ul>
+<li><a class="reference internal" href="#program-ls-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">ls_stdb.py</span></code></a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#examples">Examples</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="query.html"
+                        title="previous chapter">Create Database by Querying FDSN</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="merge.html"
+                        title="next chapter">Merge Databases</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/ls.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="merge.html" title="Merge Databases"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="query.html" title="Create Database by Querying FDSN"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>
