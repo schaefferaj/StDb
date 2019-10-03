@@ -168,68 +168,6 @@ Usage
                             (must be UTCDateTime compatible string, ie 2010-01-15
                             15:15:45.2). [Default empty]
 
-Example
--------
-
-Extract all stations with broadband seismic data (``-C BH``) in the TA network (``-N TA``) 
-in the region delimited by min and max latitudes of 60 to 65 deg, and min anx max longitudes
-of -135 to -120 deg, which hold data recorded since January 1, 2017:
-
-.. code-block::
-
-    $ query_fdsn_stdb.py -C BH? -N TA --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 ta_list
-    Performing Geographic Box Search:
-        LL:   60.0000, -135.0000
-        UR:   65.0000, -120.0000
-     
-    Performing Fixed Time Range Search: 
-       Start: 2017-01-01 00:00:00
-       End:   2599-12-31 23:59:59
-     
-    Station/Channel Search Parameters:
-       Network:  TA
-       Stations: *
-       Channels: BH?
-       Channel Rank: LH,BH,HH
-     
-    Output Files: ta_list.csv and ta_list.pkl
-     
-    Initializing Client (IRIS)...Done
-
-    Querying client...Done
-
-    Search Complete: 
-      3 stations in 1 networks
-     
-    Network: TA
-       Station: M31M
-         Lon, Lat, Elev: -134.3906,  62.2024,   0.639
-         Start Date: 2015-10-17 00:00:00
-         End Date:   2599-12-31 23:59:59
-         Status:     open
-         Selected Channel: BH
-         Locations:        --
-        Added as: TA.M31M
-       Station: N32M
-         Lon, Lat, Elev: -133.0818,  61.1512,   0.816
-         Start Date: 2016-05-11 00:00:00
-         End Date:   2599-12-31 23:59:59
-         Status:     open
-         Selected Channel: BH
-         Locations:        --
-        Added as: TA.N32M
-       Station: P33M
-         Lon, Lat, Elev: -132.8174,  60.2114,   1.066
-         Start Date: 2015-10-15 00:00:00
-         End Date:   2599-12-31 23:59:59
-         Status:     open
-         Selected Channel: BH
-         Locations:        --
-        Added as: TA.P33M
-     
-      Pickling to ta_list.pkl
-      Saving csv to: ta_list.csv
-
 """
 
 import pickle
