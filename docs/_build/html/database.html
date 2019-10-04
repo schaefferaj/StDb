@@ -72,8 +72,8 @@ element being an object of Class <a class="reference internal" href="classes.htm
 </ul>
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
-<p>Let’s create a database from information contained in a &lt;space&gt;-separated file.
-The basic format of the &lt;space&gt;-separated file some TA stations would look like
+<p>Let’s create a database from information contained in a file with &lt;space&gt;-separated
+fields. The basic format of the &lt;space&gt;-separated file some TA stations would look like
 (saved in file <code class="docutils literal notranslate"><span class="pre">ta_table.txt</span></code> <em>without</em> the header):</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -125,7 +125,7 @@ The basic format of the &lt;space&gt;-separated file some TA stations would look
 </tr>
 </tbody>
 </table>
-<p>The second allowed format for the input &lt;comma&gt;-separated text file would look
+<p>The second allowed format for the input file with &lt;comma&gt;-separated fields would look
 like (saved in file <code class="docutils literal notranslate"><span class="pre">ta_table.csv</span></code> <em>without</em> the header):</p>
 <table class="colwidths-given docutils align-default">
 <colgroup>
@@ -192,10 +192,15 @@ like (saved in file <code class="docutils literal notranslate"><span class="pre"
 </tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the file with &lt;comma&gt;-separated fields, you can enter additional fields corresponding to
+<code class="docutils literal notranslate"><span class="pre">polarity</span></code>, <code class="docutils literal notranslate"><span class="pre">azcorr</span></code> and <code class="docutils literal notranslate"><span class="pre">status</span></code> in that specific order.</p>
+</div>
 <p>The corresponding <code class="docutils literal notranslate"><span class="pre">StDb</span></code> object is a dictionary containing three items,
-each with a unique key. The following code was inserted right before
-pickling to file in <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span></code> called using: <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.txt</span></code>
-or <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.csv</span></code></p>
+each with a unique key. The following code was added right before
+pickling to file in <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span></code>, which was called using:
+<code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.csv</span></code></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">stations</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;TA.M31M&#39;</span><span class="p">,</span> <span class="s1">&#39;TA.N32M&#39;</span><span class="p">,</span> <span class="s1">&#39;TA.P33M&#39;</span><span class="p">])</span>
 

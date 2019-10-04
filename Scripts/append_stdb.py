@@ -34,7 +34,7 @@ Append new station information to an existing station database.
 Usage
 -----
 
-.. code-block:: none
+.. code-block::
 
     append_stdb.py -h
     Usage: append_stdb.py [options] <station pickle file>

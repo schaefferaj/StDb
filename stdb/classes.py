@@ -30,7 +30,6 @@ interaction. This class is used in the script ``edit_stdb.py``.
 
 """
 from obspy.geodetics.base import gps2dist_azimuth as epiaz
-import tkinter
 from numpy import pi
 from obspy import UTCDateTime
 

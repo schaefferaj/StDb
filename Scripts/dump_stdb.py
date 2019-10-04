@@ -24,15 +24,14 @@
 # encoding: utf-8
 
 """ 
-Program
--------
-``dump_stdb.py``
+Program dump_stdb.py
+--------------------
 
 Description
 -----------
 Program to dump a Station Database into ``.csv`` format. If an output file is 
 specified, file is dumped there (with ``.csv`` extension). 
-Otherwise output is directored to standard output.
+Otherwise output is directed to standard output.
 
 Use the --keys option to only dump certain keys.
 
