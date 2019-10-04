@@ -1,0 +1,171 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dump Database to .csv &#8212; StDb 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Convert Database to KML" href="stdb2kml.html" />
+    <link rel="prev" title="Edit Station Info" href="edit.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="stdb2kml.html" title="Convert Database to KML"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="edit.html" title="Edit Station Info"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="dump-database-to-csv">
+<h1>Dump Database to .csv<a class="headerlink" href="#dump-database-to-csv" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-dump-stdb-py">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">dump_stdb.py</span></code><a class="headerlink" href="#program-dump-stdb-py" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Program to dump a Station Database into <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format. If an output file is
+specified, file is dumped there (with <code class="docutils literal notranslate"><span class="pre">.csv</span></code> extension).
+Otherwise output is directed to standard output.</p>
+<p>This program is useful when you make edits to an existing <code class="docutils literal notranslate"><span class="pre">.pkl</span></code> database
+merge two databases, or append a new station to a database, without
+automatically creating a corresponding <code class="docutils literal notranslate"><span class="pre">.csv</span></code> file.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dump_stdb.py -h
+Usage: dump_stdb.py [options] &lt;station pickle file&gt;
+
+Program to dump the contents of a station database (.pkl) as csv. By default
+the output is directed to standard out. If a filename is optionally included,
+then the contents are also dumped to file.
+
+Options:
+  -h, --help            show this help message and exit
+  --keys=KEYS           Specify a comma separated list of keys to dump. Any
+                        key not specified by this search is not included in
+                        the output.
+  -O OFILE, --output-file=OFILE
+                        Specify an output file name for the dumped csv format
+                        data. If no .csv extenion is included, one is added.
+  -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                        Ascii are larger file size, but more likely to be
+                        system independent.
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>In the example in <a class="reference internal" href="merge.html#merge"><span class="std std-ref">Merge Databases</span></a>, the database <code class="docutils literal notranslate"><span class="pre">merged_list.pkl</span></code> is not automatically
+saved in <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   $ ls -l merged_list.*
+   -rw-r--r--  1 username  staff  2038  3 Oct 10:44 merged_list.pkl
+
+You can save it as ``.csv`` by executing:
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dump_stdb.py merged_list.pkl -O merged_list.csv
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -l merged_list.*
+-rw-r--r--  1 username  staff   403  4 Oct 11:51 merged_list.csv
+-rw-r--r--  1 username  staff  2038  3 Oct 10:44 merged_list.pkl
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Dump Database to .csv</a><ul>
+<li><a class="reference internal" href="#program-dump-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">dump_stdb.py</span></code></a></li>
+<li><a class="reference internal" href="#description">Description</a></li>
+<li><a class="reference internal" href="#usage">Usage</a></li>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="edit.html"
+                        title="previous chapter">Edit Station Info</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="stdb2kml.html"
+                        title="next chapter">Convert Database to KML</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/dump.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="stdb2kml.html" title="Convert Database to KML"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="edit.html" title="Edit Station Info"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">StDb 0.1.0 documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 2.2.0.
+    </div>
+  </body>
+</html>

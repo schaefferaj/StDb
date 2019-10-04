@@ -23,30 +23,31 @@ such as `SplitPy <https://github.com/paudetseis/SplitPy>`_ and ``RfPy``.
 Quick links
 """""""""""
 
-* `Git repositories <https://github.com/schaefferaj/StDb>`_
+* `StDb Git repository <https://github.com/schaefferaj/StDb>`_
+* `SplitPy Git repository <https://github.com/paudetseis/SplitPy>`_
 
 Getting Started
 """""""""""""""
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    api
    database
 
-Modules
+Content
 """""""
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    classes
    io
    convert
    kml
 
-Programs
-""""""""
+Programs & Tutorials
+""""""""""""""""""""
 
 .. toctree::
    :maxdepth: 1
@@ -57,4 +58,5 @@ Programs
    gen
    append
    edit
+   dump
    stdb2kml

@@ -41,8 +41,8 @@ element being an object of Class :class:`~stdb.classes.StDbElement`. An item has
 Example
 +++++++
 
-Let's create a database from information contained in a <space>-separated file. 
-The basic format of the <space>-separated file some TA stations would look like 
+Let's create a database from information contained in a file with <space>-separated
+fields. The basic format of the <space>-separated file some TA stations would look like 
 (saved in file ``ta_table.txt`` *without* the header):
 
 .. csv-table::
@@ -53,7 +53,7 @@ The basic format of the <space>-separated file some TA stations would look like
    TA,N32M,BH*,61.1512,-133.0818,0.82,2016-05-11,2599-12-31
    TA,P33M,BH*,60.2114,-132.8174,1.07,2015-10-15,2599-12-31
 
-The second allowed format for the input <comma>-separated text file would look 
+The second allowed format for the input file with <comma>-separated fields would look 
 like (saved in file ``ta_table.csv`` *without* the header):
 
 .. csv-table::
@@ -64,10 +64,15 @@ like (saved in file ``ta_table.csv`` *without* the header):
    TA,N32M,"--",BH*,2016-05-11,00:00:00,2599-12-31,23:59:59,61.1512,-133.0818,0.82
    TA,P33M,"--",BH*,2015-10-15,00:00:00,2599-12-31,23:59:59,60.2114,-132.8174,1.07
 
+.. note::
+
+   In the file with <comma>-separated fields, you can enter additional fields corresponding to
+   ``polarity``, ``azcorr`` and ``status`` in that specific order.
+
 The corresponding ``StDb`` object is a dictionary containing three items, 
-each with a unique key. The following code was inserted right before 
-pickling to file in ``gen_stdb.py`` called using: ``gen_stdb.py ta_table.txt``
-or ``gen_stdb.py ta_table.csv``
+each with a unique key. The following code was added right before 
+pickling to file in ``gen_stdb.py``, which was called using: 
+``gen_stdb.py ta_table.txt`` or ``gen_stdb.py ta_table.csv``
 
 .. code-block:: python
 

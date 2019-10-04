@@ -80,7 +80,8 @@ def createKML(nets=[], netd={}, fileName="stdb.kml", opts=None):
 
     # write out kml file
     kmlFile = open(fileName, 'w')
-    kmlFile.write(kmlDoc.toprettyxml('  ', newl = '\n', encoding = 'utf-8'))
+    kmlFile.write(kmlDoc.toprettyxml())
+    # kmlFile.write(kmlDoc.toprettyxml('  ', newl='\n', encoding='utf-8'))
 
 def createFolder(kmlDoc, net, stlist, netcolour, opts):
     """

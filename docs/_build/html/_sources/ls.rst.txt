@@ -6,7 +6,7 @@ Program ``ls_stdb.py``
 
 Description
 -----------
-Lists databse dictionary contained in a pickled ``StDb`` database file.
+Lists database dictionary contained in a pickled ``StDb`` database file.
 
 Usage
 -----

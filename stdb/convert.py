@@ -33,8 +33,8 @@ def tocsv(stel=StDbElement):
     """
     Subroutine to output an StDbElement to a csv formatted string
 
-    Parameter
-    ---------
+    Parameters
+    ----------
     stel : :class:`~stdb.classes.StDbElement`
         Instance of :class:`~stdb.classes.StDbElement` to convert to .csv
 
