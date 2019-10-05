@@ -3,16 +3,15 @@
 from distutils.core import setup
 from os import listdir
 
-version = open('version.txt').read().split()[0]
 scripts = ['Scripts/' + i for i in listdir('Scripts/')]
 
 setup(
 	name =             'stdb',
-	version =          version,
+	version =          '0.1.0',
 	description =      'Python Module for managing Station Databases',
-	author =           'Andrew Schaeffer',
-	maintainer =       'Andrew Schaeffer',
-	maintainer_email = 'andrew.schaeffer@uottawa.ca',
+	author =           'Andrew Schaeffer, Pascal Audet',
+	maintainer =       'Andrew Schaeffer, Pascal Audet',
+	maintainer_email = 'andrew.schaeffer@canada.ca, pascal.audet@uottawa.ca',
     classifiers         = [
                             'Development Status :: 3 - Alpha',
                             'License :: OSI Approved :: MIT License',
