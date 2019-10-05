@@ -126,13 +126,14 @@ if __name__=='__main__':
         if len(opts.keys) > 0:
             stkeys = []
             for skey in opts.keys:
-                stkeys.extend([s for s in allkeys if skey in s] )
+                stkeys.extend([s for s in allkeys if skey in s])
         else:
             stkeys = db.keys()
             sorted(stkeys)
         
         ikey = 0
-        for key in stkeys:
+        for key, val in db.items():
+            if key not in stkeys: continue
             ikey += 1
 
             print ("--------------------------------------------------------------------------")
@@ -140,11 +141,13 @@ if __name__=='__main__':
             print ("{0:.0f}) {1:s}".format(ikey, key))
             print (db[key](5))
             print ("**************************************************************************")
-            newline = EditMsgBox(title=key, ststr=stdb.convert.tocsv(db[key]), b1='OK', b2='Cancel', frame=True)
+            newline = EditMsgBox(ststr=stdb.convert.tocsv(db[key]), title=key)
             if len(newline) > 0:
-                nkey,nel = stdb.convert.fromcsv(newline, lkey=opts.lkey)
+                nkey, nel = stdb.convert.fromcsv(newline, lkey=opts.lkey)
+                if nel == val:
+                    print(" No Changes Made...")
+                    continue
                 if nkey is not None and nel is not None:
-                    if len(key.split('.')) == 1: nkey = nel.station
                     if key == nkey:
                         db[key] = nel
                         print (" Replaced " + key + ": ")
@@ -152,6 +155,7 @@ if __name__=='__main__':
                         tfEdit = True
                     else:
                         if nkey not in db:
+                            del db[key]
                             db[nkey] = nel
                             print (" Added " + nkey + ":")
                             print (db[nkey](5))
@@ -167,7 +171,8 @@ if __name__=='__main__':
         
         # Did we make any changes?
         if tfEdit:
-            # Changes Made...Save Database
+
+            # Changes Made... Save Database
             if len(opts.ofile) > 0:
                 if opts.ofile.find('.pkl') > 0:
                     fname = opts.ofile

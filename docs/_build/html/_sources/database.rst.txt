@@ -1,7 +1,7 @@
 .. _database:
 
-Database organization
----------------------
+Database structure
+------------------
 
 A database created using :mod:`~StDb` is a station dictionary that 
 contains keys named NET.STA.CHAN, where CHAN is a two character representation 

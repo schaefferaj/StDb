@@ -1,4 +1,4 @@
-# Copyright 2019 Andrew Schaeffer
+# Copyright 2019 Andrew Schaeffer & Pascal Audet
 #
 # This file is part of StDb.
 #
@@ -29,12 +29,12 @@ manually append new station information (e.g., for stations not hosted on
 any fdsn archive). 
 
 The resulting station dictionary is used in various seismic applications, 
-such as ``SplitPy`` (https://github.com/paudetseis/SplitPy) and `RfPy`.
+such as `SplitPy <https://github.com/paudetseis/SplitPy>`_ and `RfPy`.
 
 Licence
 -------
 
-Copyright 2019 Andrew Schaeffer
+Copyright 2019 Andrew Schaeffer & Pascal Audet
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -63,19 +63,8 @@ Dependencies
 The current version was developed using **Python3.7** \
 Also, the following package is required:
 
-- ``obspy`` (https://github.com/obspy/obspy/wiki)
-
-See below for full installation details. 
-
-Download the software
-+++++++++++++++++++++
-
-- Clone the repository:
-
-.. sourcecode:: bash
-
-   git clone https://github.com/schaefferaj/StDb.git
-   cd StDb
+- `obspy <https://github.com/obspy/obspy/wiki>`_
+- `PyQt5 <https://pypi.org/project/PyQt5/>`_
 
 Conda environment
 +++++++++++++++++
@@ -93,16 +82,24 @@ Activate the newly created environment:
 
    conda activate stdb
 
-Installing using pip
+Installing from Pypi
 ++++++++++++++++++++
-
-From the ``pip`` package manager:
 
 .. sourcecode:: bash
 
    pip install stdb
 
-From source: 
+Installing from source
+++++++++++++++++++++++
+
+- Clone the repository:
+
+.. sourcecode:: bash
+
+   git clone https://github.com/schaefferaj/StDb.git
+   cd StDb
+
+- Install using pip:
 
 .. sourcecode:: bash
 
@@ -112,5 +109,6 @@ From source:
 
 from . import kml
 from .io import write_db, load_db
-from .classes import StDbElement, EditMsgBox
+from .classes import StDbElement
 from .convert import tocsv, fromcsv
+from .gui import EditMsgBox
