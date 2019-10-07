@@ -22,13 +22,41 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: merge_stdb.py
 
-        Description:
-        Merge multiple st_db files together.
-        Performs a rudimentary check for mulitple keys
-'''
+"""
+Program ``merge_stdb.py``
+-------------------------
+
+Description
+-----------
+Merge multiple ``StDb`` database files together.
+Performs a rudimentary check for mulitple keys.
+
+Usage
+-----
+
+.. code-block::none
+
+    merge_stdb.py -h
+    Usage: merge_stdb.py [options] <station pickle file 1> <station pickle file 2> [additional station pickle files]
+
+    Helper program to merge multiple station database files together.
+
+    Options:
+      -h, --help            show this help message and exit
+      -v, --verbose         Enable more verbose output. Default is quiet (no
+                            prompts).
+      -O, --overwrite       Ovewrite output file if it already exists. Default
+                            behaviour quits with warning.
+      -o ONAME, --output-file=ONAME
+                            Specify output file name. Defaults to the input file
+                            with '.apd' added to the end.
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
+
+
+"""
 
 
 import sys

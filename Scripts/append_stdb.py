@@ -22,13 +22,42 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: append_stdb.py
 
-        Description:
-        Append new station information to an existing station database.
+"""
+Program ``append_stdb.py``
+--------------------------
 
-'''
+Description
+-----------
+Append new station information to an existing station database.
+
+Usage
+-----
+
+.. code-block::
+
+    append_stdb.py -h
+    Usage: append_stdb.py [options] <station pickle file>
+
+    Helper program to append new stations to an existing station database.
+
+    Options:
+      -h, --help            show this help message and exit
+      -o ONAME, --output-file=ONAME
+                            Specify output file name. Defaults to the input file
+                            with '.apd' added to the end.
+      -C, --complex         Default behaviour only promps for station basics
+                            (net,stn,chn,loc,lat,lon,start,end). Complex includes
+                            additional data (alternate networks, multiple
+                            locations, elevation, polarity, azimuth correction and
+                            restricted status)
+      -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+                            Net.Stn.Chn
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
+
+"""
 
 import sys
 import os.path as osp

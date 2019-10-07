@@ -22,17 +22,153 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-    Program: query_fdsn_stdb.py
 
-    Description:
-    Program to query a datacenter using the obspy fdsn client. All stations returned based
-    on the query criteria are saved into a both a csv file and a stdb dictionary pickle file
-    for future use.
-    
-    
-    Andrew Schaeffer, 26 August 2015 
-'''
+"""
+Program ``query_fdsn_stdb.py``
+------------------------------
+
+Description
+-----------
+Program to query a datacenter using the :mod:``obspy`` fdsn client. All stations 
+returned based on the query criteria are saved into a both a ``.csv`` file and a 
+stdb dictionary ``pickle`` file for future use.
+
+Usage
+-----
+
+.. code-block:: none
+
+    $ query_fdsn_stdb.py -h
+    Usage: query_fdsn_stdb.py [options] <station list filename>
+
+    Program to query a datacenter using the obspy fdsn client. All station
+    returned in this query are saved into both a csv format 1sls file as well as a
+    stationdb (stdb.StDbElement) pickled dictionary. The input argument, <station
+    file name> is the prefix for the output file, which is by default <station
+    file name>.csv and <station file name>.pkl.
+
+    Options:
+      -h, --help            show this help message and exit
+      -D, --debug           Debug mode. After the client query is complete (and
+                            successful), instead of parsing the inventory, it is
+                            instead pickled to <station file name>_query_debug.pkl
+                            which can be loaded in ipython to examine manually.
+      -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+                            Net.Stn.Chn
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
+
+      Server Settings:
+        Settings associated with which datacenter to log into.
+
+        --Server=SERVER     Specify the server to connect to. Options include:
+                            BGR, ETH, GEONET, GFZ, INGV, IPGP, IRIS, KOERI, LMU,
+                            NCEDC, NEIP, NERIES, ODC, ORFEUS, RESIF, SCEDC, USGS,
+                            USP. [Default IRIS]
+        --User-Auth=USERAUTH
+                            Enter your IRIS Authentification Username and Password
+                            (--User-Auth='username:authpassword') to access and
+                            download restricted data. [Default no user and
+                            password]
+
+      Channel Priority/Selection Settings:
+        Settings associated with selecting the channels to retain.
+
+        --channel-rank=CHNRANK
+                            If requesting more than one type of channel, specify a
+                            comma separated list of the first two lettres of the
+                            desired components to retain. Default is LH > BH > HH
+                            : [ 'LH','BH','HH']
+
+      Station-Channel Settings:
+        Options to narrow down the specific channels based on network,
+        station, etc
+
+        -N NETS, --networks=NETS
+                            Specify a comma separated list of network codes to
+                            search for [Default *]
+        -S STNS, --stations=STNS
+                            Specify a comma separated list of station names. If
+                            you want wildcards, enclose in quotes [Default *]
+        -C CHNS, --channels=CHNS
+                            Specify a comma separated, wildcarded list of channel
+                            names. [Default LH*,BH*,HH*]
+
+      Geographic Lat/Lon Box Search:
+        Define the coordinates of a lat/lon box in which to select stations.
+        If filled out, takes precedence over values for Radius Search (below).
+
+        --minlat=MINLAT, --min-latitude=MINLAT
+                            Specify minimum latitude to search (must specify all
+                            of minlat, maxlat, minlon, maxlon).
+        --maxlat=MAXLAT, --max-latitude=MAXLAT
+                            Specify maximum latitude to search (must specify all
+                            of minlat, maxlat, minlon, maxlon).
+        --minlon=MINLON, --min-longitude=MINLON
+                            Specify minimum longitude to search (must specify all
+                            of minlat, maxlat, minlon, maxlon).
+        --maxlon=MAXLON, --max-longitude=MAXLON
+                            Specify maximum longitude to search (must specify all
+                            of minlat, maxlat, minlon, maxlon).
+
+      Geographic Radius Search:
+        Central point and min/max radius search settings. Box Search Settings
+        take precedence over radius search.
+
+        --lat=LAT, --latitude=LAT
+                            Specify a Lat (if any of --lon --min-radius and --max-
+                            radius are empty, an error will prompt).
+        --lon=LON, --longitude=LON
+                            Specify a Lon (if any of --lat --min-radius and --max-
+                            radius are empty, an error will prompt).
+        --minr=MINR, --min-radius=MINR
+                            Specify a minimum search radius (in degrees) around
+                            the point defined by --lat and --lon (if any of --lat
+                            --lon and --max-radius are empty, an error will
+                            prompt). [Default 0. degrees]
+        --maxr=MAXR, --max-radius=MAXR
+                            Specify a maximum search radius (in degrees) around
+                            the point defined by --lat and --lon (if any of --lat
+                            --lon and --min-radius are empty, an error will
+                            prompt).
+
+      Fixed Time Range Settings:
+        Find all stations operating within the start and end date/time. If
+        either are filled out, they take precedence over Non-Specific time
+        range search (below)
+
+        --start=STDATE, --start-date=STDATE
+                            Specify the Start Date/Time in a UTCDateTime
+                            compatible String (ie, 2010-01-15 15:15:45.2).
+                            [Default Blank]
+        --end=ENDDATE, --end-date=ENDDATE
+                            Specify the End Date/Time in a UTCDateTime compatible
+                            String (ie, 2010-01-15 15:15:45.2). [Default Blank]
+
+      Non-Specific Time Range Settings:
+        Time settings with less specificity. Ensure that those you specify do
+        not interfere with each other. If above Fixed Range values are set,
+        they will take precedence over these values.
+
+        --start-before=STBEFORE
+                            Specify a Date/Time which stations must start before
+                            (must be UTCDateTime compatible string, ie 2010-01-15
+                            15:15:45.2). [Default empty]
+        --start-after=STAFTER
+                            Specify a Date/Time which stations must start after
+                            (must be UTCDateTime compatible string, ie 2010-01-15
+                            15:15:45.2). [Default empty]
+        --end-before=ENDBEFORE
+                            Specify a Date/Time which stations must end before
+                            (must be UTCDateTime compatible string, ie 2010-01-15
+                            15:15:45.2). [Default empty]
+        --end-after=ENDAFTER
+                            Specify a Date/Time which stations must end after
+                            (must be UTCDateTime compatible string, ie 2010-01-15
+                            15:15:45.2). [Default empty]
+
+"""
 
 import pickle
 from sys import exit
@@ -293,7 +429,6 @@ if __name__=='__main__':
     # Search the Client for stations
     stdout.writelines("Querying client...")
     try:
-        print(opts)
         inv = client.get_stations(network=opts.nets, station=opts.stns, channel=opts.chns, location="*",
                 starttime=opts.stdate, endtime=opts.enddate, 
                 startbefore=opts.stbefore, startafter=opts.stafter, endbefore=opts.endbefore, endafter=opts.endafter, 

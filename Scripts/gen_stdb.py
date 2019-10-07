@@ -22,44 +22,47 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: gen_stdb.py
 
-        Description:
-        Create Station Database dictionary based on an input file in one of two
-        formats:
-        1) chS csv:          -------Start---------   --------END----------
-         NET,STA,locID,CHAN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-DD,HH:MM:SS.SSS,lat,lon
-        
-        2) IPO SPC                 --Start--- ---END----
-         NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
+"""
+Program ``gen_stdb.py``
+-----------------------
 
-        The station dictionary contains keys which are named NET.STA.CHAN, where CHAN
-        is a two character representation of the desired channel (ex, BH, HH, LH).
-        Within each KEY is the set of data used in later programs to define the 
-        station information. The data is stored in a dictionary, with each dictionary 
-        element being an object of Class stdb.StDbElement. An item has:
-            stdb[stkey]:
-                 .station
-                 .network
-                 .altnet
-                 .channel
-                 .location
-                 .latitude
-                 .longitude
-                 .elevation
-                 .startdate
-                 .enddate
-                 .polarity
-                 .azcorr
-                 .status
-                 .stla (compatibility only)
-                 .stlo (compatibility only)
-                 .cha (compatibility only)
-                 .dstart (compatibility only)
-                 .dend (compatibility only)
+Description
+-----------
+Create Station Database dictionary
+The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
+is a two character representation of the desired channel (ex, BH, HH, LH).
+Within each KEY is the set of data used in later programs to define the 
+station information. The data is stored in a dictionary, with each dictionary 
+element being an object of Class :class:`~stdb.classes.StDbElement`. An item has:
 
-'''
+Usage
+-----
+
+.. code-block:: none
+
+    gen_stdb.py -h
+    Usage: gen_stdb.py [options] <station list>
+
+    Script to generate a pickled station database file.
+
+    Options:
+      -h, --help       show this help message and exit
+      -L, --long-keys  Specify Key format. Default is Net.Stn. Long keys are
+                       Net.Stn.Chn
+      -a, --ascii      Specify to write ascii Pickle files instead of binary.
+                       Ascii are larger file size, but more likely to be system
+                       independent.
+
+    Input File Type 1 (chS csv):
+    NET[:NET2:...],STA,LOC[:LOC2:...],CHN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-
+    DD,HH:MM:SS.SSS,lat,lon,elev,pol,azcor,status
+    Input File Type 2 (IPO SPC):
+    NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
+    Output File Types:
+    Each element corresponding to each dictionary key is saved as StDb.StbBElement
+    class.
+"""
 
 
 from sys import exit
@@ -79,12 +82,16 @@ if __name__=='__main__':
     # Get options
     parser = MyParser(usage="Usage: %prog [options] <station list>",
                  description="Script to generate a pickled station database file.",
-                 epilog="""Input File (IPO SPC):                                                          
-NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD                                
-                                                                                     
-Each element corresponding to each dictionary key is saved as stdb.StbBElement class.
-                                                                                       
-Andrew Schaeffer, 25 August 2015
+                 epilog="""Input File Type 1 (chS csv):                                                 
+NET[:NET2:...],STA,LOC[:LOC2:...],CHN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-DD,HH:MM:SS.SSS,lat,lon,elev,pol,azcor,status
+                                                                                                             
+Input File Type 2 (IPO SPC):                                                                            
+NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD                                                     
+                                                                                                    
+                                                                                                                                        
+Output File Types:                                                            
+Each element corresponding to each dictionary key is saved as StDb.StbBElement class.                                         
+                                                                                                                                                                                                                                                    
 """)
     parser.add_option("-L", "--long-keys", action="store_true", dest="lkey", default=False, \
         help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
@@ -134,12 +141,13 @@ Andrew Schaeffer, 25 August 2015
                 # Required Channel Parmaeters
                 chn = line[3][0:2]
                 # Required Timing Parameters
-                stdt = line[4]; sttm = line[5]; eddt = line[6]; edtm = line[7]
+                stdt = UTCDateTime(line[4]); sttm = line[5]
+                eddt = UTCDateTime(line[6]); edtm = line[7]
                 # Required Position Parameters
                 lat = float(line[8]); lon = float(line[9])
                 
                 # Set Default values for Optional elements 
-                elev = 0.; pol = 1.; azcor = 0.
+                elev = 0.; pol = 1.; azcor = 0.; status = ""
                 if len(line) >= 11:
                     elev = float(line[10])
                 if len(line) >= 12:
@@ -155,7 +163,7 @@ Andrew Schaeffer, 25 August 2015
                 else:
                     line = line.split('\t')
                 net = line[0]; stn = line[1]; chn = line[2][0:2]
-                stdt = line[6]; eddt = line[7]
+                stdt = UTCDateTime(line[6]); eddt = UTCDateTime(line[7])
                 lat = float(line[3]); lon = float(line[4])
                 elev = float(line[5])
                 altnet = []; status = ""; azcor = 0.; pol = 0.; loc = ""
@@ -166,15 +174,19 @@ Andrew Schaeffer, 25 August 2015
             else:
                 key = "{0:s}.{1:s}".format(net.strip(), stn.strip())
             if key not in stations:
-                stations[key] = StDbElement(network=network, station=station, channel=chn, \
-                    location=locs, latitude=lat, longitude=lon, elevation=elev, polarity=1., \
-                    azcorr=0., startdate=stdt, enddate=eddt, restricted_status=stat)
+                stations[key] = StDbElement(network=net, station=stn, channel=chn, \
+                    location=loc, latitude=lat, longitude=lon, elevation=elev, polarity=1., \
+                    azcorr=0., startdate=stdt, enddate=eddt, restricted_status=status)
                 print ("Adding key: " + key)
             else:
                 print ("Warning: Key " + key + " already exists...Skip")
 
+        # import pprint
+        # print(stations.keys())
+        # pprint.pprint(stations['TA.M31M'])
+
         # Save and Pickle the station database
-        print ("  Pickling {1:s}".format(pklfile))
+        print ("  Pickling {0:s}".format(pklfile))
         write_db(fname=pklfile, stdb=stations, binp=opts.use_binary)
     else:
         print ("Error: Must supply a station list, not a Pickle File")

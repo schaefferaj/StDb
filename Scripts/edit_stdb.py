@@ -22,37 +22,46 @@
 
 #!/usr/bin/env python
 # encoding: utf-8
-''' 
-        Program: edit_stdb.py
 
-        Description:
-        Edit Station Database Dictionary contained in pickle file.
+""" 
+Program ``edit_stdb.py``
+------------------------
 
-        The station dictionary contains keys which are named NET.STA.CHAN, where CHAN
-        is a two character representation of the desired channel (ex, BH, HH, LH).
-        Within each KEY is the set of data used in later programs to define the 
-        station information. The data is stored as a dictionary, with each dictionary 
-        element being an object of class stdb.StDbElement. An item has:
-            stdb[stkey]:
-                 .station
-                 .network
-                 .altnet
-                 .channel
-                 .location
-                 .latitude
-                 .longitude
-                 .elevation
-                 .startdate
-                 .enddate
-                 .polarity
-                 .azcorr
-                 .status
-                 .stla (compatibility only)
-                 .stlo (compatibility only)
-                 .cha (compatibility only)
-                 .dstart (compatibility only)
-                 .dend (compatibility only)
-'''
+Description
+-----------
+Edit Station Database Dictionary contained in pickle file.
+The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
+is a two character representation of the desired channel (ex, BH, HH, LH).
+Within each KEY is the set of data used in later programs to define the 
+station information. The data is stored as a dictionary, with each dictionary 
+element being an object of class :class:`~stdb.classes.StDbElement`. 
+
+Usage
+-----
+
+.. code-block:: none
+
+    edit_stdb.py -h
+    Usage: edit_stdb.py [options] <station pickle file>
+
+    Program to make basic modifications to a station database pickle file
+
+    Options:
+      -h, --help            show this help message and exit
+      --keys=KEYS           Specify a comma separated list of keys to return.
+                            These can be fragments of a key to include all keys
+                            matching any fragment.
+      -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+                            Net.Stn.Chn
+      -O OFILE, --output-file=OFILE
+                            Specify an output file name for the edited database.
+                            Default behaviour performs the changes in place on the
+                            input file.
+      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                            Ascii are larger file size, but more likely to be
+                            system independent.
+
+"""
 
 
 import sys
@@ -117,13 +126,14 @@ if __name__=='__main__':
         if len(opts.keys) > 0:
             stkeys = []
             for skey in opts.keys:
-                stkeys.extend([s for s in allkeys if skey in s] )
+                stkeys.extend([s for s in allkeys if skey in s])
         else:
             stkeys = db.keys()
             sorted(stkeys)
         
         ikey = 0
-        for key in stkeys:
+        for key, val in db.items():
+            if key not in stkeys: continue
             ikey += 1
 
             print ("--------------------------------------------------------------------------")
@@ -131,11 +141,13 @@ if __name__=='__main__':
             print ("{0:.0f}) {1:s}".format(ikey, key))
             print (db[key](5))
             print ("**************************************************************************")
-            newline = EditMsgBox(title=key, ststr=stdb.convert.tocsv(db[key]), b1='OK', b2='Cancel', frame=True)
+            newline = EditMsgBox(ststr=stdb.convert.tocsv(db[key]), title=key)
             if len(newline) > 0:
-                nkey,nel = stdb.convert.fromcsv(newline, lkey=opts.lkey)
+                nkey, nel = stdb.convert.fromcsv(newline, lkey=opts.lkey)
+                if nel == val:
+                    print(" No Changes Made...")
+                    continue
                 if nkey is not None and nel is not None:
-                    if len(key.split('.')) == 1: nkey = nel.station
                     if key == nkey:
                         db[key] = nel
                         print (" Replaced " + key + ": ")
@@ -143,6 +155,7 @@ if __name__=='__main__':
                         tfEdit = True
                     else:
                         if nkey not in db:
+                            del db[key]
                             db[nkey] = nel
                             print (" Added " + nkey + ":")
                             print (db[nkey](5))
@@ -158,7 +171,8 @@ if __name__=='__main__':
         
         # Did we make any changes?
         if tfEdit:
-            # Changes Made...Save Database
+
+            # Changes Made... Save Database
             if len(opts.ofile) > 0:
                 if opts.ofile.find('.pkl') > 0:
                     fname = opts.ofile

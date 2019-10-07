@@ -20,6 +20,12 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+"""
+
+Tools used in converting a pickled station database file to comma-separated value
+(.csv) file. These functions are used in most scripts bundled with this package.
+
+"""
 from stdb import StDbElement
 from obspy import UTCDateTime
 
@@ -27,8 +33,8 @@ def tocsv(stel=StDbElement):
     """
     Subroutine to output an StDbElement to a csv formatted string
 
-    Parameter
-    ---------
+    Parameters
+    ----------
     stel : :class:`~stdb.classes.StDbElement`
         Instance of :class:`~stdb.classes.StDbElement` to convert to .csv
 

@@ -1,4 +1,4 @@
-# Copyright 2019 Andrew Schaeffer
+# Copyright 2019 Andrew Schaeffer & Pascal Audet
 #
 # This file is part of StDb.
 #
@@ -20,38 +20,95 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-'''
-Module: StDb
+"""
+StDb is a package containing tools for building a database of station information
+from geophysical observatories. The code is used through command-line scripts 
+and include several options for querying an online fdsn archive, list 
+the content of an existing station database, merge existing databases, and 
+manually append new station information (e.g., for stations not hosted on
+any fdsn archive). 
 
-Python Module containing Class Instance for the elements of the station dictionary.
-SEveral variables are builtin, in addition to some helper functions which return
-certain components or measures associated with the data.
+The resulting station dictionary is used in various seismic applications, 
+such as `SplitPy <https://github.com/paudetseis/SplitPy>`_ and `RfPy`.
 
-Contains
- classes:
-    StDbElement
-        __init__
-        __call__
-        gcdist
-        az
-        baz
-    TextMessageBox
-        __init__
-        b1_action
-        b2_action
-        close_mod
-    EditMessageBox
+Licence
+-------
 
- convert:
-    tocsv
-    fromcsv
- io:
-    load_db
-    write_db
-    write_db_csv
-'''
+Copyright 2019 Andrew Schaeffer & Pascal Audet
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Installation
+------------
+
+Dependencies
+++++++++++++
+
+The current version was developed using **Python3.7** \
+Also, the following package is required:
+
+- `obspy <https://github.com/obspy/obspy/wiki>`_
+- `PyQt5 <https://pypi.org/project/PyQt5/>`_
+
+Conda environment
++++++++++++++++++
+
+We recommend creating a custom ``conda`` environment
+where ``telewavesim`` can be installed along with its dependencies.
+
+.. sourcecode:: bash
+
+   conda create -n stdb python=3.7 obspy -c conda-forge
+
+Activate the newly created environment:
+
+.. sourcecode:: bash
+
+   conda activate stdb
+
+Installing from Pypi
+++++++++++++++++++++
+
+.. sourcecode:: bash
+
+   pip install stdb
+
+Installing from source
+++++++++++++++++++++++
+
+- Clone the repository:
+
+.. sourcecode:: bash
+
+   git clone https://github.com/schaefferaj/StDb.git
+   cd StDb
+
+- Install using pip:
+
+.. sourcecode:: bash
+
+   pip install .
+
+"""
 
 from . import kml
 from .io import write_db, load_db
-from .classes import StDbElement, EditMsgBox
+from .classes import StDbElement
 from .convert import tocsv, fromcsv
+from .gui import EditMsgBox

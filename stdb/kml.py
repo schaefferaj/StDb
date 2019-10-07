@@ -19,10 +19,13 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
-'''
-Tools related to the creation of a kml file from a station database
 
-'''
+"""
+Tools used in the creation of a kml file from a station database. These
+functions are used in the script ``stdb_to_kml.py``. In a terminal,
+type ``stdb_to_kml.py -h`` for help on usage.
+
+"""
 
 import xml.dom.minidom
 from operator import itemgetter
@@ -77,7 +80,8 @@ def createKML(nets=[], netd={}, fileName="stdb.kml", opts=None):
 
     # write out kml file
     kmlFile = open(fileName, 'w')
-    kmlFile.write(kmlDoc.toprettyxml('  ', newl = '\n', encoding = 'utf-8'))
+    kmlFile.write(kmlDoc.toprettyxml())
+    # kmlFile.write(kmlDoc.toprettyxml('  ', newl='\n', encoding='utf-8'))
 
 def createFolder(kmlDoc, net, stlist, netcolour, opts):
     """

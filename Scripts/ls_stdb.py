@@ -22,38 +22,36 @@
 
 #!/usr/bin/env python2.7
 # encoding: utf-8
-''' 
-        Program: ls_stdb.py
 
-        Description:
-        List Station Database Dictionary contained in pickle file.
+""" 
+Program ``ls_stdb.py``
+----------------------
 
-        The station dictionary contains keys which are named NET.STA.CHAN, where CHAN
-        is a two character representation of the desired channel (ex, BH, HH, LH).
-        Within each KEY is the set of data used in later programs to define the 
-        station information. The data is stored in a dictionary, with each dictionary 
-        element being an object of class stdb.StDbElement. An item has:
-            stdb[stkey]:
-                 .station
-                 .network
-                 .altnet
-                 .channel
-                 .location
-                 .latitude
-                 .longitude
-                 .elevation
-                 .startdate
-                 .enddate
-                 .polarity
-                 .azcorr
-                 .status
-                 .stla (compatibility only)
-                 .stlo (compatibility only)
-                 .cha (compatibility only)
-                 .dstart (compatibility only)
-                 .dend (compatibility only)
+Description
+-----------
+Lists databse dictionary contained in a pickled ``StDb`` database file.
 
-'''
+Usage
+-----
+
+.. code-block:: none
+
+    ls_stdb.py -h
+    Usage: ls_stdb.py [options] <station pickle file>
+
+    Helper program to examine the contents of a station pickle file
+
+    Options:
+      -h, --help      show this help message and exit
+      -N, --networks  Use flag to retrieve only the list of networks in the
+                      database
+      --keys=KEYS     Specify a comma separated list of keys to return. These can
+                      be fragments of a key to include all keys matching any
+                      fragment.
+      -a, --ascii     Specify to write ascii Pickle files instead of binary. Ascii
+                      are larger file size, but more likely to be system
+                      independent.
+"""
 
 
 import sys
@@ -124,9 +122,7 @@ if __name__=='__main__':
         # construct station key loop
         allkeys = db.keys()
         sorted(allkeys)
-    
-        print(db)
-        
+     
         # Extract key subset
         if len(opts.keys) > 0:
             stkeys = []
@@ -136,7 +132,6 @@ if __name__=='__main__':
             stkeys = db.keys()
             sorted(stkeys)
         
-        print(stkeys)
         ikey = 0
         for key in stkeys:
             print(key)

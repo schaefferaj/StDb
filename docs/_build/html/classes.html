@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Classes &mdash; StDb 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module io" href="io.html" />
+    <link rel="prev" title="Database structure" href="database.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> StDb
+          
+
+          
+            
+            <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stdbelement">StDbElement</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Module convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kml.html">Module kml</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merge.html">Merge Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gen.html">Generate Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="append.html">Append New Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Edit Station Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dump.html">Dump Database to .csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdb2kml.html">Convert Database to KML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">StDb</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Classes</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/classes.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-stdb.classes">
+<span id="classes"></span><h1>Classes<a class="headerlink" href="#module-stdb.classes" title="Permalink to this headline">¶</a></h1>
+<p>This module defines the main class <code class="docutils literal notranslate"><span class="pre">StDbElement</span></code> to create a station object,
+which contains attributes of a single station in the dabase dictionary.</p>
+<div class="section" id="stdbelement">
+<h2>StDbElement<a class="headerlink" href="#stdbelement" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="stdb.classes.StDbElement">
+<em class="property">class </em><code class="sig-prename descclassname">stdb.classes.</code><code class="sig-name descname">StDbElement</code><span class="sig-paren">(</span><em class="sig-param">station='', network='', altnet=[], channel='', location=[''], latitude=0.0, longitude=0.0, elevation=0.0, startdate=&lt;class 'obspy.core.utcdatetime.UTCDateTime'&gt;, enddate=&lt;class 'obspy.core.utcdatetime.UTCDateTime'&gt;, polarity=1.0, azcorr=0.0, restricted_status='?'</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.classes.StDbElement" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class that defines the structure of each station entry in the station
+database.</p>
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.station">
+<code class="sig-name descname">station</code><a class="headerlink" href="#stdb.classes.StDbElement.station" title="Permalink to this definition">¶</a></dt>
+<dd><p>Station name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.network">
+<code class="sig-name descname">network</code><a class="headerlink" href="#stdb.classes.StDbElement.network" title="Permalink to this definition">¶</a></dt>
+<dd><p>Network name</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>std</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.altnet">
+<code class="sig-name descname">altnet</code><a class="headerlink" href="#stdb.classes.StDbElement.altnet" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of alternative networks</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.channel">
+<code class="sig-name descname">channel</code><a class="headerlink" href="#stdb.classes.StDbElement.channel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Channel name (last digit only)</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.location">
+<code class="sig-name descname">location</code><a class="headerlink" href="#stdb.classes.StDbElement.location" title="Permalink to this definition">¶</a></dt>
+<dd><p>List of strings for station location</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>List</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.latitude">
+<code class="sig-name descname">latitude</code><a class="headerlink" href="#stdb.classes.StDbElement.latitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Latitude of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.longitude">
+<code class="sig-name descname">longitude</code><a class="headerlink" href="#stdb.classes.StDbElement.longitude" title="Permalink to this definition">¶</a></dt>
+<dd><p>Longitude of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.elevation">
+<code class="sig-name descname">elevation</code><a class="headerlink" href="#stdb.classes.StDbElement.elevation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Elevation of station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.startdate">
+<code class="sig-name descname">startdate</code><a class="headerlink" href="#stdb.classes.StDbElement.startdate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Start time of station operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.enddate">
+<code class="sig-name descname">enddate</code><a class="headerlink" href="#stdb.classes.StDbElement.enddate" title="Permalink to this definition">¶</a></dt>
+<dd><p>End time of station operation</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.polarity">
+<code class="sig-name descname">polarity</code><a class="headerlink" href="#stdb.classes.StDbElement.polarity" title="Permalink to this definition">¶</a></dt>
+<dd><p>Polarity of vertical component</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.azcorr">
+<code class="sig-name descname">azcorr</code><a class="headerlink" href="#stdb.classes.StDbElement.azcorr" title="Permalink to this definition">¶</a></dt>
+<dd><p>Azimuth correction</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>float</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="stdb.classes.StDbElement.restricted_status">
+<code class="sig-name descname">restricted_status</code><a class="headerlink" href="#stdb.classes.StDbElement.restricted_status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Whether or not the data are restricted for a given station</p>
+<dl class="field-list simple">
+<dt class="field-odd">Type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="io.html" class="btn btn-neutral float-right" title="Module io" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="database.html" class="btn btn-neutral float-left" title="Database structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
