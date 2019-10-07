@@ -1,0 +1,342 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module kml &mdash; StDb 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Create Database by Querying FDSN" href="query.html" />
+    <link rel="prev" title="Module gui" href="gui.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> StDb
+          
+
+          
+            
+            <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Module convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module kml</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merge.html">Merge Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gen.html">Generate Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="append.html">Append New Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Edit Station Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dump.html">Dump Database to .csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdb2kml.html">Convert Database to KML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">StDb</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Module kml</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/kml.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-stdb.kml">
+<span id="module-kml"></span><h1>Module kml<a class="headerlink" href="#module-stdb.kml" title="Permalink to this headline">¶</a></h1>
+<p>Tools used in the creation of a kml file from a station database. These
+functions are used in the script <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span></code>. In a terminal,
+type <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span> <span class="pre">-h</span></code> for help on usage.</p>
+<dl class="function">
+<dt id="stdb.kml.createKML">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createKML</code><span class="sig-paren">(</span><em class="sig-param">nets=[]</em>, <em class="sig-param">netd={}</em>, <em class="sig-param">fileName='stdb.kml'</em>, <em class="sig-param">opts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createKML" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes and creates the kml document.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>nets</strong> (<em>List</em>) – List of networks</p></li>
+<li><p><strong>netd</strong> (<em>Dict</em>) – Dictionary of network elements</p></li>
+<li><p><strong>filename</strong> (<em>str</em>) – File name for output .kml file</p></li>
+<li><p><strong>opts</strong> – Options read from command line</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.createFolder">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createFolder</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">net</em>, <em class="sig-param">stlist</em>, <em class="sig-param">netcolour</em>, <em class="sig-param">opts</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createFolder" title="Permalink to this definition">¶</a></dt>
+<dd><p>For a kmlDocument and a dictionary of stations for a given network,
+make a folder element for this network, then create a placemark
+for every station.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kmldoc</strong> – Object</p></li>
+<li><p><strong>net</strong> (<em>str</em>) – Name of network</p></li>
+<li><p><strong>stlist</strong> (<em>List</em>) – List of station names</p></li>
+<li><p><strong>netcolour</strong> (<em>str</em>) – RGB colour for network code</p></li>
+<li><p><strong>opts</strong> – Options read from command line</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>folderElement</strong> – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.createPlacemark">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createPlacemark</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">stdata=None</em>, <em class="sig-param">netcolor='ffffffff'</em>, <em class="sig-param">opts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPlacemark" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a placemark in kmlDoc for a given row of a dictionary</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>kmldoc</strong> – Object</p></li>
+<li><p><strong>stdata</strong> (<em>Dict</em>) – Dictionary of station metadata</p></li>
+<li><p><strong>netcolour</strong> (<em>str</em>) – RGB colour for network code</p></li>
+<li><p><strong>opts</strong> – Options read from command line</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>placemarkElement</strong> – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.createStyleState">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createStyleState</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">scale</em>, <em class="sig-param">idtag</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to create a doucment wide style state with the LabelStyle internal field scale.
+Sets the Labelstyle scale field to value “scale” and names the field “idtag”</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.createPair">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createPair</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">mode</em>, <em class="sig-param">state</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPair" title="Permalink to this definition">¶</a></dt>
+<dd><p>Used to create a single Pair environment that has a particular mode and state</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.createStyleMap">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createStyleMap</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleMap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a StyleMap environment called on-offText which enables label text
+for Placemarks on mouseover only.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.createStyle">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createStyle</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">netcolor</em>, <em class="sig-param">size</em>, <em class="sig-param">labtype='net'</em>, <em class="sig-param">op=0</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a Style Environment with a variable size and colour.
+The last argument selects between two different icon types.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.createDoc">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createDoc</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createDoc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize the KML Document using name</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.gen_colors">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">gen_colors</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">norand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.gen_colors" title="Permalink to this definition">¶</a></dt>
+<dd><p>Produce n evenly distributed colors using the HSV colour pickle and the
+golden ratio value of ~0.6 to separate the colours. By default the initial
+colour selected is random.</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.kml.rgb2hex">
+<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">rgb2hex</code><span class="sig-paren">(</span><em class="sig-param">rgbl</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.rgb2hex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return hexidecial XML form of RGB colour tuple. Note that the xml parsing
+of the tuple reads bgr rather than standard rgb, so the rgb tuple is reversed
+in order on output to represent the true colour</p>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="query.html" class="btn btn-neutral float-right" title="Create Database by Querying FDSN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="gui.html" class="btn btn-neutral float-left" title="Module gui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,357 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Merge Databases &mdash; StDb 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Generate Database" href="gen.html" />
+    <link rel="prev" title="List Database Content" href="ls.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> StDb
+          
+
+          
+            
+            <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Module convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kml.html">Module kml</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Merge Databases</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#program-merge-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">merge_stdb.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="gen.html">Generate Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="append.html">Append New Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Edit Station Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dump.html">Dump Database to .csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdb2kml.html">Convert Database to KML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">StDb</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Merge Databases</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/merge.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="merge-databases">
+<span id="merge"></span><h1>Merge Databases<a class="headerlink" href="#merge-databases" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="program-merge-stdb-py">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">merge_stdb.py</span></code><a class="headerlink" href="#program-merge-stdb-py" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="description">
+<h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p>Merge multiple <code class="docutils literal notranslate"><span class="pre">StDb</span></code> database files together.
+Performs a rudimentary check for mulitple keys.</p>
+</div>
+<div class="section" id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ merge_stdb.py -h
+Usage: merge_stdb.py [options] &lt;station pickle file 1&gt; &lt;station pickle file 2&gt; [additional station pickle files]
+
+Helper program to merge multiple station database files together.
+
+Options:
+  -h, --help            show this help message and exit
+  -v, --verbose         Enable more verbose output. Default is quiet (no
+                        prompts).
+  -O, --overwrite       Ovewrite output file if it already exists. Default
+                        behaviour quits with warning.
+  -o ONAME, --output-file=ONAME
+                        Specify output file name. Defaults to the input file
+                        with &#39;.apd&#39; added to the end.
+  -a, --ascii           Specify to write ascii Pickle files instead of binary.
+                        Ascii are larger file size, but more likely to be
+                        system independent.
+</pre></div>
+</div>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Assume we have already created a StDb database named <code class="docutils literal notranslate"><span class="pre">ta_list.pkl</span></code> using the example
+in <a class="reference internal" href="query.html#query"><span class="std std-ref">Create Database by Querying FDSN</span></a>. Now create a second StDb database by querying the
+FDSN archive for stations in the CN network in the same region. Send the prompt to a stdb.log
+file.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This could have been performed during the first call to <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb.py</span></code> with the
+option <code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">TA,CN</span></code> - this is just for illustration</p>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb.py -C BH? -N CN --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 cn_list &gt;&gt; stdb.log
+</pre></div>
+</div>
+<p>List the content of cn_list.pkl:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py cn_list
+Listing Station Pickle: cn_list.pkl
+CN.WHY
+--------------------------------------------------------------------------
+1) CN.WHY
+     Station: CN WHY
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  60.65970, -134.88251,   1.273
+      StartTime: 1994-10-03 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+<p>Merge <code class="docutils literal notranslate"><span class="pre">ta_list.pkl</span></code> and <code class="docutils literal notranslate"><span class="pre">cn_list.pkl</span></code> into a new file called <code class="docutils literal notranslate"><span class="pre">merged_list.pkl</span></code>:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ merge_stdb.py -o merged_list ta_list cn_list
+</pre></div>
+</div>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py merged_list
+Listing Station Pickle: merged_list.pkl
+TA.M31M
+--------------------------------------------------------------------------
+1) TA.M31M
+     Station: TA M31M
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  62.20240, -134.39059,   0.639
+      StartTime: 2015-10-17 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.N32M
+--------------------------------------------------------------------------
+2) TA.N32M
+     Station: TA N32M
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  61.15120, -133.08180,   0.816
+      StartTime: 2016-05-11 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+TA.P33M
+--------------------------------------------------------------------------
+3) TA.P33M
+     Station: TA P33M
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  60.21140, -132.81740,   1.066
+      StartTime: 2015-10-15 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+
+
+CN.WHY
+--------------------------------------------------------------------------
+4) CN.WHY
+     Station: CN WHY
+      Alternate Networks: None
+      Channel: BH ;  Location: --
+      Lon, Lat, Elev:  60.65970, -134.88251,   1.273
+      StartTime: 1994-10-03 00:00:00
+      EndTime:   2599-12-31 23:59:59
+      Status:    open
+      Polarity: 1
+      Azimuth Correction: 0.000000
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gen.html" class="btn btn-neutral float-right" title="Generate Database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="ls.html" class="btn btn-neutral float-left" title="List Database Content" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

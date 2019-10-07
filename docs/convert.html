@@ -1,0 +1,267 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Module convert &mdash; StDb 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Module gui" href="gui.html" />
+    <link rel="prev" title="Module io" href="io.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> StDb
+          
+
+          
+            
+            <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#installation">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database structure</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kml.html">Module kml</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merge.html">Merge Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gen.html">Generate Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="append.html">Append New Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Edit Station Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dump.html">Dump Database to .csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdb2kml.html">Convert Database to KML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">StDb</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Module convert</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/convert.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="module-stdb.convert">
+<span id="module-convert"></span><h1>Module convert<a class="headerlink" href="#module-stdb.convert" title="Permalink to this headline">¶</a></h1>
+<p>Tools used in converting a pickled station database file to comma-separated value
+(.csv) file. These functions are used in most scripts bundled with this package.</p>
+<dl class="function">
+<dt id="stdb.convert.tocsv">
+<code class="sig-prename descclassname">stdb.convert.</code><code class="sig-name descname">tocsv</code><span class="sig-paren">(</span><em class="sig-param">stel=&lt;class 'stdb.classes.StDbElement'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.tocsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subroutine to output an StDbElement to a csv formatted string</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>stel</strong> (<a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a>) – Instance of <a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a> to convert to .csv</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><strong>csvstr</strong> – String representation of the csv content</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="stdb.convert.fromcsv">
+<code class="sig-prename descclassname">stdb.convert.</code><code class="sig-name descname">fromcsv</code><span class="sig-paren">(</span><em class="sig-param">line=''</em>, <em class="sig-param">lkey=False</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.fromcsv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Subroutine to convert a csv format string into an StDbElement</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>line</strong> (<em>str</em>) – Line to read as csv</p></li>
+<li><p><strong>lkey</strong> (<em>bool</em>) – Parameter controlling the length of the key (with or without CHANNEL info)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>key</strong> (<em>str</em>) – Key associated with each entry in database</p></li>
+<li><p><strong>entry</strong> (<a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a>) – Instance of <a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a> class</p></li>
+</ul>
+</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="gui.html" class="btn btn-neutral float-right" title="Module gui" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="io.html" class="btn btn-neutral float-left" title="Module io" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

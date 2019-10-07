@@ -1,0 +1,406 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Database structure &mdash; StDb 0.1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Classes" href="classes.html" />
+    <link rel="prev" title="Licence" href="api.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> StDb
+          
+
+          
+            
+            <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Getting Started</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="api.html">Licence</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html#installation">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Database structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Content</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
+<li class="toctree-l1"><a class="reference internal" href="convert.html">Module convert</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
+<li class="toctree-l1"><a class="reference internal" href="kml.html">Module kml</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
+<li class="toctree-l1"><a class="reference internal" href="merge.html">Merge Databases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gen.html">Generate Database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="append.html">Append New Station</a></li>
+<li class="toctree-l1"><a class="reference internal" href="edit.html">Edit Station Info</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dump.html">Dump Database to .csv</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stdb2kml.html">Convert Database to KML</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">StDb</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Database structure</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/database.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="database-structure">
+<span id="database"></span><h1>Database structure<a class="headerlink" href="#database-structure" title="Permalink to this headline">¶</a></h1>
+<p>A database created using <code class="xref py py-mod docutils literal notranslate"><span class="pre">StDb</span></code> is a station dictionary that
+contains keys named NET.STA.CHAN, where CHAN is a two character representation
+of the desired channel (ex, BH, HH, LH).
+Within each KEY is the set of data used in later programs to define the
+station information. The data is stored in a dictionary, with each dictionary
+element being an object of Class <a class="reference internal" href="classes.html#stdb.classes.StDbElement" title="stdb.classes.StDbElement"><code class="xref py py-class docutils literal notranslate"><span class="pre">StDbElement</span></code></a>. An item has:</p>
+<ul class="simple">
+<li><p>stdb[NET.STA]:</p>
+<ul>
+<li><p>.station</p></li>
+<li><p>.network</p></li>
+<li><p>.altnet</p></li>
+<li><p>.channel</p></li>
+<li><p>.location</p></li>
+<li><p>.latitude</p></li>
+<li><p>.longitude</p></li>
+<li><p>.elevation</p></li>
+<li><p>.startdate</p></li>
+<li><p>.enddate</p></li>
+<li><p>.polarity</p></li>
+<li><p>.azcorr</p></li>
+<li><p>.status</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Let’s create a database from information contained in a file with &lt;space&gt;-separated
+fields. The basic format of the &lt;space&gt;-separated file some TA stations would look like
+(saved in file <code class="docutils literal notranslate"><span class="pre">ta_table.txt</span></code> <em>without</em> the header):</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 17%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>network</p></td>
+<td><p>station</p></td>
+<td><p>channel</p></td>
+<td><p>latitude</p></td>
+<td><p>longitude</p></td>
+<td><p>elevation</p></td>
+<td><p>startdate</p></td>
+<td><p>enddate</p></td>
+</tr>
+<tr class="row-even"><td><p>TA</p></td>
+<td><p>M31M</p></td>
+<td><p>BH*</p></td>
+<td><p>62.2024</p></td>
+<td><p>-134.3906</p></td>
+<td><p>0.64</p></td>
+<td><p>2015-10-17</p></td>
+<td><p>2599-12-31</p></td>
+</tr>
+<tr class="row-odd"><td><p>TA</p></td>
+<td><p>N32M</p></td>
+<td><p>BH*</p></td>
+<td><p>61.1512</p></td>
+<td><p>-133.0818</p></td>
+<td><p>0.82</p></td>
+<td><p>2016-05-11</p></td>
+<td><p>2599-12-31</p></td>
+</tr>
+<tr class="row-even"><td><p>TA</p></td>
+<td><p>P33M</p></td>
+<td><p>BH*</p></td>
+<td><p>60.2114</p></td>
+<td><p>-132.8174</p></td>
+<td><p>1.07</p></td>
+<td><p>2015-10-15</p></td>
+<td><p>2599-12-31</p></td>
+</tr>
+</tbody>
+</table>
+<p>The second allowed format for the input file with &lt;comma&gt;-separated fields would look
+like (saved in file <code class="docutils literal notranslate"><span class="pre">ta_table.csv</span></code> <em>without</em> the header):</p>
+<table class="colwidths-given docutils align-default">
+<colgroup>
+<col style="width: 3%" />
+<col style="width: 5%" />
+<col style="width: 3%" />
+<col style="width: 4%" />
+<col style="width: 20%" />
+<col style="width: 11%" />
+<col style="width: 20%" />
+<col style="width: 11%" />
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 5%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p>network</p></td>
+<td><p>station</p></td>
+<td><p>location</p></td>
+<td><p>channel</p></td>
+<td><p>startdate</p></td>
+<td><p>starttime</p></td>
+<td><p>enddate</p></td>
+<td><p>endtime</p></td>
+<td><p>latitude</p></td>
+<td><p>longitude</p></td>
+<td><p>elevation</p></td>
+</tr>
+<tr class="row-even"><td><p>TA</p></td>
+<td><p>M31M</p></td>
+<td><p>–</p></td>
+<td><p>BH*</p></td>
+<td><p>2015-10-17</p></td>
+<td><p>00:00:00</p></td>
+<td><p>2599-12-31</p></td>
+<td><p>23:59:59</p></td>
+<td><p>62.2024</p></td>
+<td><p>-134.3906</p></td>
+<td><p>0.64</p></td>
+</tr>
+<tr class="row-odd"><td><p>TA</p></td>
+<td><p>N32M</p></td>
+<td><p>–</p></td>
+<td><p>BH*</p></td>
+<td><p>2016-05-11</p></td>
+<td><p>00:00:00</p></td>
+<td><p>2599-12-31</p></td>
+<td><p>23:59:59</p></td>
+<td><p>61.1512</p></td>
+<td><p>-133.0818</p></td>
+<td><p>0.82</p></td>
+</tr>
+<tr class="row-even"><td><p>TA</p></td>
+<td><p>P33M</p></td>
+<td><p>–</p></td>
+<td><p>BH*</p></td>
+<td><p>2015-10-15</p></td>
+<td><p>00:00:00</p></td>
+<td><p>2599-12-31</p></td>
+<td><p>23:59:59</p></td>
+<td><p>60.2114</p></td>
+<td><p>-132.8174</p></td>
+<td><p>1.07</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In the file with &lt;comma&gt;-separated fields, you can enter additional fields corresponding to
+<code class="docutils literal notranslate"><span class="pre">polarity</span></code>, <code class="docutils literal notranslate"><span class="pre">azcorr</span></code> and <code class="docutils literal notranslate"><span class="pre">status</span></code> in that specific order.</p>
+</div>
+<p>The corresponding <code class="docutils literal notranslate"><span class="pre">StDb</span></code> object is a dictionary containing three items,
+each with a unique key. The following code was added right before
+pickling to file in <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span></code>, which was called using:
+<code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.csv</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">stations</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;TA.M31M&#39;</span><span class="p">,</span> <span class="s1">&#39;TA.N32M&#39;</span><span class="p">,</span> <span class="s1">&#39;TA.P33M&#39;</span><span class="p">])</span>
+
+<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">stations</span><span class="p">[</span><span class="s1">&#39;TA.M31M&#39;</span><span class="p">])</span>
+<span class="p">{</span><span class="s1">&#39;altnet&#39;</span><span class="p">:</span> <span class="p">[],</span>
+ <span class="s1">&#39;azcorr&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+ <span class="s1">&#39;channel&#39;</span><span class="p">:</span> <span class="s1">&#39;BH&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;elevation&#39;</span><span class="p">:</span> <span class="mf">0.64</span><span class="p">,</span>
+ <span class="s1">&#39;enddate&#39;</span><span class="p">:</span> <span class="s1">&#39;2599-12-31&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="mf">62.2024</span><span class="p">,</span>
+ <span class="s1">&#39;location&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">134.3906</span><span class="p">,</span>
+ <span class="s1">&#39;network&#39;</span><span class="p">:</span> <span class="s1">&#39;TA&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;polarity&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span>
+ <span class="s1">&#39;startdate&#39;</span><span class="p">:</span> <span class="s1">&#39;2015-10-17&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;station&#39;</span><span class="p">:</span> <span class="s1">&#39;M31M&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="s1">&#39;&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="classes.html" class="btn btn-neutral float-right" title="Classes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="api.html" class="btn btn-neutral float-left" title="Licence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
