@@ -19,8 +19,8 @@ setup(
                             'Programming Language :: Python :: 3.6',
                             'Programming Language :: Python :: 3.7'
                             ],
-    install_requires    = ['obspy'],
-    python_requires     = '>=3.5',
+    install_requires    = ['obspy', 'PyQt5'],
+    python_requires     = '>=3.6',
 	packages =         ['StDb'],
 	scripts =          scripts,
 	url =              'https://github.com/schaefferaj/StDb/archive/v0.1.0.tar.gz')
