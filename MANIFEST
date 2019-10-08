@@ -9,9 +9,9 @@ Scripts/ls_stdb.py
 Scripts/merge_stdb.py
 Scripts/query_fdsn_stdb.py
 Scripts/stdb_to_kml.py
-StDb/__init__.py
-StDb/classes.py
-StDb/convert.py
-StDb/gui.py
-StDb/io.py
-StDb/kml.py
+stdb/__init__.py
+stdb/classes.py
+stdb/convert.py
+stdb/gui.py
+stdb/io.py
+stdb/kml.py
