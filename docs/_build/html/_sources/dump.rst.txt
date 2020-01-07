@@ -49,7 +49,7 @@ saved in ``.csv`` format:
     $ ls -l merged_list.*
     -rw-r--r--  1 username  staff  2038  3 Oct 10:44 merged_list.pkl
 
- You can save it as ``.csv`` by executing:
+You can save it as ``.csv`` by executing:
 
 .. code-block::
 

@@ -55,7 +55,7 @@ Usage
 Examples
 --------
 
-Run the example in :ref:`query` to generate a database named ``ta_table.pkl``.
+Run the example in :ref:`merge` to generate a database named ``ta_table.pkl``.
 To generate a ``.kml`` file with only one station to load in Google Earth, run
 
 .. code-block::

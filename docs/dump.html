@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dump Database to .csv &mdash; StDb 0.1.0 documentation</title>
+  <title>Dump Database to .csv &mdash; StDb 0.1.2 documentation</title>
   
 
   
@@ -218,12 +218,11 @@ Options:
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>In the example in <a class="reference internal" href="merge.html#merge"><span class="std std-ref">Merge Databases</span></a>, the database <code class="docutils literal notranslate"><span class="pre">merged_list.pkl</span></code> is not automatically
 saved in <code class="docutils literal notranslate"><span class="pre">.csv</span></code> format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   $ ls -l merged_list.*
-   -rw-r--r--  1 username  staff  2038  3 Oct 10:44 merged_list.pkl
-
-You can save it as ``.csv`` by executing:
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -l merged_list.*
+-rw-r--r--  1 username  staff  2038  3 Oct 10:44 merged_list.pkl
 </pre></div>
 </div>
+<p>You can save it as <code class="docutils literal notranslate"><span class="pre">.csv</span></code> by executing:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dump_stdb.py merged_list.pkl -O merged_list.csv
 </pre></div>
 </div>
