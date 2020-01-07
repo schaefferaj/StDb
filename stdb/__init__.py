@@ -29,7 +29,9 @@ manually append new station information (e.g., for stations not hosted on
 any fdsn archive). 
 
 The resulting station dictionary is used in various seismic applications, 
-such as `SplitPy <https://github.com/paudetseis/SplitPy>`_ and `RfPy`.
+such as `SplitPy <https://github.com/paudetseis/SplitPy>`_, 
+`RfPy <https://github.com/paudetseis/RfPy>`_ and 
+`OBStools <https://github.com/paudetseis/OBStools>`_.
 
 Licence
 -------
@@ -106,6 +108,8 @@ Installing from source
    pip install .
 
 """
+
+__version__ = '0.1.2'
 
 from . import kml
 from .io import write_db, load_db
