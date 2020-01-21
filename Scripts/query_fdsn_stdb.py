@@ -434,7 +434,7 @@ if __name__=='__main__':
                 startbefore=opts.stbefore, startafter=opts.stafter, endbefore=opts.endbefore, endafter=opts.endafter, 
                 latitude=opts.lat, longitude=opts.lon, minradius=opts.minr, maxradius=opts.maxr,
                 minlatitude=opts.minlat, maxlatitude=opts.maxlat, minlongitude=opts.minlon, maxlongitude=opts.maxlon,
-                includeavailability=True, includerestricted=True, level='channel')
+                includeavailability=None, includerestricted=True, level='channel')
         stdout.writelines("Done\n\n")
     except:
         raise(Exception("client query failed. Please Try again..."))
@@ -484,7 +484,11 @@ if __name__=='__main__':
 
             # get standard values
             lat = stn.latitude; lon = stn.longitude; elev = stn.elevation/1000.;
-            stdt = stn.start_date; eddt = stn.end_date
+            stdt = stn.start_date
+            if stn.end_date is None:
+                eddt = UTCDateTime()
+            else:
+                eddt = stn.end_date
             stat = stn.restricted_status
             
             # Get Channels
