@@ -12,8 +12,9 @@ any fdsn archive).
 
 The resulting station dictionary is used in various seismic applications, 
 such as [`SplitPy`](https://github.com/paudetseis/SplitPy), 
-[`RfPy`](https://github.com/paudetseis/SplitPy) and 
-[`OBStools`](https://github.com/paudetseis/OBStools).
+[`RfPy`](https://github.com/paudetseis/SplitPy), 
+[`OrientPy`](https://github.com/nfsi-canada/OrientPy), and
+[`OBStools`](https://github.com/nfsi-canada/OBStools).
 
 Installation, Usage, API documentation and scripts are described at 
 https://schaefferaj.github.io/StDb/.
