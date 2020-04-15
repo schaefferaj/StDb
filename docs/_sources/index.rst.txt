@@ -13,8 +13,9 @@ any fdsn archive).
 
 The resulting station dictionary is used in various seismic applications, 
 such as `SplitPy <https://github.com/paudetseis/SplitPy>`_,
-`RfPy <https://github.com/paudetseis/RfPy>`_ and
-`OBStools <https://github.com/paudetseis/OBStools>`_.
+`RfPy <https://github.com/paudetseis/RfPy>`_,
+`OrientPy <https://github.com/nfsi-canada/OrientPy>`_ and
+`OBStools <https://github.com/nfsi-canada/OBStools>`_.
 
 
 Quick links
@@ -23,7 +24,8 @@ Quick links
 * `StDb Git repository <https://github.com/schaefferaj/StDb>`_
 * `SplitPy Git repository <https://github.com/paudetseis/SplitPy>`_
 * `RfPy Git repository <https://github.com/paudetseis/RfPy>`_
-* `OBStools Git repository <https://github.com/paudetseis/OBStools>`_
+* `OrientPy Git repository <https://github.com/nfsi-canada/OrientPy>`_
+* `OBStools Git repository <https://github.com/nfsi-canada/OBStools>`_
 
 .. Getting Started
 .. """""""""""""""
