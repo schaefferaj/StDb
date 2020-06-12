@@ -175,8 +175,8 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
                 key = "{0:s}.{1:s}".format(net.strip(), stn.strip())
             if key not in stations:
                 stations[key] = StDbElement(network=net, station=stn, channel=chn, \
-                    location=loc, latitude=lat, longitude=lon, elevation=elev, polarity=1., \
-                    azcorr=0., startdate=stdt, enddate=eddt, restricted_status=status)
+                    location=loc, latitude=lat, longitude=lon, elevation=elev, polarity=pol, \
+                    azcorr=azcorr, startdate=stdt, enddate=eddt, restricted_status=status)
                 print ("Adding key: " + key)
             else:
                 print ("Warning: Key " + key + " already exists...Skip")
