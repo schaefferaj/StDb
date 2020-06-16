@@ -19,6 +19,8 @@ such as [`SplitPy`](https://github.com/paudetseis/SplitPy),
 Installation, Usage, API documentation and scripts are described at 
 https://schaefferaj.github.io/StDb/.
 
+Authors: [`Andrew Schaeffer`](https://schaeffer.ca) (Developer and Maintainer) & [`Pascal Audet`](https://www.uogeophysics.com/authors/admin/) (Contributor and Maintainer)
+
 #### Contributing
 
 All constructive contributions are welcome, e.g. bug reports, discussions or 
