@@ -200,8 +200,8 @@ def get_options():
         help="Debug mode. After the client query is complete (and successful), instead of " \
         "parsing the inventory, it is instead pickled to <station file name>_query_debug.pkl " \
         "which can be loaded in ipython to examine manually.")
-    parser.add_option("-L", "--long-keys", action="store_true", dest="lkey", default=False, \
-        help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
+    # parser.add_option("-L", "--long-keys", action="store_true", dest="lkey", default=False, \
+    #     help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
@@ -230,6 +230,8 @@ def get_options():
         help="Specify a comma separated list of network codes to search for [Default *]")
     ChannelGroup.add_option("-S","--stations", action="store", type=str, dest="stns", default="*", \
         help="Specify a comma separated list of station names. If you want wildcards, enclose in quotes [Default *]")
+    ChannelGroup.add_option("-L","--locations", action="store", type=str, dest="locs", default="*", \
+        help="Specify a comma separated list of location codes. If you want wildcards, enclose in quotes [Default *]")
     ChannelGroup.add_option("-C","--channels", action="store", type=str, dest="chns", default="LH*,BH*,HH*", \
         help="Specify a comma separated, wildcarded list of channel names. [Default LH*,BH*,HH*]")
     
@@ -400,6 +402,7 @@ def get_options():
     print ("Station/Channel Search Parameters:")
     print ("   Network:  {0:s}".format(opts.nets))
     print ("   Stations: {0:s}".format(opts.stns))
+    print ("   Locations: {0:s}".format(opts.locs))
     print ("   Channels: {0:s}".format(opts.chns))
     print ("   Channel Rank: {0:s}".format(",".join(opts.chnrank)))
     print (" ")
@@ -429,7 +432,7 @@ if __name__=='__main__':
     # Search the Client for stations
     stdout.writelines("Querying client...")
     try:
-        inv = client.get_stations(network=opts.nets, station=opts.stns, channel=opts.chns, location="*",
+        inv = client.get_stations(network=opts.nets, station=opts.stns, channel=opts.chns, location=opts.locs,
                 starttime=opts.stdate, endtime=opts.enddate, 
                 startbefore=opts.stbefore, startafter=opts.stafter, endbefore=opts.endbefore, endafter=opts.endafter, 
                 latitude=opts.lat, longitude=opts.lon, minradius=opts.minr, maxradius=opts.maxr,
@@ -490,9 +493,14 @@ if __name__=='__main__':
             else:
                 eddt = stn.end_date
             stat = stn.restricted_status
-            
+
+            print ("     Lon, Lat, Elev: {0:9.4f}, {1:8.4f}, {2:7.3f}".format(lon, lat, elev))
+            print ("     Start Date: {0:s}".format(stdt.strftime("%Y-%m-%d %H:%M:%S")))
+            print ("     End Date:   {0:s}".format(eddt.strftime("%Y-%m-%d %H:%M:%S")))
+            print ("     Status:     {0:s}".format(stat))
+
             # Get Channels
-            chn = None
+            chn = None; locs = None
             for pchn in opts.chnrank:
                 stnchn = stn.select(channel=pchn + "Z")
                 if len(stnchn.channels) > 0:
@@ -503,26 +511,23 @@ if __name__=='__main__':
                 if len(stn.select(channel='*Z')) == 0:
                     print ("     Error: No Z component. Skipping")
                     continue
+            if locs is None:
+            	print("     Error: Location {} not available. Skipping".format(opts.locs))
+            	continue
+
+            # TO FIX: This line below returns the first channel in a sorted list - not in
+            # the same order as opts.chnrank. To check this, uncomment the `print` below
+            # print([cha.code for cha in stn.select(channel='*Z').channels])
             chn = stn.select(channel='*Z').channels[0].code[0:2]
-            locs = ['  ']
-            locs = [loc.replace('  ','--') for loc in locs]
-            for i in range(len(locs)):
-                if len(locs[i]) == 0:
-                    locs[i] = '--'
-            locs.sort()
             
-            print ("     Lon, Lat, Elev: {0:9.4f}, {1:8.4f}, {2:7.3f}".format(lon, lat, elev))
-            print ("     Start Date: {0:s}".format(stdt.strftime("%Y-%m-%d %H:%M:%S")))
-            print ("     End Date:   {0:s}".format(eddt.strftime("%Y-%m-%d %H:%M:%S")))
-            print ("     Status:     {0:s}".format(stat))
             print ("     Selected Channel: {0:s}".format(chn))
             print ("     Locations:        {0:s}".format(",".join(locs)))
     
-            # Now Add lines to station Dictionary
-            if opts.lkey:
-                key = "{0:s}.{1:s}.{2:2s}".format(network, station, chn)
-            else:
-                key = "{0:s}.{1:s}".format(network, station)
+            # # Now Add lines to station Dictionary
+            # if opts.lkey:
+            #     key = "{0:s}.{1:s}.{2:2s}".format(network, station, chn)
+            # else:
+            key = "{0:s}.{1:s}".format(network, station)
 
             if key not in stations:
                 stations[key] = StDbElement(network=network, station=station, channel=chn, \
