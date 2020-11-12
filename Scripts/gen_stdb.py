@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 
 # Copyright 2019 Andrew Schaeffer
@@ -176,7 +176,7 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
             if key not in stations:
                 stations[key] = StDbElement(network=net, station=stn, channel=chn, \
                     location=loc, latitude=lat, longitude=lon, elevation=elev, polarity=pol, \
-                    azcorr=azcorr, startdate=stdt, enddate=eddt, restricted_status=status)
+                    azcorr=azcor, startdate=stdt, enddate=eddt, restricted_status=status)
                 print ("Adding key: " + key)
             else:
                 print ("Warning: Key " + key + " already exists...Skip")

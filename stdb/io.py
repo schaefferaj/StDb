@@ -28,7 +28,7 @@ These functions are used in most scripts bundled with this package.
 
 import pickle as pickle
 
-def load_db(fname, binp=True):
+def load_db(fname, binp=True, keys=None ):
     """
     Submodule to read the station database from file
 
@@ -38,6 +38,10 @@ def load_db(fname, binp=True):
         File name
     binp : bool
         Whether or not to use binary input
+    keys : List
+        Default None
+        If a list, then load database and select only keys that match those in this
+        list. Returns the full db and a second optional output containing
 
     Returns
     -------
@@ -53,7 +57,32 @@ def load_db(fname, binp=True):
     
     stdb = pickle.load(open(fname, rflag))
 
-    return stdb
+    allkeys=stdb.keys()
+    sorted(allkeys)
+
+    #-- parse dictionary for specific keys if provided
+    if keys is not None:
+        # Extract key subset
+        if len(keys) > 0:
+           stkeys = []
+           negkeys=[s[1:] for s in keys if '~' in s]
+           getkeys=[s for s in keys if '~' not in s]
+           if len(getkeys)>0:
+               for skey in getkeys:
+                   stkeys.extend([s for s in allkeys if skey in s])
+           else:
+                stkeys=allkeys
+           if len(negkeys)>0:
+                for skey in negkeys:
+                    stkeys=[s for s in stkeys if skey not in s] 
+        else:
+            stkeys = allkeys    
+
+    if keys is None:
+        return stdb 
+    else:
+        return stdb, stkeys
+
 
 def write_db(fname=str, stdb={}, binp=True):
     """

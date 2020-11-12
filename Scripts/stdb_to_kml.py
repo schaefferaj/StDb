@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 
 # Copyright 2019 Andrew Schaeffer
@@ -157,20 +157,20 @@ def construct_mdb(inps=[], skeys=[], binp=True):
     for inp in inps:
 
         # Loading
-        db = load_db(inp, binp=binp)
+        db,stkeys = load_db(inp, binp=binp, keys=skeys)
 
-        # construct station key loop
-        allkeys = db.keys()
-        sorted(allkeys)
+        # # construct station key loop
+        # allkeys = db.keys()
+        # sorted(allkeys)
     
-        # Extract key subset
-        if len(skeys) > 0:
-            stkeys = []
-            for skey in skeys:
-                stkeys.extend([s for s in allkeys if skey in s] )
-        else:
-            stkeys = db.keys()
-            sorted(stkeys)
+        # # Extract key subset
+        # if len(skeys) > 0:
+        #     stkeys = []
+        #     for skey in skeys:
+        #         stkeys.extend([s for s in allkeys if skey in s] )
+        # else:
+        #     stkeys = db.keys()
+        #     sorted(stkeys)
         
         # master
         for key in stkeys:

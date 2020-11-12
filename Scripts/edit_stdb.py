@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 
 # Copyright 2019 Andrew Schaeffer
@@ -113,23 +113,23 @@ if __name__=='__main__':
         
         # Pickle Already Created...
         print ("Listing Station Pickle: {0:s}".format(inpickle))
-        db = load_db(inpickle, binp=opts.use_binary)
+        db,stkeys = load_db(inpickle, binp=opts.use_binary, keys=opts.keys)
         
-        # construct station key loop
-        allkeys = db.keys()
-        sorted(allkeys)
+        # # construct station key loop
+        # allkeys = db.keys()
+        # sorted(allkeys)
     
         # Do we make any changes
         tfEdit = False
     
-        # Extract key subset
-        if len(opts.keys) > 0:
-            stkeys = []
-            for skey in opts.keys:
-                stkeys.extend([s for s in allkeys if skey in s])
-        else:
-            stkeys = db.keys()
-            sorted(stkeys)
+        # # Extract key subset
+        # if len(opts.keys) > 0:
+        #     stkeys = []
+        #     for skey in opts.keys:
+        #         stkeys.extend([s for s in allkeys if skey in s])
+        # else:
+        #     stkeys = db.keys()
+        #     sorted(stkeys)
         
         ikey = 0
         for key, val in db.items():
