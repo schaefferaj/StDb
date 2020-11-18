@@ -21,6 +21,7 @@ setup(
     version=find_version('stdb', '__init__.py'),
     description='Python Module for managing Station Databases',
     author='Andrew Schaeffer, Pascal Audet',
+	  author_email='andrew.schaeffer@canada.ca, pascal.audet@uottawa.ca',
     maintainer='Andrew Schaeffer, Pascal Audet',
     maintainer_email='andrew.schaeffer@canada.ca, pascal.audet@uottawa.ca',
     classifiers=[
