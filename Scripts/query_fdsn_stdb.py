@@ -53,7 +53,7 @@ Usage
                             successful), instead of parsing the inventory, it is
                             instead pickled to <station file name>_query_debug.pkl
                             which can be loaded in ipython to examine manually.
-      -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+      --long-keys           Specify Key format. Default is Net.Stn. Long keys are
                             Net.Stn.Chn
       -a, --ascii           Specify to write ascii Pickle files instead of binary.
                             Ascii are larger file size, but more likely to be
@@ -78,8 +78,8 @@ Usage
         --channel-rank=CHNRANK
                             If requesting more than one type of channel, specify a
                             comma separated list of the first two lettres of the
-                            desired components to retain. Default is LH > BH > HH
-                            : [ 'LH','BH','HH']
+                            desired components to retain. Default is HH > BH > LH
+                            : [ 'HH','BH','LH']
 
       Station-Channel Settings:
         Options to narrow down the specific channels based on network,
@@ -94,6 +94,10 @@ Usage
         -C CHNS, --channels=CHNS
                             Specify a comma separated, wildcarded list of channel
                             names. [Default LH*,BH*,HH*]
+        -L LOCS, --locations=LOCS
+                            Specify a comma separated list of location ids. If you
+                            want the default empty id, use "--". If you want a wild-
+                            card, encluse in quotes. [Default *]
 
       Geographic Lat/Lon Box Search:
         Define the coordinates of a lat/lon box in which to select stations.
@@ -200,8 +204,8 @@ def get_options():
         help="Debug mode. After the client query is complete (and successful), instead of " \
         "parsing the inventory, it is instead pickled to <station file name>_query_debug.pkl " \
         "which can be loaded in ipython to examine manually.")
-    # parser.add_option("-L", "--long-keys", action="store_true", dest="lkey", default=False, \
-    #     help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
+    parser.add_option("--long-keys", action="store_true", dest="lkey", default=False, \
+        help="Specify Key format. Default is Net.Stn. Long keys are Net.Stn.Chn")
     parser.add_option("-a", "--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
@@ -219,9 +223,9 @@ def get_options():
     # Selection Settings
     SelectGroup = OptionGroup(parser, title="Channel Priority/Selection Settings", description="Settings " \
         "associated with selecting the channels to retain.")
-    SelectGroup.add_option("--channel-rank", action="store", type=str, dest="chnrank", default="LH,BH,HH", \
+    SelectGroup.add_option("--channel-rank", action="store", type=str, dest="chnrank", default="HH,BH,LH", \
         help="If requesting more than one type of channel, specify a comma separated list of the first two " \
-        "lettres of the desired components to retain. Default is LH > BH > HH : [ 'LH','BH','HH']")
+        "lettres of the desired components to retain. Default is HH > BH > LH : ['HH,BH,LH']")
 
     # Channel Settings
     ChannelGroup=OptionGroup(parser, title="Station-Channel Settings", description="Options to narrow down " \
@@ -232,8 +236,8 @@ def get_options():
         help="Specify a comma separated list of station names. If you want wildcards, enclose in quotes [Default *]")
     ChannelGroup.add_option("-L","--locations", action="store", type=str, dest="locs", default="*", \
         help="Specify a comma separated list of location codes. If you want wildcards, enclose in quotes [Default *]")
-    ChannelGroup.add_option("-C","--channels", action="store", type=str, dest="chns", default="LH*,BH*,HH*", \
-        help="Specify a comma separated, wildcarded list of channel names. [Default LH*,BH*,HH*]")
+    ChannelGroup.add_option("-C","--channels", action="store", type=str, dest="chns", default="HH*,BH*,LH*", \
+        help="Specify a comma separated, wildcarded list of channel names. [Default HH*,BH*,LH*]")
     
     # Geographic Settings
     BoxGroup = OptionGroup(parser, title="Geographic Lat/Lon Box Search", description="Define the coordinates " \
@@ -440,7 +444,8 @@ if __name__=='__main__':
                 includeavailability=None, includerestricted=True, level='channel')
         stdout.writelines("Done\n\n")
     except:
-        raise(Exception("client query failed. Please Try again..."))
+        print ('Exception: Cannot complete query or no data in query...')
+        exit()
     
     # Summarize Search
     nstn = 0
@@ -474,6 +479,13 @@ if __name__=='__main__':
         
         exit()
     
+    #-- Split locations for later parsing
+    opts.locs=opts.locs.split(',')
+    #-- Sort selected location keys
+    for i,l in enumerate(opts.locs):
+        if len(l)==0:
+            opts.locs[i]=="--"
+
     # Initialize station dictionary
     stations = {}
     
@@ -489,7 +501,7 @@ if __name__=='__main__':
             lat = stn.latitude; lon = stn.longitude; elev = stn.elevation/1000.;
             stdt = stn.start_date
             if stn.end_date is None:
-                eddt = UTCDateTime()
+                eddt = UTCDateTime("2599-12-31")
             else:
                 eddt = stn.end_date
             stat = stn.restricted_status
@@ -499,44 +511,122 @@ if __name__=='__main__':
             print ("     End Date:   {0:s}".format(eddt.strftime("%Y-%m-%d %H:%M:%S")))
             print ("     Status:     {0:s}".format(stat))
 
-            # Get Channels
-            chn = None; locs = None
-            for pchn in opts.chnrank:
-                stnchn = stn.select(channel=pchn + "Z")
-                if len(stnchn.channels) > 0:
-                    chn = pchn
-                    locs = list(set([chan.location_code for chan in stnchn.channels]))
-                    break
-            if chn is None:
-                if len(stn.select(channel='*Z')) == 0:
-                    print ("     Error: No Z component. Skipping")
-                    continue
-            if locs is None:
-            	print("     Error: Location {} not available. Skipping".format(opts.locs))
-            	continue
+            # Parse Channels
+            if opts.lkey:
+                # Select Multiple Channels based on those in the rank list
+                # Do not keep overlapping time windows
+                # Select Channels based on those available compared to channel rank
+                chn = []
+                for pchn in opts.chnrank:
+                    stnchn = stn.select(channel=pchn + "Z")
+                    if len(stnchn.channels) > 0:
+                        chn.append(pchn)
+                
+                #-- If no channels with Z found, skip        
+                if chn is None:
+                    if len(stn.select(channel='*Z')) == 0:
+                        print ("     Error: No Z component. Skipping")
+                        continue
 
-            # TO FIX: This line below returns the first channel in a sorted list - not in
-            # the same order as opts.chnrank. To check this, uncomment the `print` below
-            # print([cha.code for cha in stn.select(channel='*Z').channels])
-            chn = stn.select(channel='*Z').channels[0].code[0:2]
-            
-            print ("     Selected Channel: {0:s}".format(chn))
-            print ("     Locations:        {0:s}".format(",".join(locs)))
-    
-            # # Now Add lines to station Dictionary
-            # if opts.lkey:
-            #     key = "{0:s}.{1:s}.{2:2s}".format(network, station, chn)
-            # else:
-            key = "{0:s}.{1:s}".format(network, station)
+                #-- loop through channels and select time windows
+                for pchn in chn:
+                    locs=[]; stdts=[]; eddts=[]
+                    stnchn = stn.select(channel=pchn + "Z")
+                    #--Collect Start/end Dates and locations
+                    for chnl in stnchn:
+                        chnlloc=chnl.location_code
+                        if len(chnlloc)==0: chnlloc="--"
+                        for selloc in opts.locs:
+                            # print (selloc, chnlloc)
+                            if selloc == '*' or chnlloc in selloc:
+                                locs.append(chnlloc)
+                                stdts.append(chnl.start_date)
+                                if chnl.end_date is None:
+                                    eddts.append(UTCDateTime("2599-12-31"))
+                                else:
+                                    eddts.append(chnl.end_date)
 
-            if key not in stations:
-                stations[key] = StDbElement(network=network, station=station, channel=chn, \
-                    location=locs, latitude=lat, longitude=lon, elevation=elev, polarity=1., \
-                    azcorr=0., startdate=stdt, enddate=eddt, restricted_status=stat)
-                print ("    Added as: " + key)
+                    #-- Unique set of locids, get minmax time for channel across all locids
+                    locs=list(set(locs))
+                    stdts.sort(); eddts.sort()
+                    stnchnstdt=stdts[0]; stnchneddt=eddts[-1]                    
+
+                    print ("       Selected Channel: {0:s}".format(pchn))
+                    print ("         Locations:  {0:s}".format(",".join(locs)))
+                    print ("         Start Date: {0:s}".format(stnchnstdt.strftime("%Y-%m-%d %H:%M:%S")))
+                    print ("         End Date:   {0:s}".format(stnchneddt.strftime("%Y-%m-%d %H:%M:%S")))
+                    
+
+                    #-- Add single key to station database
+                    key = "{0:s}.{1:s}.{2:2s}".format(network, station, pchn)
+                    if key not in stations:
+                        stations[key] = StDbElement(network=network, station=station, channel=pchn, \
+                            location=locs, latitude=lat, longitude=lon, elevation=elev, polarity=1., \
+                            azcorr=0., startdate=stnchnstdt, enddate=stnchneddt, restricted_status=stat)
+                        print ("       Added as: " + key)
+                    else:
+                        print ("       Warning: " + key + " already exists...Skip")
+                        
             else:
-                print ("    Warning: " + key + " already exists...Skip")
-     
+                # Select a single channel type if only short keys
+                chn = None; locs = []; stdts=[]; eddts=[]
+                for pchn in opts.chnrank:
+                    stnchn = stn.select(channel=pchn + "Z")
+                    if len(stnchn.channels) > 0:
+                        chn = pchn
+                         #--Collect Start/end Dates and locations
+                        for chnl in stnchn:
+                            chnlloc=chnl.location_code
+                            if len(chnlloc)==0: chnlloc="--"
+                            for selloc in opts.locs:
+                                # print (selloc, chnlloc)
+                                if selloc == '*' or chnlloc in selloc:
+                                    locs.append(chnlloc)
+                                    stdts.append(chnl.start_date)
+                                    if chnl.end_date is None:
+                                        eddts.append(UTCDateTime("2599-12-31"))
+                                    else:
+                                        eddts.append(chnl.end_date)
+                        if len(locs)>0:
+                            break
+                
+                if chn is None:
+                    if len(stn.select(channel='*Z')) == 0:
+                        print ("     Error: No Z component. Skipping")
+                        continue
+                if len(locs) ==0:
+                	print("     Error: Location {} not available. Skipping".format(",".join(opts.locs)))
+                	continue
+
+                #-- Unique set of locids, get minmax time for channel across all locids
+                locs=list(set(locs))
+                stdts.sort(); eddts.sort()
+                stnchnstdt=stdts[0]; stnchneddt=eddts[-1]  
+
+                # # return location codes for selected channel
+                # locs = list(set([a.location_code for a in stn.select(channel=chn+'Z').channels]))
+                
+                # print ("     Selected Channel: {0:s}".format(chn))
+                # print ("     Locations:        {0:s}".format(",".join(locs)))
+        
+                print ("       Selected Channel: {0:s}".format(pchn))
+                print ("         Locations:  {0:s}".format(",".join(locs)))
+                print ("         Start Date: {0:s}".format(stnchnstdt.strftime("%Y-%m-%d %H:%M:%S")))
+                print ("         End Date:   {0:s}".format(stnchneddt.strftime("%Y-%m-%d %H:%M:%S")))
+                    
+
+                key = "{0:s}.{1:s}".format(network, station)
+
+                #-- Add single key to station database
+                if key not in stations:
+                    stations[key] = StDbElement(network=network, station=station, channel=chn, \
+                        location=locs, latitude=lat, longitude=lon, elevation=elev, polarity=1., \
+                        azcorr=0., startdate=stdt, enddate=eddt, restricted_status=stat)
+                    print ("    Added as: " + key)
+                else:
+                    print ("    Warning: " + key + " already exists...Skip")
+            print ()
+
     # Save and Pickle
     print (" ")
     print ("  Pickling to {0:s}.pkl".format(outp))
