@@ -34,4 +34,4 @@ setup(
     python_requires='>=3.6',
     packages=['stdb'],
     scripts=scripts,
-    url='https://github.com/schaefferaj/StDb/archive/v0.1.4.tar.gz')
+    url='https://github.com/schaefferaj/StDb/archive/v0.2.0.tar.gz')

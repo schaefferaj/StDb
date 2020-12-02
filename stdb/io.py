@@ -81,6 +81,7 @@ def load_db(fname, binp=True, keys=None ):
     if keys is None:
         return stdb 
     else:
+        stkeys=sorted(stkeys)
         return stdb, stkeys
 
 
