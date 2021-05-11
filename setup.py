@@ -14,8 +14,6 @@ def find_version(*paths):
     raise RuntimeError("Unable to find version string.")
 
 
-scripts = ['Scripts/' + i for i in listdir('Scripts/')]
-
 setup(
     name='stdb',
     version=find_version('stdb', '__init__.py'),
@@ -28,10 +26,21 @@ setup(
         'Development Status :: 3 - Alpha',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7'
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9'
     ],
     install_requires=['obspy', 'PyQt5'],
     python_requires='>=3.6',
     packages=['stdb'],
-    scripts=scripts,
+    entry_points={
+        'console_scripts':
+        ['append_stdb=stdb.scripts.append_stdb:main',
+         'dump_stdb=stdb.scripts.dump_stdb:main',
+         'edit_stdb=stdb.scripts.edit_stdb:main',
+         'gen_stdb=stdb.scripts.gen_stdb:main',
+         'ls_stdb=stdb.scripts.ls_stdb:main',
+         'merge_stdb=stdb.scripts.merge_stdb:main',
+         'query_fdsn_stdb=stdb.scripts.query_fdsn_stdb:main',
+         'stdb_to_kml=stdb.scripts.stdb_to_kml:main']},
     url='https://github.com/schaefferaj/StDb/archive/v0.2.0.tar.gz')
