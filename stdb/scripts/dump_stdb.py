@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """ 
-Program dump_stdb.py
---------------------
+Program dump_stdb
+-----------------
 
 Description
 -----------
@@ -40,8 +40,8 @@ Usage
 
 .. code-block:: none
 
-    dump_stdb.py -h
-    Usage: dump_stdb.py [options] <station pickle file>
+    dump_stdb -h
+    Usage: dump_stdb [options] <station pickle file>
 
     Program to dump the contents of a station database (.pkl) as csv. By default
     the output is directed to standard out. If a filename is optionally included,

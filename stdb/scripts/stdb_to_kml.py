@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """
-Program ``stdb_to_kml.py``
---------------------------
+Program ``stdb_to_kml``
+-----------------------
 
 Description
 -----------
@@ -47,8 +47,8 @@ Usage
 
 .. code-block:: none
 
-    stdb_to_kml.py -h
-    Usage: stdb_to_kml.py [options] <station pickle file>
+    stdb_to_kml -h
+    Usage: stdb_to_kml [options] <station pickle file>
 
     Program to create a KML file for plotting based on the contents of a station
     pickle file

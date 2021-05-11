@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """ 
-Program ``edit_stdb.py``
-------------------------
+Program ``edit_stdb``
+---------------------
 
 Description
 -----------
@@ -41,8 +41,8 @@ Usage
 
 .. code-block:: none
 
-    edit_stdb.py -h
-    Usage: edit_stdb.py [options] <station pickle file>
+    edit_stdb -h
+    Usage: edit_stdb [options] <station pickle file>
 
     Program to make basic modifications to a station database pickle file
 

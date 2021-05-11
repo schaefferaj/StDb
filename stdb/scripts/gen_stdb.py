@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """
-Program ``gen_stdb.py``
------------------------
+Program ``gen_stdb``
+--------------------
 
 Description
 -----------
@@ -41,8 +41,8 @@ Usage
 
 .. code-block:: none
 
-    gen_stdb.py -h
-    Usage: gen_stdb.py [options] <station list>
+    gen_stdb -h
+    Usage: gen_stdb [options] <station list>
 
     Script to generate a pickled station database file.
 

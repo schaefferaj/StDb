@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """
-Program ``append_stdb.py``
---------------------------
+Program ``append_stdb``
+-----------------------
 
 Description
 -----------
@@ -36,8 +36,8 @@ Usage
 
 .. code-block::
 
-    append_stdb.py -h
-    Usage: append_stdb.py [options] <station pickle file>
+    append_stdb -h
+    Usage: append_stdb [options] <station pickle file>
 
     Helper program to append new stations to an existing station database.
 
