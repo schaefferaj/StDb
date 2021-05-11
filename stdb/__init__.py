@@ -116,3 +116,5 @@ from .io import write_db, load_db
 from .classes import StDbElement
 from .convert import tocsv, fromcsv
 from .gui import EditMsgBox
+
+from . import scripts
