@@ -77,7 +77,7 @@ class MyParser(OptionParser):
     def format_epliog(self, formatter):
         return self.epilog
 
-if __name__=='__main__':
+def main(args=None):
 
     # Get options
     parser = MyParser(usage="Usage: %prog [options] <station list>",
@@ -191,3 +191,7 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
     else:
         print ("Error: Must supply a station list, not a Pickle File")
         exit()
+
+if __name__=='__main__':
+
+    main()

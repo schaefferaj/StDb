@@ -103,7 +103,7 @@ def get_options():
     return opts, args
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, inpickles) = get_options()
@@ -150,3 +150,7 @@ if __name__=='__main__':
             print ("Networks: ")
             for net in nets:
                 print (net)
+
+if __name__=='__main__':
+
+    main()

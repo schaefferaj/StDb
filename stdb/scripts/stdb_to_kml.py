@@ -198,7 +198,7 @@ def reorder_db(indb={}):
     return nets, ndb
 
 
-if __name__=='__main__':
+def main()
 
     # get options
     (opts, inpickles) = get_options()
@@ -213,3 +213,7 @@ if __name__=='__main__':
     createKML(nets=nets, netd=ndb, fileName=opts.outfile, opts=opts)
     if opts.verb > 0:
         print ("Successfully wrote {0:d} Networks to file : {1}".format(len(nets), opts.outfile))
+
+if __name__=='__main__':
+
+    main()

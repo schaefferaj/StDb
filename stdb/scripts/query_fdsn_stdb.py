@@ -420,7 +420,7 @@ def get_options():
     return opts, outpref
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # Get Input Options
     (opts, outp) = get_options()
@@ -645,3 +645,8 @@ if __name__=='__main__':
              stations[stkey].startdate.strftime("%Y-%m-%d"), stations[stkey].startdate.strftime("%H:%M:%S"), stations[stkey].startdate.microsecond/100000.,
              stations[stkey].enddate.strftime("%Y-%m-%d"), stations[stkey].enddate.strftime("%H:%M:%S"), stations[stkey].enddate.microsecond/100000.,
              stations[stkey].latitude, stations[stkey].longitude, stations[stkey].elevation, stations[stkey].polarity, stations[stkey].azcorr, stations[stkey].status))
+
+
+if __name__=='__main__':
+
+    main()

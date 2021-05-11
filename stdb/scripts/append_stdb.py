@@ -111,8 +111,7 @@ def get_options():
     # return options
     return opts, args[0]
 
-
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, inpickle) = get_options()
@@ -217,3 +216,7 @@ if __name__=='__main__':
         print("")
         print("No changes made...")
 
+
+if __name__=='__main__':
+
+    main()

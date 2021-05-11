@@ -105,7 +105,7 @@ def get_options():
     return opts, args
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, args) = get_options()
@@ -164,3 +164,7 @@ if __name__=='__main__':
         if opts.verb:
             print("")
             print("No actual merges performed...")
+
+if __name__=='__main__':
+
+    main()
