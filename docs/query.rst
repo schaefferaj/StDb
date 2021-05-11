@@ -3,8 +3,8 @@
 Create Database by Querying FDSN
 ================================
 
-Program ``query_fdsn_stdb.py``
-------------------------------
+Program ``query_fdsn_stdb``
+---------------------------
 
 Description
 -----------
@@ -17,8 +17,8 @@ Usage
 
 .. code-block:: none
 
-    $ query_fdsn_stdb.py -h
-    Usage: query_fdsn_stdb.py [options] <station list filename>
+    $ query_fdsn_stdb -h
+    Usage: query_fdsn_stdb [options] <station list filename>
 
     Program to query a datacenter using the obspy fdsn client. All station
     returned in this query are saved into both a csv format 1sls file as well as a
@@ -156,7 +156,7 @@ of -135 to -120 deg, which hold data recorded since January 1, 2017:
 
 .. code-block::
 
-    $ query_fdsn_stdb.py -C BH? -N TA --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 ta_list
+    $ query_fdsn_stdb -C BH? -N TA --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 ta_list
     Performing Geographic Box Search:
         LL:   60.0000, -135.0000
         UR:   65.0000, -120.0000

@@ -1,8 +1,8 @@
 Generate Database
 =================
 
-Program ``gen_stdb.py``
------------------------
+Program ``gen_stdb``
+--------------------
 
 Description
 -----------
@@ -13,8 +13,8 @@ Usage
 
 .. code-block::
 
-    $ gen_stdb.py -h
-    Usage: gen_stdb.py [options] <station list>
+    $ gen_stdb -h
+    Usage: gen_stdb [options] <station list>
 
     Script to generate a pickled station database file.
 
@@ -57,7 +57,7 @@ We can generate a database using the program:
 
 .. code-block::
 
-    $ gen_stdb.py ta_table.txt
+    $ gen_stdb ta_table.txt
 
     Parse Station List ta_table.txt
     Adding key: TA.M31M
@@ -70,7 +70,7 @@ we would get:
 
 .. code-block::
 
-    $ gen_stdb.py ta_table.csv
+    $ gen_stdb ta_table.csv
 
     Parse Station List ta_table.csv
     Adding key: TA.M31M
@@ -79,11 +79,11 @@ we would get:
       Pickling ta_table.pkl
 
 Now we can check that the databases contain the same list using the program
-``ls_stdy.py``:
+``ls_stdy``:
 
 .. code-block::
 
-    $ ls_stdb.py ta_table.txt.pkl
+    $ ls_stdb ta_table.txt.pkl
 
     Listing Station Pickle: ta_table.txt.pkl
     TA.M31M
@@ -132,7 +132,7 @@ and finally:
 
 .. code-block:: 
 
-    $ ls_stdb.py ta_table.pkl
+    $ ls_stdb ta_table.pkl
 
     Listing Station Pickle: ta_table.pkl
     TA.M31M

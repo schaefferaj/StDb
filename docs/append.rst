@@ -1,8 +1,8 @@
 Append New Station
 ==================
 
-Program ``append_stdb.py``
---------------------------
+Program ``append_stdb``
+-----------------------
 
 Description
 -----------
@@ -13,8 +13,8 @@ Usage
 
 .. code-block:: none
 
-    append_stdb.py -h
-    Usage: append_stdb.py [options] <station pickle file>
+    append_stdb -h
+    Usage: append_stdb [options] <station pickle file>
 
     Helper program to append new stations to an existing station database.
 
@@ -38,14 +38,14 @@ Example
 -------
 
 Assume we have created the StDb database containing only one CN station 
-(as in the example in :mod:`~Scripts.merge_stdb.py`). Let's append a new
+(as in the example in :ref:`merge`). Let's append a new
 station to the database with a different network code and using only the basic
 station attributes. Note that the fields (e.g., ``NY``, ``NEW`` below are
 typed in the terminal by the user)
 
 .. code-block:: none
 
-    $ ls_stdb.py cn_list
+    $ ls_stdb cn_list
     Listing Station Pickle: cn_list.pkl
     CN.WHY
     --------------------------------------------------------------------------
@@ -62,7 +62,7 @@ typed in the terminal by the user)
 
 .. code-block:: none
 
-    $ append_stdb.py cn_list
+    $ append_stdb cn_list
     ********************************
     * New Station
     *    Network:   NY
@@ -81,7 +81,7 @@ typed in the terminal by the user)
 
 .. code-block:: none
 
-    $ ls_stdb.py cn_list.apd
+    $ ls_stdb cn_list.apd
     Listing Station Pickle: cn_list.apd.pkl
     CN.WHY
     --------------------------------------------------------------------------
