@@ -102,6 +102,7 @@ def get_options():
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
 
+
     # Parse Arguments
     (opts, args) = parser.parse_args()
 
@@ -198,7 +199,7 @@ def reorder_db(indb={}):
     return nets, ndb
 
 
-def main()
+def main(args=None):
 
     # get options
     (opts, inpickles) = get_options()
