@@ -1,8 +1,8 @@
 Dump Database to .csv
 =====================
 
-Program ``dump_stdb.py``
-------------------------
+Program ``dump_stdb``
+---------------------
 
 Description
 -----------
@@ -19,8 +19,8 @@ Usage
 
 .. code-block::
 
-    $ dump_stdb.py -h
-    Usage: dump_stdb.py [options] <station pickle file>
+    $ dump_stdb -h
+    Usage: dump_stdb [options] <station pickle file>
 
     Program to dump the contents of a station database (.pkl) as csv. By default
     the output is directed to standard out. If a filename is optionally included,
@@ -53,7 +53,7 @@ You can save it as ``.csv`` by executing:
 
 .. code-block::
 
-    $ dump_stdb.py merged_list.pkl -O merged_list.csv
+    $ dump_stdb merged_list.pkl -O merged_list.csv
 
 .. code-block::
 

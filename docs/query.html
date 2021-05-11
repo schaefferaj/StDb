@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create Database by Querying FDSN &mdash; StDb 0.1.2 documentation</title>
+  <title>Create Database by Querying FDSN &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -100,7 +99,7 @@
 <p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Create Database by Querying FDSN</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#program-query-fdsn-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-query-fdsn-stdb">Program <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
@@ -179,8 +178,8 @@
             
   <div class="section" id="create-database-by-querying-fdsn">
 <span id="query"></span><h1>Create Database by Querying FDSN<a class="headerlink" href="#create-database-by-querying-fdsn" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="program-query-fdsn-stdb-py">
-<h2>Program <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb.py</span></code><a class="headerlink" href="#program-query-fdsn-stdb-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-query-fdsn-stdb">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb</span></code><a class="headerlink" href="#program-query-fdsn-stdb" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -190,8 +189,8 @@ stdb dictionary <code class="docutils literal notranslate"><span class="pre">pic
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb.py -h
-Usage: query_fdsn_stdb.py [options] &lt;station list filename&gt;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb -h
+Usage: query_fdsn_stdb [options] &lt;station list filename&gt;
 
 Program to query a datacenter using the obspy fdsn client. All station
 returned in this query are saved into both a csv format 1sls file as well as a
@@ -327,7 +326,7 @@ Options:
 <p>Extract all stations with broadband seismic data (<code class="docutils literal notranslate"><span class="pre">-C</span> <span class="pre">BH</span></code>) in the TA network (<code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">TA</span></code>)
 in the region delimited by min and max latitudes of 60 to 65 deg, and min anx max longitudes
 of -135 to -120 deg, which hold data recorded since January 1, 2017:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb.py -C BH? -N TA --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 ta_list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb -C BH? -N TA --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 ta_list
 Performing Geographic Box Search:
     LL:   60.0000, -135.0000
     UR:   65.0000, -120.0000

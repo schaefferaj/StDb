@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Convert Database to KML &mdash; StDb 0.1.2 documentation</title>
+  <title>Convert Database to KML &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -106,7 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="edit.html">Edit Station Info</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dump.html">Dump Database to .csv</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Convert Database to KML</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#program-stdb-to-kml-py">Program <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-stdb-to-kml">Program <code class="docutils literal notranslate"><span class="pre">stdb_to_kml</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#fields-in-the-kml-file-include">Fields in the <code class="docutils literal notranslate"><span class="pre">.kml</span></code> file include</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
@@ -179,8 +178,8 @@
             
   <div class="section" id="convert-database-to-kml">
 <h1>Convert Database to KML<a class="headerlink" href="#convert-database-to-kml" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="program-stdb-to-kml-py">
-<h2>Program <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span></code><a class="headerlink" href="#program-stdb-to-kml-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-stdb-to-kml">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">stdb_to_kml</span></code><a class="headerlink" href="#program-stdb-to-kml" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -201,8 +200,8 @@ in plotting in Google Earth.</p>
 </div>
 <div class="section" id="usage">
 <span id="kmlusage"></span><h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stdb_to_kml.py -h
-Usage: stdb_to_kml.py [options] &lt;station pickle file&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stdb_to_kml -h
+Usage: stdb_to_kml [options] &lt;station pickle file&gt;
 
 Program to create a KML file for plotting based on the contents of a station
 pickle file
@@ -233,7 +232,7 @@ Options:
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>Run the example in <a class="reference internal" href="merge.html#merge"><span class="std std-ref">Merge Databases</span></a> to generate a database named <code class="docutils literal notranslate"><span class="pre">ta_table.pkl</span></code>.
 To generate a <code class="docutils literal notranslate"><span class="pre">.kml</span></code> file with only one station to load in Google Earth, run</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stdb_to_kml.py --keys=TA.P33M -o P33M.kml ta_table.pkl
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stdb_to_kml --keys=TA.P33M -o P33M.kml ta_table.pkl
 </pre></div>
 </div>
 <p>This produces a new file called <code class="docutils literal notranslate"><span class="pre">P33M.kml</span></code> that you can import in Google Earth</p>
@@ -242,7 +241,7 @@ To generate a <code class="docutils literal notranslate"><span class="pre">.kml<
 </div>
 <p>To show more than one network, follow the example in <a class="reference internal" href="query.html#query"><span class="std std-ref">Create Database by Querying FDSN</span></a> to generate
 a <code class="docutils literal notranslate"><span class="pre">merged_list.pkl</span></code> database and convert its content to kml:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stdb_to_kml.py -o merged.kml merged_list.pkl
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ stdb_to_kml -o merged.kml merged_list.pkl
 </pre></div>
 </div>
 <p>This produces a new file called <code class="docutils literal notranslate"><span class="pre">merged.kml</span></code> that you can import in Google Earth</p>

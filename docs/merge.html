@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Merge Databases &mdash; StDb 0.1.2 documentation</title>
+  <title>Merge Databases &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -102,7 +101,7 @@
 <li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Merge Databases</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#program-merge-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">merge_stdb.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-merge-stdb">Program <code class="docutils literal notranslate"><span class="pre">merge_stdb</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
@@ -179,8 +178,8 @@
             
   <div class="section" id="merge-databases">
 <span id="merge"></span><h1>Merge Databases<a class="headerlink" href="#merge-databases" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="program-merge-stdb-py">
-<h2>Program <code class="docutils literal notranslate"><span class="pre">merge_stdb.py</span></code><a class="headerlink" href="#program-merge-stdb-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-merge-stdb">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">merge_stdb</span></code><a class="headerlink" href="#program-merge-stdb" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -189,8 +188,8 @@ Performs a rudimentary check for mulitple keys.</p>
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ merge_stdb.py -h
-Usage: merge_stdb.py [options] &lt;station pickle file 1&gt; &lt;station pickle file 2&gt; [additional station pickle files]
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ merge_stdb -h
+Usage: merge_stdb [options] &lt;station pickle file 1&gt; &lt;station pickle file 2&gt; [additional station pickle files]
 
 Helper program to merge multiple station database files together.
 
@@ -217,14 +216,14 @@ FDSN archive for stations in the CN network in the same region. Send the prompt 
 file.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>This could have been performed during the first call to <code class="docutils literal notranslate"><span class="pre">query_fdsn_stdb.py</span></code> with the
+<p>This could have been performed during the first call to <a class="reference internal" href="query.html#query"><span class="std std-ref">Create Database by Querying FDSN</span></a> with the
 option <code class="docutils literal notranslate"><span class="pre">-N</span> <span class="pre">TA,CN</span></code> - this is just for illustration</p>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb.py -C BH? -N CN --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 cn_list &gt;&gt; stdb.log
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ query_fdsn_stdb -C BH? -N CN --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 cn_list &gt;&gt; stdb.log
 </pre></div>
 </div>
 <p>List the content of cn_list.pkl:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py cn_list
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb cn_list
 Listing Station Pickle: cn_list.pkl
 CN.WHY
 --------------------------------------------------------------------------
@@ -241,10 +240,10 @@ CN.WHY
 </pre></div>
 </div>
 <p>Merge <code class="docutils literal notranslate"><span class="pre">ta_list.pkl</span></code> and <code class="docutils literal notranslate"><span class="pre">cn_list.pkl</span></code> into a new file called <code class="docutils literal notranslate"><span class="pre">merged_list.pkl</span></code>:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ merge_stdb.py -o merged_list ta_list cn_list
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ merge_stdb -o merged_list ta_list cn_list
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py merged_list
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb merged_list
 Listing Station Pickle: merged_list.pkl
 TA.M31M
 --------------------------------------------------------------------------

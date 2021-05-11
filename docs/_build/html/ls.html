@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>List Database Content &mdash; StDb 0.1.2 documentation</title>
+  <title>List Database Content &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -101,7 +100,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">List Database Content</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#program-ls-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">ls_stdb.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-ls-stdb">Program <code class="docutils literal notranslate"><span class="pre">ls_stdb</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#examples">Examples</a></li>
@@ -179,8 +178,8 @@
             
   <div class="section" id="list-database-content">
 <h1>List Database Content<a class="headerlink" href="#list-database-content" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="program-ls-stdb-py">
-<h2>Program <code class="docutils literal notranslate"><span class="pre">ls_stdb.py</span></code><a class="headerlink" href="#program-ls-stdb-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-ls-stdb">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">ls_stdb</span></code><a class="headerlink" href="#program-ls-stdb" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -188,8 +187,8 @@
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py -h
-Usage: ls_stdb.py [options] &lt;station pickle file&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb -h
+Usage: ls_stdb [options] &lt;station pickle file&gt;
 
 Helper program to examine the contents of a station pickle file
 
@@ -210,7 +209,7 @@ Options:
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
 <p>Assume we have already created a StDb database named <code class="docutils literal notranslate"><span class="pre">ta_list.pkl</span></code> using the example in
 <a class="reference internal" href="query.html#query"><span class="std std-ref">Create Database by Querying FDSN</span></a>. List its content:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py ta_list
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb ta_list
 Listing Station Pickle: ta_list.pkl
 TA.M31M
 --------------------------------------------------------------------------
@@ -255,7 +254,7 @@ TA.P33M
 </pre></div>
 </div>
 <p>List only one station key:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py --keys=TA.P33M new_list
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb --keys=TA.P33M new_list
 Listing Station Pickle: new_list.pkl
 TA.P33M
 --------------------------------------------------------------------------

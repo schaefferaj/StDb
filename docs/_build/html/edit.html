@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Edit Station Info &mdash; StDb 0.1.2 documentation</title>
+  <title>Edit Station Info &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -105,7 +104,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gen.html">Generate Database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="append.html">Append New Station</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Edit Station Info</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#program-edit-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">edit_stdb.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-edit-stdb">Program <code class="docutils literal notranslate"><span class="pre">edit_stdb</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
@@ -179,8 +178,8 @@
             
   <div class="section" id="edit-station-info">
 <h1>Edit Station Info<a class="headerlink" href="#edit-station-info" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="program-edit-stdb-py">
-<h2>Program <code class="docutils literal notranslate"><span class="pre">edit_stdb.py</span></code><a class="headerlink" href="#program-edit-stdb-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-edit-stdb">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">edit_stdb</span></code><a class="headerlink" href="#program-edit-stdb" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -188,8 +187,8 @@
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ edit_stdb.py -h
-Usage: edit_stdb.py [options] &lt;station pickle file&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ edit_stdb -h
+Usage: edit_stdb [options] &lt;station pickle file&gt;
 
 Program to make basic modifications to a station database pickle file
 
@@ -215,7 +214,7 @@ Options:
 <p>Let’s use the <code class="docutils literal notranslate"><span class="pre">ta_table.pkl</span></code> database generated in the example <a class="reference internal" href="query.html#query"><span class="std std-ref">Create Database by Querying FDSN</span></a>.
 To change only one station key, e.g., TA.P33M, and save it in a new database
 <code class="docutils literal notranslate"><span class="pre">P33M.pkl</span></code> type:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ edit_stdb.py --keys=TA.P33M -O P33M.pkl ta_table.pkl
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ edit_stdb --keys=TA.P33M -O P33M.pkl ta_table.pkl
 </pre></div>
 </div>
 <p>A GUI window will apear displaying the fields for the corresponding station key</p>

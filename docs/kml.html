@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module kml &mdash; StDb 0.1.2 documentation</title>
+  <title>Module kml &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -176,9 +175,9 @@
 <p>Tools used in the creation of a kml file from a station database. These
 functions are used in the script <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span></code>. In a terminal,
 type <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span> <span class="pre">-h</span></code> for help on usage.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createKML">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createKML</code><span class="sig-paren">(</span><em class="sig-param">nets=[]</em>, <em class="sig-param">netd={}</em>, <em class="sig-param">fileName='stdb.kml'</em>, <em class="sig-param">opts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createKML" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createKML</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdb.kml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createKML" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initializes and creates the kml document.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -192,9 +191,9 @@ type <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createFolder">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createFolder</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">net</em>, <em class="sig-param">stlist</em>, <em class="sig-param">netcolour</em>, <em class="sig-param">opts</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createFolder" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createFolder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createFolder" title="Permalink to this definition">¶</a></dt>
 <dd><p>For a kmlDocument and a dictionary of stations for a given network,
 make a folder element for this network, then create a placemark
 for every station.</p>
@@ -217,9 +216,9 @@ for every station.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createPlacemark">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createPlacemark</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">stdata=None</em>, <em class="sig-param">netcolor='ffffffff'</em>, <em class="sig-param">opts=None</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPlacemark" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createPlacemark</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ffffffff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPlacemark" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a placemark in kmlDoc for a given row of a dictionary</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -239,50 +238,50 @@ for every station.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createStyleState">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createStyleState</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">scale</em>, <em class="sig-param">idtag</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleState" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createStyleState</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idtag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleState" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to create a doucment wide style state with the LabelStyle internal field scale.
 Sets the Labelstyle scale field to value “scale” and names the field “idtag”</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createPair">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createPair</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">mode</em>, <em class="sig-param">state</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPair" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createPair</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPair" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to create a single Pair environment that has a particular mode and state</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createStyleMap">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createStyleMap</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleMap" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createStyleMap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleMap" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a StyleMap environment called on-offText which enables label text
 for Placemarks on mouseover only.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createStyle">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createStyle</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">netcolor</em>, <em class="sig-param">size</em>, <em class="sig-param">labtype='net'</em>, <em class="sig-param">op=0</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyle" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createStyle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'net'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a Style Environment with a variable size and colour.
 The last argument selects between two different icon types.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.createDoc">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">createDoc</code><span class="sig-paren">(</span><em class="sig-param">kmlDoc</em>, <em class="sig-param">name</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createDoc" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createDoc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createDoc" title="Permalink to this definition">¶</a></dt>
 <dd><p>Initialize the KML Document using name</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.gen_colors">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">gen_colors</code><span class="sig-paren">(</span><em class="sig-param">n</em>, <em class="sig-param">norand=False</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.gen_colors" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">gen_colors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.gen_colors" title="Permalink to this definition">¶</a></dt>
 <dd><p>Produce n evenly distributed colors using the HSV colour pickle and the
 golden ratio value of ~0.6 to separate the colours. By default the initial
 colour selected is random.</p>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.kml.rgb2hex">
-<code class="sig-prename descclassname">stdb.kml.</code><code class="sig-name descname">rgb2hex</code><span class="sig-paren">(</span><em class="sig-param">rgbl</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.rgb2hex" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">rgb2hex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgbl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.rgb2hex" title="Permalink to this definition">¶</a></dt>
 <dd><p>Return hexidecial XML form of RGB colour tuple. Note that the xml parsing
 of the tuple reads bgr rather than standard rgb, so the rgb tuple is reversed
 in order on output to represent the true colour</p>

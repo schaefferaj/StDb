@@ -3,8 +3,8 @@
 Merge Databases
 ===============
 
-Program ``merge_stdb.py``
--------------------------
+Program ``merge_stdb``
+----------------------
 
 Description
 -----------
@@ -16,8 +16,8 @@ Usage
 
 .. code-block::
 
-    $ merge_stdb.py -h
-    Usage: merge_stdb.py [options] <station pickle file 1> <station pickle file 2> [additional station pickle files]
+    $ merge_stdb -h
+    Usage: merge_stdb [options] <station pickle file 1> <station pickle file 2> [additional station pickle files]
 
     Helper program to merge multiple station database files together.
 
@@ -44,18 +44,18 @@ file.
 
 .. note::
 
-    This could have been performed during the first call to ``query_fdsn_stdb.py`` with the 
+    This could have been performed during the first call to :ref:`query` with the 
     option ``-N TA,CN`` - this is just for illustration
 
 .. code-block:: none
 
-    $ query_fdsn_stdb.py -C BH? -N CN --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 cn_list >> stdb.log
+    $ query_fdsn_stdb -C BH? -N CN --minlat=60 --maxlat=65 --minlon=-135 --maxlon=-120  --start=2017-01-01 cn_list >> stdb.log
 
 List the content of cn_list.pkl:
 
 .. code-block:: none
 
-    $ ls_stdb.py cn_list
+    $ ls_stdb cn_list
     Listing Station Pickle: cn_list.pkl
     CN.WHY
     --------------------------------------------------------------------------
@@ -74,11 +74,11 @@ Merge ``ta_list.pkl`` and ``cn_list.pkl`` into a new file called ``merged_list.p
 
 .. code-block:: none
 
-    $ merge_stdb.py -o merged_list ta_list cn_list 
+    $ merge_stdb -o merged_list ta_list cn_list 
 
 .. code-block:: none
 
-    $ ls_stdb.py merged_list
+    $ ls_stdb merged_list
     Listing Station Pickle: merged_list.pkl
     TA.M31M
     --------------------------------------------------------------------------

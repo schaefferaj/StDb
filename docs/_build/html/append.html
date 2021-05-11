@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Append New Station &mdash; StDb 0.1.2 documentation</title>
+  <title>Append New Station &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -104,7 +103,7 @@
 <li class="toctree-l1"><a class="reference internal" href="merge.html">Merge Databases</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gen.html">Generate Database</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Append New Station</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#program-append-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">append_stdb.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-append-stdb">Program <code class="docutils literal notranslate"><span class="pre">append_stdb</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
@@ -179,8 +178,8 @@
             
   <div class="section" id="append-new-station">
 <h1>Append New Station<a class="headerlink" href="#append-new-station" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="program-append-stdb-py">
-<h2>Program <code class="docutils literal notranslate"><span class="pre">append_stdb.py</span></code><a class="headerlink" href="#program-append-stdb-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-append-stdb">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">append_stdb</span></code><a class="headerlink" href="#program-append-stdb" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -188,8 +187,8 @@
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>append_stdb.py -h
-Usage: append_stdb.py [options] &lt;station pickle file&gt;
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>append_stdb -h
+Usage: append_stdb [options] &lt;station pickle file&gt;
 
 Helper program to append new stations to an existing station database.
 
@@ -214,11 +213,11 @@ Options:
 <div class="section" id="example">
 <h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
 <p>Assume we have created the StDb database containing only one CN station
-(as in the example in <code class="xref py py-mod docutils literal notranslate"><span class="pre">py</span></code>). Let’s append a new
+(as in the example in <a class="reference internal" href="merge.html#merge"><span class="std std-ref">Merge Databases</span></a>). Let’s append a new
 station to the database with a different network code and using only the basic
 station attributes. Note that the fields (e.g., <code class="docutils literal notranslate"><span class="pre">NY</span></code>, <code class="docutils literal notranslate"><span class="pre">NEW</span></code> below are
 typed in the terminal by the user)</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py cn_list
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb cn_list
 Listing Station Pickle: cn_list.pkl
 CN.WHY
 --------------------------------------------------------------------------
@@ -234,7 +233,7 @@ CN.WHY
       Azimuth Correction: 0.000000
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ append_stdb.py cn_list
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ append_stdb cn_list
 ********************************
 * New Station
 *    Network:   NY
@@ -252,7 +251,7 @@ CN.WHY
 Saving new database: cn_list.apd.pkl
 </pre></div>
 </div>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb.py cn_list.apd
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>$ ls_stdb cn_list.apd
 Listing Station Pickle: cn_list.apd.pkl
 CN.WHY
 --------------------------------------------------------------------------

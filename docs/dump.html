@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Dump Database to .csv &mdash; StDb 0.1.2 documentation</title>
+  <title>Dump Database to .csv &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -106,7 +105,7 @@
 <li class="toctree-l1"><a class="reference internal" href="append.html">Append New Station</a></li>
 <li class="toctree-l1"><a class="reference internal" href="edit.html">Edit Station Info</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dump Database to .csv</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#program-dump-stdb-py">Program <code class="docutils literal notranslate"><span class="pre">dump_stdb.py</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#program-dump-stdb">Program <code class="docutils literal notranslate"><span class="pre">dump_stdb</span></code></a></li>
 <li class="toctree-l2"><a class="reference internal" href="#description">Description</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
@@ -179,8 +178,8 @@
             
   <div class="section" id="dump-database-to-csv">
 <h1>Dump Database to .csv<a class="headerlink" href="#dump-database-to-csv" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="program-dump-stdb-py">
-<h2>Program <code class="docutils literal notranslate"><span class="pre">dump_stdb.py</span></code><a class="headerlink" href="#program-dump-stdb-py" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="program-dump-stdb">
+<h2>Program <code class="docutils literal notranslate"><span class="pre">dump_stdb</span></code><a class="headerlink" href="#program-dump-stdb" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="description">
 <h2>Description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
@@ -193,8 +192,8 @@ automatically creating a corresponding <code class="docutils literal notranslate
 </div>
 <div class="section" id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dump_stdb.py -h
-Usage: dump_stdb.py [options] &lt;station pickle file&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dump_stdb -h
+Usage: dump_stdb [options] &lt;station pickle file&gt;
 
 Program to dump the contents of a station database (.pkl) as csv. By default
 the output is directed to standard out. If a filename is optionally included,
@@ -223,7 +222,7 @@ saved in <code class="docutils literal notranslate"><span class="pre">.csv</span
 </pre></div>
 </div>
 <p>You can save it as <code class="docutils literal notranslate"><span class="pre">.csv</span></code> by executing:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dump_stdb.py merged_list.pkl -O merged_list.csv
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ dump_stdb merged_list.pkl -O merged_list.csv
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls -l merged_list.*
