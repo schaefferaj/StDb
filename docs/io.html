@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module io &mdash; StDb 0.1.2 documentation</title>
+  <title>Module io &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -175,15 +174,18 @@
 <span id="module-io"></span><h1>Module io<a class="headerlink" href="#module-stdb.io" title="Permalink to this headline">¶</a></h1>
 <p>Tools used for loading and writing a station database to and from disk.
 These functions are used in most scripts bundled with this package.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.io.load_db">
-<code class="sig-prename descclassname">stdb.io.</code><code class="sig-name descname">load_db</code><span class="sig-paren">(</span><em class="sig-param">fname</em>, <em class="sig-param">binp=True</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.io.load_db" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.io.</span></code><code class="sig-name descname"><span class="pre">load_db</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fname</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">binp</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">keys</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.io.load_db" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submodule to read the station database from file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>fname</strong> (<em>str</em>) – File name</p></li>
 <li><p><strong>binp</strong> (<em>bool</em>) – Whether or not to use binary input</p></li>
+<li><p><strong>keys</strong> (<em>List</em>) – Default None
+If a list, then load database and select only keys that match those in this
+list. Returns the full db and a second optional output containing</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns</dt>
@@ -195,9 +197,9 @@ These functions are used in most scripts bundled with this package.</p>
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.io.write_db">
-<code class="sig-prename descclassname">stdb.io.</code><code class="sig-name descname">write_db</code><span class="sig-paren">(</span><em class="sig-param">fname=&lt;class 'str'&gt;</em>, <em class="sig-param">stdb={}</em>, <em class="sig-param">binp=True</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.io.write_db" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.io.</span></code><code class="sig-name descname"><span class="pre">write_db</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">fname=&lt;class</span> <span class="pre">'str'&gt;</span></em>, <em class="sig-param"><span class="pre">stdb={}</span></em>, <em class="sig-param"><span class="pre">binp=True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.io.write_db" title="Permalink to this definition">¶</a></dt>
 <dd><p>Submodule to write the station database to file</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

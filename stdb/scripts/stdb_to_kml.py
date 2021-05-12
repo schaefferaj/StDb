@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """
-Program ``stdb_to_kml.py``
---------------------------
+Program ``stdb_to_kml``
+-----------------------
 
 Description
 -----------
@@ -47,8 +47,8 @@ Usage
 
 .. code-block:: none
 
-    stdb_to_kml.py -h
-    Usage: stdb_to_kml.py [options] <station pickle file>
+    stdb_to_kml -h
+    Usage: stdb_to_kml [options] <station pickle file>
 
     Program to create a KML file for plotting based on the contents of a station
     pickle file
@@ -101,6 +101,7 @@ def get_options():
     parser.add_option("-a","--ascii", action="store_false", dest="use_binary", default=True, \
         help="Specify to write ascii Pickle files instead of binary. Ascii are larger file size, " \
         "but more likely to be system independent.")
+
 
     # Parse Arguments
     (opts, args) = parser.parse_args()
@@ -198,7 +199,7 @@ def reorder_db(indb={}):
     return nets, ndb
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, inpickles) = get_options()
@@ -213,3 +214,7 @@ if __name__=='__main__':
     createKML(nets=nets, netd=ndb, fileName=opts.outfile, opts=opts)
     if opts.verb > 0:
         print ("Successfully wrote {0:d} Networks to file : {1}".format(len(nets), opts.outfile))
+
+if __name__=='__main__':
+
+    main()

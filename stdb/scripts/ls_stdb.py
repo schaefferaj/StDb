@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """ 
-Program ``ls_stdb.py``
-----------------------
+Program ``ls_stdb``
+-------------------
 
 Description
 -----------
@@ -36,8 +36,8 @@ Usage
 
 .. code-block:: none
 
-    ls_stdb.py -h
-    Usage: ls_stdb.py [options] <station pickle file>
+    ls_stdb -h
+    Usage: ls_stdb [options] <station pickle file>
 
     Helper program to examine the contents of a station pickle file
 
@@ -103,7 +103,7 @@ def get_options():
     return opts, args
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, inpickles) = get_options()
@@ -150,3 +150,7 @@ if __name__=='__main__':
             print ("Networks: ")
             for net in nets:
                 print (net)
+
+if __name__=='__main__':
+
+    main()

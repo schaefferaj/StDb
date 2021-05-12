@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """
-Program ``query_fdsn_stdb.py``
-------------------------------
+Program ``query_fdsn_stdb``
+---------------------------
 
 Description
 -----------
@@ -38,8 +38,8 @@ Usage
 
 .. code-block:: none
 
-    $ query_fdsn_stdb.py -h
-    Usage: query_fdsn_stdb.py [options] <station list filename>
+    $ query_fdsn_stdb -h
+    Usage: query_fdsn_stdb [options] <station list filename>
 
     Program to query a datacenter using the obspy fdsn client. All station
     returned in this query are saved into both a csv format 1sls file as well as a
@@ -420,7 +420,7 @@ def get_options():
     return opts, outpref
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # Get Input Options
     (opts, outp) = get_options()
@@ -645,3 +645,8 @@ if __name__=='__main__':
              stations[stkey].startdate.strftime("%Y-%m-%d"), stations[stkey].startdate.strftime("%H:%M:%S"), stations[stkey].startdate.microsecond/100000.,
              stations[stkey].enddate.strftime("%Y-%m-%d"), stations[stkey].enddate.strftime("%H:%M:%S"), stations[stkey].enddate.microsecond/100000.,
              stations[stkey].latitude, stations[stkey].longitude, stations[stkey].elevation, stations[stkey].polarity, stations[stkey].azcorr, stations[stkey].status))
+
+
+if __name__=='__main__':
+
+    main()

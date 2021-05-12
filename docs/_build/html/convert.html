@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Module convert &mdash; StDb 0.1.2 documentation</title>
+  <title>Module convert &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -175,9 +174,9 @@
 <span id="module-convert"></span><h1>Module convert<a class="headerlink" href="#module-stdb.convert" title="Permalink to this headline">¶</a></h1>
 <p>Tools used in converting a pickled station database file to comma-separated value
 (.csv) file. These functions are used in most scripts bundled with this package.</p>
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.convert.tocsv">
-<code class="sig-prename descclassname">stdb.convert.</code><code class="sig-name descname">tocsv</code><span class="sig-paren">(</span><em class="sig-param">stel=&lt;class 'stdb.classes.StDbElement'&gt;</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.tocsv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.convert.</span></code><code class="sig-name descname"><span class="pre">tocsv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">stel=&lt;class</span> <span class="pre">'stdb.classes.StDbElement'&gt;</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.tocsv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subroutine to output an StDbElement to a csv formatted string</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -192,9 +191,9 @@
 </dl>
 </dd></dl>
 
-<dl class="function">
+<dl class="py function">
 <dt id="stdb.convert.fromcsv">
-<code class="sig-prename descclassname">stdb.convert.</code><code class="sig-name descname">fromcsv</code><span class="sig-paren">(</span><em class="sig-param">line=''</em>, <em class="sig-param">lkey=False</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.fromcsv" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname"><span class="pre">stdb.convert.</span></code><code class="sig-name descname"><span class="pre">fromcsv</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">line</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lkey</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.convert.fromcsv" title="Permalink to this definition">¶</a></dt>
 <dd><p>Subroutine to convert a csv format string into an StDbElement</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>

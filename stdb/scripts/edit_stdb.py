@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """ 
-Program ``edit_stdb.py``
-------------------------
+Program ``edit_stdb``
+---------------------
 
 Description
 -----------
@@ -41,8 +41,8 @@ Usage
 
 .. code-block:: none
 
-    edit_stdb.py -h
-    Usage: edit_stdb.py [options] <station pickle file>
+    edit_stdb -h
+    Usage: edit_stdb [options] <station pickle file>
 
     Program to make basic modifications to a station database pickle file
 
@@ -102,7 +102,7 @@ def get_options():
     return opts, args[0]
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, inpickle) = get_options()
@@ -185,3 +185,7 @@ if __name__=='__main__':
     else:
         print ("Error: Must Enter a .pkl station database pickle file")
         sys.exit()
+
+if __name__=='__main__':
+
+    main()

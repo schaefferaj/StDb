@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """
-Program ``merge_stdb.py``
--------------------------
+Program ``merge_stdb``
+----------------------
 
 Description
 -----------
@@ -37,8 +37,8 @@ Usage
 
 .. code-block::none
 
-    merge_stdb.py -h
-    Usage: merge_stdb.py [options] <station pickle file 1> <station pickle file 2> [additional station pickle files]
+    merge_stdb -h
+    Usage: merge_stdb [options] <station pickle file 1> <station pickle file 2> [additional station pickle files]
 
     Helper program to merge multiple station database files together.
 
@@ -105,7 +105,7 @@ def get_options():
     return opts, args
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, args) = get_options()
@@ -164,3 +164,7 @@ if __name__=='__main__':
         if opts.verb:
             print("")
             print("No actual merges performed...")
+
+if __name__=='__main__':
+
+    main()

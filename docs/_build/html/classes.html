@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Classes &mdash; StDb 0.1.2 documentation</title>
+  <title>Classes &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -180,14 +179,14 @@
 which contains attributes of a single station in the dabase dictionary.</p>
 <div class="section" id="stdbelement">
 <h2>StDbElement<a class="headerlink" href="#stdbelement" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
+<dl class="py class">
 <dt id="stdb.classes.StDbElement">
-<em class="property">class </em><code class="sig-prename descclassname">stdb.classes.</code><code class="sig-name descname">StDbElement</code><span class="sig-paren">(</span><em class="sig-param">station='', network='', altnet=[], channel='', location=[''], latitude=0.0, longitude=0.0, elevation=0.0, startdate=&lt;class 'obspy.core.utcdatetime.UTCDateTime'&gt;, enddate=&lt;class 'obspy.core.utcdatetime.UTCDateTime'&gt;, polarity=1.0, azcorr=0.0, restricted_status='?'</em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.classes.StDbElement" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">stdb.classes.</span></code><code class="sig-name descname"><span class="pre">StDbElement</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">station='',</span> <span class="pre">network='',</span> <span class="pre">altnet=[],</span> <span class="pre">channel='',</span> <span class="pre">location=[''],</span> <span class="pre">latitude=0.0,</span> <span class="pre">longitude=0.0,</span> <span class="pre">elevation=0.0,</span> <span class="pre">startdate=&lt;class</span> <span class="pre">'obspy.core.utcdatetime.UTCDateTime'&gt;,</span> <span class="pre">enddate=&lt;class</span> <span class="pre">'obspy.core.utcdatetime.UTCDateTime'&gt;,</span> <span class="pre">polarity=1.0,</span> <span class="pre">azcorr=0.0,</span> <span class="pre">restricted_status='?'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.classes.StDbElement" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class that defines the structure of each station entry in the station
 database.</p>
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.station">
-<code class="sig-name descname">station</code><a class="headerlink" href="#stdb.classes.StDbElement.station" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">station</span></code><a class="headerlink" href="#stdb.classes.StDbElement.station" title="Permalink to this definition">¶</a></dt>
 <dd><p>Station name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -196,9 +195,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.network">
-<code class="sig-name descname">network</code><a class="headerlink" href="#stdb.classes.StDbElement.network" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">network</span></code><a class="headerlink" href="#stdb.classes.StDbElement.network" title="Permalink to this definition">¶</a></dt>
 <dd><p>Network name</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -207,9 +206,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.altnet">
-<code class="sig-name descname">altnet</code><a class="headerlink" href="#stdb.classes.StDbElement.altnet" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">altnet</span></code><a class="headerlink" href="#stdb.classes.StDbElement.altnet" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of alternative networks</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -218,9 +217,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.channel">
-<code class="sig-name descname">channel</code><a class="headerlink" href="#stdb.classes.StDbElement.channel" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">channel</span></code><a class="headerlink" href="#stdb.classes.StDbElement.channel" title="Permalink to this definition">¶</a></dt>
 <dd><p>Channel name (last digit only)</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -229,9 +228,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.location">
-<code class="sig-name descname">location</code><a class="headerlink" href="#stdb.classes.StDbElement.location" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">location</span></code><a class="headerlink" href="#stdb.classes.StDbElement.location" title="Permalink to this definition">¶</a></dt>
 <dd><p>List of strings for station location</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -240,9 +239,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.latitude">
-<code class="sig-name descname">latitude</code><a class="headerlink" href="#stdb.classes.StDbElement.latitude" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">latitude</span></code><a class="headerlink" href="#stdb.classes.StDbElement.latitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Latitude of station</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -251,9 +250,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.longitude">
-<code class="sig-name descname">longitude</code><a class="headerlink" href="#stdb.classes.StDbElement.longitude" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">longitude</span></code><a class="headerlink" href="#stdb.classes.StDbElement.longitude" title="Permalink to this definition">¶</a></dt>
 <dd><p>Longitude of station</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -262,9 +261,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.elevation">
-<code class="sig-name descname">elevation</code><a class="headerlink" href="#stdb.classes.StDbElement.elevation" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">elevation</span></code><a class="headerlink" href="#stdb.classes.StDbElement.elevation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Elevation of station</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -273,9 +272,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.startdate">
-<code class="sig-name descname">startdate</code><a class="headerlink" href="#stdb.classes.StDbElement.startdate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">startdate</span></code><a class="headerlink" href="#stdb.classes.StDbElement.startdate" title="Permalink to this definition">¶</a></dt>
 <dd><p>Start time of station operation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -284,9 +283,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.enddate">
-<code class="sig-name descname">enddate</code><a class="headerlink" href="#stdb.classes.StDbElement.enddate" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">enddate</span></code><a class="headerlink" href="#stdb.classes.StDbElement.enddate" title="Permalink to this definition">¶</a></dt>
 <dd><p>End time of station operation</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -295,9 +294,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.polarity">
-<code class="sig-name descname">polarity</code><a class="headerlink" href="#stdb.classes.StDbElement.polarity" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">polarity</span></code><a class="headerlink" href="#stdb.classes.StDbElement.polarity" title="Permalink to this definition">¶</a></dt>
 <dd><p>Polarity of vertical component</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -306,9 +305,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.azcorr">
-<code class="sig-name descname">azcorr</code><a class="headerlink" href="#stdb.classes.StDbElement.azcorr" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">azcorr</span></code><a class="headerlink" href="#stdb.classes.StDbElement.azcorr" title="Permalink to this definition">¶</a></dt>
 <dd><p>Azimuth correction</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>
@@ -317,9 +316,9 @@ database.</p>
 </dl>
 </dd></dl>
 
-<dl class="attribute">
+<dl class="py attribute">
 <dt id="stdb.classes.StDbElement.restricted_status">
-<code class="sig-name descname">restricted_status</code><a class="headerlink" href="#stdb.classes.StDbElement.restricted_status" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname"><span class="pre">restricted_status</span></code><a class="headerlink" href="#stdb.classes.StDbElement.restricted_status" title="Permalink to this definition">¶</a></dt>
 <dd><p>Whether or not the data are restricted for a given station</p>
 <dl class="field-list simple">
 <dt class="field-odd">Type</dt>

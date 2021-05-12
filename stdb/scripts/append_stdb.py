@@ -24,8 +24,8 @@
 # SOFTWARE.
 
 """
-Program ``append_stdb.py``
---------------------------
+Program ``append_stdb``
+-----------------------
 
 Description
 -----------
@@ -36,8 +36,8 @@ Usage
 
 .. code-block::
 
-    append_stdb.py -h
-    Usage: append_stdb.py [options] <station pickle file>
+    append_stdb -h
+    Usage: append_stdb [options] <station pickle file>
 
     Helper program to append new stations to an existing station database.
 
@@ -111,8 +111,7 @@ def get_options():
     # return options
     return opts, args[0]
 
-
-if __name__=='__main__':
+def main(args=None):
 
     # get options
     (opts, inpickle) = get_options()
@@ -217,3 +216,7 @@ if __name__=='__main__':
         print("")
         print("No changes made...")
 
+
+if __name__=='__main__':
+
+    main()

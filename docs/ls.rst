@@ -1,8 +1,8 @@
 List Database Content
 =====================
 
-Program ``ls_stdb.py``
-----------------------
+Program ``ls_stdb``
+-------------------
 
 Description
 -----------
@@ -13,8 +13,8 @@ Usage
 
 .. code-block::
 
-    $ ls_stdb.py -h
-    Usage: ls_stdb.py [options] <station pickle file>
+    $ ls_stdb -h
+    Usage: ls_stdb [options] <station pickle file>
 
     Helper program to examine the contents of a station pickle file
 
@@ -37,7 +37,7 @@ Assume we have already created a StDb database named ``ta_list.pkl`` using the e
 
 .. code-block::
 
-    $ ls_stdb.py ta_list
+    $ ls_stdb ta_list
     Listing Station Pickle: ta_list.pkl
     TA.M31M
     --------------------------------------------------------------------------
@@ -84,7 +84,7 @@ List only one station key:
 
 .. code-block:: none
 
-    $ ls_stdb.py --keys=TA.P33M new_list
+    $ ls_stdb --keys=TA.P33M new_list
     Listing Station Pickle: new_list.pkl
     TA.P33M
     --------------------------------------------------------------------------

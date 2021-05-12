@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Database structure &mdash; StDb 0.1.2 documentation</title>
+  <title>Database structure &mdash; StDb 0.2.1 documentation</title>
   
 
   
@@ -21,10 +21,9 @@
   
     
       <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script type="text/javascript" src="_static/jquery.js"></script>
-        <script type="text/javascript" src="_static/underscore.js"></script>
-        <script type="text/javascript" src="_static/doctools.js"></script>
-        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -332,7 +331,7 @@ like (saved in file <code class="docutils literal notranslate"><span class="pre"
 each with a unique key. The following code was added right before
 pickling to file in <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span></code>, which was called using:
 <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.txt</span></code> or <code class="docutils literal notranslate"><span class="pre">gen_stdb.py</span> <span class="pre">ta_table.csv</span></code></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">stations</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stations</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;TA.M31M&#39;</span><span class="p">,</span> <span class="s1">&#39;TA.N32M&#39;</span><span class="p">,</span> <span class="s1">&#39;TA.P33M&#39;</span><span class="p">])</span>
 
 <span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">stations</span><span class="p">[</span><span class="s1">&#39;TA.M31M&#39;</span><span class="p">])</span>
