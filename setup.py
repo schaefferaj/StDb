@@ -43,4 +43,5 @@ setup(
          'merge_stdb=stdb.scripts.merge_stdb:main',
          'query_fdsn_stdb=stdb.scripts.query_fdsn_stdb:main',
          'stdb_to_kml=stdb.scripts.stdb_to_kml:main']},
-    url='https://github.com/schaefferaj/StDb/archive/v0.2.0.tar.gz')
+         url='httpsL//github.com/schaefferaj/StDb',
+         download_url='https://github.com/schaefferaj/StDb/archive/v0.2.1.tar.gz')
