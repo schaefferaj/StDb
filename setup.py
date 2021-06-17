@@ -1,3 +1,4 @@
+import setuptools
 import os.path
 from os import listdir
 import re
@@ -32,7 +33,9 @@ setup(
     ],
     install_requires=['obspy', 'PyQt5'],
     python_requires='>=3.6',
-    packages=['stdb'],
+    packages=setuptools.find_packages(),
+    include_package_data=True,
+    package_data={'': ['examples/figures/*']},
     entry_points={
         'console_scripts':
         ['append_stdb=stdb.scripts.append_stdb:main',
@@ -43,5 +46,5 @@ setup(
          'merge_stdb=stdb.scripts.merge_stdb:main',
          'query_fdsn_stdb=stdb.scripts.query_fdsn_stdb:main',
          'stdb_to_kml=stdb.scripts.stdb_to_kml:main']},
-         url='https://github.com/schaefferaj/StDb',
-         download_url='https://github.com/schaefferaj/StDb/archive/v0.2.1.tar.gz')
+    url='https://github.com/schaefferaj/StDb',
+    download_url='https://github.com/schaefferaj/StDb/archive/v0.2.1.tar.gz')
