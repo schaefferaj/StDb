@@ -109,7 +109,7 @@ Installing from source
 
 """
 
-__version__ = '0.2.2'
+__version__ = '0.2.3'
 
 from . import kml
 from .io import write_db, load_db
