@@ -112,7 +112,6 @@ Installing from source
 __version__ = '0.2.3'
 
 from . import kml
-from .io import write_db, load_db
 from .classes import StDbElement
-from .convert import tocsv, fromcsv
+from .io import write_db, load_db, tocsv, fromcsv
 from .gui import EditMsgBox
