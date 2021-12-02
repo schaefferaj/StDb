@@ -31,7 +31,7 @@ Description
 -----------
 Edit Station Database Dictionary contained in pickle file.
 The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
-is a two character representation of the desired channel (ex, BH, HH, LH).
+is a two character representation of the desired channel (ex, BH, HH, LH, CH).
 Within each KEY is the set of data used in later programs to define the 
 station information. The data is stored as a dictionary, with each dictionary 
 element being an object of class :class:`~stdb.classes.StDbElement`. 

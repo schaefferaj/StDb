@@ -78,8 +78,8 @@ Usage
         --channel-rank=CHNRANK
                             If requesting more than one type of channel, specify a
                             comma separated list of the first two lettres of the
-                            desired components to retain. Default is HH > BH > LH
-                            : [ 'HH','BH','LH']
+                            desired components to retain. Default is HH > BH > LH > CH
+                            : [ 'HH','BH','LH','CH']
 
       Station-Channel Settings:
         Options to narrow down the specific channels based on network,
@@ -93,11 +93,11 @@ Usage
                             you want wildcards, enclose in quotes [Default *]
         -C CHNS, --channels=CHNS
                             Specify a comma separated, wildcarded list of channel
-                            names. [Default LH*,BH*,HH*]
+                            names. [Default LH*,BH*,HH*,CH*]
         -L LOCS, --locations=LOCS
                             Specify a comma separated list of location ids. If you
                             want the default empty id, use "--". If you want a wild-
-                            card, encluse in quotes. [Default *]
+                            card, enclose in quotes. [Default *]
 
       Geographic Lat/Lon Box Search:
         Define the coordinates of a lat/lon box in which to select stations.
@@ -223,9 +223,9 @@ def get_options():
     # Selection Settings
     SelectGroup = OptionGroup(parser, title="Channel Priority/Selection Settings", description="Settings " \
         "associated with selecting the channels to retain.")
-    SelectGroup.add_option("--channel-rank", action="store", type=str, dest="chnrank", default="HH,BH,LH", \
+    SelectGroup.add_option("--channel-rank", action="store", type=str, dest="chnrank", default="HH,BH,LH,CH", \
         help="If requesting more than one type of channel, specify a comma separated list of the first two " \
-        "lettres of the desired components to retain. Default is HH > BH > LH : ['HH,BH,LH']")
+        "lettres of the desired components to retain. Default is HH > BH > LH > CH : ['HH,BH,LH,CH']")
 
     # Channel Settings
     ChannelGroup=OptionGroup(parser, title="Station-Channel Settings", description="Options to narrow down " \
@@ -236,8 +236,8 @@ def get_options():
         help="Specify a comma separated list of station names. If you want wildcards, enclose in quotes [Default *]")
     ChannelGroup.add_option("-L","--locations", action="store", type=str, dest="locs", default="*", \
         help="Specify a comma separated list of location codes. If you want wildcards, enclose in quotes [Default *]")
-    ChannelGroup.add_option("-C","--channels", action="store", type=str, dest="chns", default="HH*,BH*,LH*", \
-        help="Specify a comma separated, wildcarded list of channel names. [Default HH*,BH*,LH*]")
+    ChannelGroup.add_option("-C","--channels", action="store", type=str, dest="chns", default="HH*,BH*,LH*,CH*", \
+        help="Specify a comma separated, wildcarded list of channel names. [Default HH*,BH*,LH*,CH*]")
     
     # Geographic Settings
     BoxGroup = OptionGroup(parser, title="Geographic Lat/Lon Box Search", description="Define the coordinates " \
@@ -579,7 +579,6 @@ def main(args=None):
                             chnlloc=chnl.location_code
                             if len(chnlloc)==0: chnlloc="--"
                             for selloc in opts.locs:
-                                # print (selloc, chnlloc)
                                 if selloc == '*' or chnlloc in selloc:
                                     locs.append(chnlloc)
                                     stdts.append(chnl.start_date)

@@ -31,7 +31,7 @@ Description
 -----------
 Create Station Database dictionary
 The station dictionary contains keys that are named NET.STA.CHAN, where CHAN
-is a two character representation of the desired channel (ex, BH, HH, LH).
+is a two character representation of the desired channel (ex, BH, HH, LH, CH).
 Within each KEY is the set of data used in later programs to define the 
 station information. The data is stored in a dictionary, with each dictionary 
 element being an object of Class :class:`~stdb.classes.StDbElement`. An item has:
