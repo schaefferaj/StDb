@@ -65,9 +65,10 @@ class StDbElement(dict):
         Whether or not the data are restricted for a given station
 
     """
-    def __init__(self, station="", network="", altnet=[], channel="", location=[''], 
-        latitude=0., longitude=0., elevation=0., startdate=UTCDateTime, enddate=UTCDateTime, 
-        polarity=1., azcorr=0. , restricted_status="?"):
+    def __init__(self, station="", network="", altnet=[], channel="",
+                 location=[''], latitude=0., longitude=0., elevation=0.,
+                 startdate=UTCDateTime, enddate=UTCDateTime, polarity=1.,
+                 azcorr=0. , restricted_status="?"):
         """
         Initialization for a Database Element
 
