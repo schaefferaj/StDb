@@ -496,7 +496,7 @@ def get_options():
     return opts, outpref
 
 
-if __name__=='__main__':
+def main(args=None):
 
     # Get Input Options
     (opts, outp) = get_options()
@@ -760,3 +760,8 @@ if __name__=='__main__':
                 stations[stkey].elevation, stations[stkey].polarity,
                 stations[stkey].azcorr, stations[stkey].status)
         fcsv.writelines(out)
+
+
+if __name__=='__main__':
+
+    main()

@@ -94,7 +94,7 @@ def load_db(fname, binp=True, keys=None ):
         return stdb, stkeys
 
 
-def write_db(fname=str, stdb={}, binp=True):
+def write_db(fname, stdb, binp=True):
     """
     Submodule to write the station database to file
 
