@@ -2,10 +2,8 @@ import setuptools
 import os.path
 from os import listdir
 import re
-from numpy.distutils.core import setup
+from setuptools import setup
 
-# from distutils.command.sdist import sdist
-# cmdclass={'sdist': sdist}
 
 def find_version(*paths):
     fname = os.path.join(os.path.dirname(__file__), *paths)
@@ -22,7 +20,7 @@ setup(
     version=find_version('stdb', '__init__.py'),
     description='Python Module for managing Station Databases',
     author='Andrew Schaeffer, Pascal Audet',
-	  author_email='andrew.schaeffer@canada.ca, pascal.audet@uottawa.ca',
+    author_email='andrew.schaeffer@canada.ca, pascal.audet@uottawa.ca',
     maintainer='Andrew Schaeffer, Pascal Audet',
     maintainer_email='andrew.schaeffer@canada.ca, pascal.audet@uottawa.ca',
     classifiers=[
@@ -48,5 +46,5 @@ setup(
          'merge_stdb=stdb.scripts.merge_stdb:main',
          'query_fdsn_stdb=stdb.scripts.query_fdsn_stdb:main',
          'stdb_to_kml=stdb.scripts.stdb_to_kml:main']},
-         url='https://github.com/schaefferaj/StDb',
-         download_url='https://github.com/schaefferaj/StDb/archive/v0.2.3.tar.gz')
+    url='https://github.com/schaefferaj/StDb',
+    download_url='https://github.com/schaefferaj/StDb/archive/v0.2.4.tar.gz')
