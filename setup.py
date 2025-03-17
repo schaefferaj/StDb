@@ -47,4 +47,4 @@ setup(
          'query_fdsn_stdb=stdb.scripts.query_fdsn_stdb:main',
          'stdb_to_kml=stdb.scripts.stdb_to_kml:main']},
     url='https://github.com/schaefferaj/StDb',
-    download_url='https://github.com/schaefferaj/StDb/archive/v0.2.4.tar.gz')
+    download_url='https://github.com/schaefferaj/StDb/releases/tag/v0.2.4')

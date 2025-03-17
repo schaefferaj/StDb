@@ -69,6 +69,7 @@ import os.path as osp
 import stdb
 from stdb import EditMsgBox
 from stdb import load_db, write_db
+from stdb import tocsv
 
 def get_options():
     from optparse import OptionParser
@@ -141,7 +142,8 @@ def main(args=None):
             print ("{0:.0f}) {1:s}".format(ikey, key))
             print (db[key](5))
             print ("**************************************************************************")
-            newline = EditMsgBox(ststr=stdb.convert.tocsv(db[key]), title=key)
+            # newline = EditMsgBox(ststr=stdb.convert.tocsv(db[key]), title=key)
+            newline = EditMsgBox(ststr=tocsv(db[key]), title=key)
             if len(newline) > 0:
                 nkey, nel = stdb.convert.fromcsv(newline, lkey=opts.lkey)
                 if nel == val:
