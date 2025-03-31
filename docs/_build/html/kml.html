@@ -1,102 +1,75 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Module kml &mdash; StDb 0.2.1 documentation</title>
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module kml &mdash; StDb 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=cb850272"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Create Database by Querying FDSN" href="query.html" />
     <link rel="prev" title="Module gui" href="gui.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="index.html" class="icon icon-home"> StDb
           
-
-          
-            
-            <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
-          
+          <a href="index.html" class="icon icon-home">
+            StDb
+              <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database structure</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Content</span></p>
+<p class="caption" role="heading"><span class="caption-text">Content</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
 <li class="toctree-l1"><a class="reference internal" href="convert.html">Module convert</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Module kml</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Module kml</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createKML"><code class="docutils literal notranslate"><span class="pre">createKML()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createFolder"><code class="docutils literal notranslate"><span class="pre">createFolder()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createPlacemark"><code class="docutils literal notranslate"><span class="pre">createPlacemark()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createStyleState"><code class="docutils literal notranslate"><span class="pre">createStyleState()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createPair"><code class="docutils literal notranslate"><span class="pre">createPair()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createStyleMap"><code class="docutils literal notranslate"><span class="pre">createStyleMap()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createStyle"><code class="docutils literal notranslate"><span class="pre">createStyle()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.createDoc"><code class="docutils literal notranslate"><span class="pre">createDoc()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.gen_colors"><code class="docutils literal notranslate"><span class="pre">gen_colors()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdb.kml.rgb2hex"><code class="docutils literal notranslate"><span class="pre">rgb2hex()</span></code></a></li>
 </ul>
-<p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Programs &amp; Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
@@ -108,79 +81,41 @@
 <li class="toctree-l1"><a class="reference internal" href="stdb2kml.html">Convert Database to KML</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">StDb</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Module kml</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Module kml</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/kml.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="module-stdb.kml">
-<span id="module-kml"></span><h1>Module kml<a class="headerlink" href="#module-stdb.kml" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="module-stdb.kml">
+<span id="module-kml"></span><h1>Module kml<a class="headerlink" href="#module-stdb.kml" title="Link to this heading"></a></h1>
 <p>Tools used in the creation of a kml file from a station database. These
 functions are used in the script <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span></code>. In a terminal,
 type <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py</span> <span class="pre">-h</span></code> for help on usage.</p>
 <dl class="py function">
-<dt id="stdb.kml.createKML">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createKML</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdb.kml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createKML" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createKML">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createKML</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">nets</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netd</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fileName</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'stdb.kml'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createKML" title="Link to this definition"></a></dt>
 <dd><p>Initializes and creates the kml document.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>nets</strong> (<em>List</em>) – List of networks</p></li>
 <li><p><strong>netd</strong> (<em>Dict</em>) – Dictionary of network elements</p></li>
@@ -192,13 +127,13 @@ type <code class="docutils literal notranslate"><span class="pre">stdb_to_kml.py
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.createFolder">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createFolder</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createFolder" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createFolder">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createFolder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">net</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stlist</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolour</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createFolder" title="Link to this definition"></a></dt>
 <dd><p>For a kmlDocument and a dictionary of stations for a given network,
 make a folder element for this network, then create a placemark
 for every station.</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>kmldoc</strong> – Object</p></li>
 <li><p><strong>net</strong> (<em>str</em>) – Name of network</p></li>
@@ -207,21 +142,21 @@ for every station.</p>
 <li><p><strong>opts</strong> – Options read from command line</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>folderElement</strong> – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.createPlacemark">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createPlacemark</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ffffffff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPlacemark" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createPlacemark">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createPlacemark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stdata</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolor</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'ffffffff'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">opts</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPlacemark" title="Link to this definition"></a></dt>
 <dd><p>Creates a placemark in kmlDoc for a given row of a dictionary</p>
 <dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>kmldoc</strong> – Object</p></li>
 <li><p><strong>stdata</strong> (<em>Dict</em>) – Dictionary of station metadata</p></li>
@@ -229,113 +164,95 @@ for every station.</p>
 <li><p><strong>opts</strong> – Options read from command line</p></li>
 </ul>
 </dd>
-<dt class="field-even">Returns</dt>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
 <dd class="field-even"><p><strong>placemarkElement</strong> – Instance of <code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
 </dd>
-<dt class="field-odd">Return type</dt>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">Folder</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.createStyleState">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createStyleState</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idtag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleState" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createStyleState">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createStyleState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">idtag</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleState" title="Link to this definition"></a></dt>
 <dd><p>Used to create a doucment wide style state with the LabelStyle internal field scale.
 Sets the Labelstyle scale field to value “scale” and names the field “idtag”</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.createPair">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createPair</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPair" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createPair">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createPair</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createPair" title="Link to this definition"></a></dt>
 <dd><p>Used to create a single Pair environment that has a particular mode and state</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.createStyleMap">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createStyleMap</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleMap" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createStyleMap">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createStyleMap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyleMap" title="Link to this definition"></a></dt>
 <dd><p>Creates a StyleMap environment called on-offText which enables label text
 for Placemarks on mouseover only.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.createStyle">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createStyle</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'net'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyle" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createStyle">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createStyle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">netcolor</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labtype</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'net'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">op</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createStyle" title="Link to this definition"></a></dt>
 <dd><p>Creates a Style Environment with a variable size and colour.
 The last argument selects between two different icon types.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.createDoc">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">createDoc</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createDoc" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.createDoc">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">createDoc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kmlDoc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.createDoc" title="Link to this definition"></a></dt>
 <dd><p>Initialize the KML Document using name</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.gen_colors">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">gen_colors</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.gen_colors" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.gen_colors">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">gen_colors</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">norand</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.gen_colors" title="Link to this definition"></a></dt>
 <dd><p>Produce n evenly distributed colors using the HSV colour pickle and the
 golden ratio value of ~0.6 to separate the colours. By default the initial
 colour selected is random.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="stdb.kml.rgb2hex">
-<code class="sig-prename descclassname"><span class="pre">stdb.kml.</span></code><code class="sig-name descname"><span class="pre">rgb2hex</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgbl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.rgb2hex" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.kml.rgb2hex">
+<span class="sig-prename descclassname"><span class="pre">stdb.kml.</span></span><span class="sig-name descname"><span class="pre">rgb2hex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rgbl</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.kml.rgb2hex" title="Link to this definition"></a></dt>
 <dd><p>Return hexidecial XML form of RGB colour tuple. Note that the xml parsing
 of the tuple reads bgr rather than standard rgb, so the rgb tuple is reversed
 in order on output to represent the true colour</p>
 </dd></dl>
 
-</div>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="query.html" class="btn btn-neutral float-right" title="Create Database by Querying FDSN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="gui.html" class="btn btn-neutral float-left" title="Module gui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="gui.html" class="btn btn-neutral float-left" title="Module gui" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="query.html" class="btn btn-neutral float-right" title="Create Database by Querying FDSN" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet
-
-    </p>
+    <p>&#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

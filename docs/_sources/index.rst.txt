@@ -20,7 +20,7 @@ such as `SplitPy <https://github.com/paudetseis/SplitPy>`_,
 
 .. warning::
    `StDb` was recently updated to fix a problem when running the scripts under Windows OS. 
-   The consequence is that version `0.2.1` will throw an error if the extension `.py` is 
+   The consequence is that version `>0.2.1` will throw an error if the extension `.py` is 
    specified when calling the scripts. 
 
 Quick links
@@ -51,7 +51,6 @@ Quick links
 
    classes
    io
-   convert
    gui
    kml
 

@@ -1,97 +1,76 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<html class="writer-html5" lang="en" data-content_root="./">
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Classes &mdash; StDb 0.2.1 documentation</title>
-  
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Classes &mdash; StDb 0.2.5 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
-  
-  
-  
-
-  
-  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/doctools.js"></script>
-    
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-
-    
-
-  
-  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=cb850272"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Module io" href="io.html" />
     <link rel="prev" title="Database structure" href="database.html" /> 
 </head>
 
-<body class="wy-body-for-nav">
-
-   
+<body class="wy-body-for-nav"> 
   <div class="wy-grid-for-nav">
-    
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-          
 
           
-            <a href="index.html" class="icon icon-home"> StDb
           
-
-          
-            
-            <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
-          
+          <a href="index.html" class="icon icon-home">
+            StDb
+              <img src="_static/StDb_logo_stripped.png" class="logo" alt="Logo"/>
           </a>
-
-          
-            
-            
-          
-
-          
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
-
-          
-        </div>
-
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
-          
-            
-            
-              
-            
-            
-              <p class="caption"><span class="caption-text">Getting Started</span></p>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="api.html">Licence</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html#installation">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="database.html">Database structure</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Content</span></p>
+<p class="caption" role="heading"><span class="caption-text">Content</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Classes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#stdbelement">StDbElement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stdbelement">StDbElement</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stdb.classes.StDbElement"><code class="docutils literal notranslate"><span class="pre">StDbElement</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.station"><code class="docutils literal notranslate"><span class="pre">StDbElement.station</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.network"><code class="docutils literal notranslate"><span class="pre">StDbElement.network</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.altnet"><code class="docutils literal notranslate"><span class="pre">StDbElement.altnet</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.channel"><code class="docutils literal notranslate"><span class="pre">StDbElement.channel</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.location"><code class="docutils literal notranslate"><span class="pre">StDbElement.location</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.latitude"><code class="docutils literal notranslate"><span class="pre">StDbElement.latitude</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.longitude"><code class="docutils literal notranslate"><span class="pre">StDbElement.longitude</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.elevation"><code class="docutils literal notranslate"><span class="pre">StDbElement.elevation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.startdate"><code class="docutils literal notranslate"><span class="pre">StDbElement.startdate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.enddate"><code class="docutils literal notranslate"><span class="pre">StDbElement.enddate</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.polarity"><code class="docutils literal notranslate"><span class="pre">StDbElement.polarity</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.azcorr"><code class="docutils literal notranslate"><span class="pre">StDbElement.azcorr</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#stdb.classes.StDbElement.restricted_status"><code class="docutils literal notranslate"><span class="pre">StDbElement.restricted_status</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
@@ -99,7 +78,7 @@
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kml.html">Module kml</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Programs &amp; Tutorials</span></p>
+<p class="caption" role="heading"><span class="caption-text">Programs &amp; Tutorials</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="query.html">Create Database by Querying FDSN</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ls.html">List Database Content</a></li>
@@ -111,217 +90,179 @@
 <li class="toctree-l1"><a class="reference internal" href="stdb2kml.html">Convert Database to KML</a></li>
 </ul>
 
-            
-          
         </div>
       </div>
     </nav>
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
-
-      
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
           <a href="index.html">StDb</a>
-        
       </nav>
 
-
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="index.html">Docs</a> &raquo;</li>
-        
-      <li>Classes</li>
-    
-    
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Classes</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
             <a href="_sources/classes.rst.txt" rel="nofollow"> View page source</a>
-          
-        
       </li>
-    
   </ul>
-
-  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
-            
-  <div class="section" id="module-stdb.classes">
-<span id="classes"></span><h1>Classes<a class="headerlink" href="#module-stdb.classes" title="Permalink to this headline">¶</a></h1>
+             
+  <section id="module-stdb.classes">
+<span id="classes"></span><h1>Classes<a class="headerlink" href="#module-stdb.classes" title="Link to this heading"></a></h1>
 <p>This module defines the main class <code class="docutils literal notranslate"><span class="pre">StDbElement</span></code> to create a station object,
 which contains attributes of a single station in the dabase dictionary.</p>
-<div class="section" id="stdbelement">
-<h2>StDbElement<a class="headerlink" href="#stdbelement" title="Permalink to this headline">¶</a></h2>
+<section id="stdbelement">
+<h2>StDbElement<a class="headerlink" href="#stdbelement" title="Link to this heading"></a></h2>
 <dl class="py class">
-<dt id="stdb.classes.StDbElement">
-<em class="property"><span class="pre">class</span> </em><code class="sig-prename descclassname"><span class="pre">stdb.classes.</span></code><code class="sig-name descname"><span class="pre">StDbElement</span></code><span class="sig-paren">(</span><em class="sig-param"><span class="pre">station='',</span> <span class="pre">network='',</span> <span class="pre">altnet=[],</span> <span class="pre">channel='',</span> <span class="pre">location=[''],</span> <span class="pre">latitude=0.0,</span> <span class="pre">longitude=0.0,</span> <span class="pre">elevation=0.0,</span> <span class="pre">startdate=&lt;class</span> <span class="pre">'obspy.core.utcdatetime.UTCDateTime'&gt;,</span> <span class="pre">enddate=&lt;class</span> <span class="pre">'obspy.core.utcdatetime.UTCDateTime'&gt;,</span> <span class="pre">polarity=1.0,</span> <span class="pre">azcorr=0.0,</span> <span class="pre">restricted_status='?'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.classes.StDbElement" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">stdb.classes.</span></span><span class="sig-name descname"><span class="pre">StDbElement</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="pre">station='',</span> <span class="pre">network='',</span> <span class="pre">altnet=[],</span> <span class="pre">channel='',</span> <span class="pre">location=[''],</span> <span class="pre">latitude=0.0,</span> <span class="pre">longitude=0.0,</span> <span class="pre">elevation=0.0,</span> <span class="pre">startdate=&lt;class</span> <span class="pre">'obspy.core.utcdatetime.UTCDateTime'&gt;,</span> <span class="pre">enddate=&lt;class</span> <span class="pre">'obspy.core.utcdatetime.UTCDateTime'&gt;,</span> <span class="pre">polarity=1.0,</span> <span class="pre">azcorr=0.0,</span> <span class="pre">restricted_status='?'</span></em><span class="sig-paren">)</span><a class="headerlink" href="#stdb.classes.StDbElement" title="Link to this definition"></a></dt>
 <dd><p>Class that defines the structure of each station entry in the station
 database.</p>
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.station">
-<code class="sig-name descname"><span class="pre">station</span></code><a class="headerlink" href="#stdb.classes.StDbElement.station" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.station">
+<span class="sig-name descname"><span class="pre">station</span></span><a class="headerlink" href="#stdb.classes.StDbElement.station" title="Link to this definition"></a></dt>
 <dd><p>Station name</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.network">
-<code class="sig-name descname"><span class="pre">network</span></code><a class="headerlink" href="#stdb.classes.StDbElement.network" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.network">
+<span class="sig-name descname"><span class="pre">network</span></span><a class="headerlink" href="#stdb.classes.StDbElement.network" title="Link to this definition"></a></dt>
 <dd><p>Network name</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>std</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.altnet">
-<code class="sig-name descname"><span class="pre">altnet</span></code><a class="headerlink" href="#stdb.classes.StDbElement.altnet" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.altnet">
+<span class="sig-name descname"><span class="pre">altnet</span></span><a class="headerlink" href="#stdb.classes.StDbElement.altnet" title="Link to this definition"></a></dt>
 <dd><p>List of alternative networks</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.channel">
-<code class="sig-name descname"><span class="pre">channel</span></code><a class="headerlink" href="#stdb.classes.StDbElement.channel" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.channel">
+<span class="sig-name descname"><span class="pre">channel</span></span><a class="headerlink" href="#stdb.classes.StDbElement.channel" title="Link to this definition"></a></dt>
 <dd><p>Channel name (last digit only)</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.location">
-<code class="sig-name descname"><span class="pre">location</span></code><a class="headerlink" href="#stdb.classes.StDbElement.location" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.location">
+<span class="sig-name descname"><span class="pre">location</span></span><a class="headerlink" href="#stdb.classes.StDbElement.location" title="Link to this definition"></a></dt>
 <dd><p>List of strings for station location</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>List</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.latitude">
-<code class="sig-name descname"><span class="pre">latitude</span></code><a class="headerlink" href="#stdb.classes.StDbElement.latitude" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.latitude">
+<span class="sig-name descname"><span class="pre">latitude</span></span><a class="headerlink" href="#stdb.classes.StDbElement.latitude" title="Link to this definition"></a></dt>
 <dd><p>Latitude of station</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.longitude">
-<code class="sig-name descname"><span class="pre">longitude</span></code><a class="headerlink" href="#stdb.classes.StDbElement.longitude" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.longitude">
+<span class="sig-name descname"><span class="pre">longitude</span></span><a class="headerlink" href="#stdb.classes.StDbElement.longitude" title="Link to this definition"></a></dt>
 <dd><p>Longitude of station</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.elevation">
-<code class="sig-name descname"><span class="pre">elevation</span></code><a class="headerlink" href="#stdb.classes.StDbElement.elevation" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.elevation">
+<span class="sig-name descname"><span class="pre">elevation</span></span><a class="headerlink" href="#stdb.classes.StDbElement.elevation" title="Link to this definition"></a></dt>
 <dd><p>Elevation of station</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.startdate">
-<code class="sig-name descname"><span class="pre">startdate</span></code><a class="headerlink" href="#stdb.classes.StDbElement.startdate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.startdate">
+<span class="sig-name descname"><span class="pre">startdate</span></span><a class="headerlink" href="#stdb.classes.StDbElement.startdate" title="Link to this definition"></a></dt>
 <dd><p>Start time of station operation</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.enddate">
-<code class="sig-name descname"><span class="pre">enddate</span></code><a class="headerlink" href="#stdb.classes.StDbElement.enddate" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.enddate">
+<span class="sig-name descname"><span class="pre">enddate</span></span><a class="headerlink" href="#stdb.classes.StDbElement.enddate" title="Link to this definition"></a></dt>
 <dd><p>End time of station operation</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">UTCDateTime</span></code></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.polarity">
-<code class="sig-name descname"><span class="pre">polarity</span></code><a class="headerlink" href="#stdb.classes.StDbElement.polarity" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.polarity">
+<span class="sig-name descname"><span class="pre">polarity</span></span><a class="headerlink" href="#stdb.classes.StDbElement.polarity" title="Link to this definition"></a></dt>
 <dd><p>Polarity of vertical component</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.azcorr">
-<code class="sig-name descname"><span class="pre">azcorr</span></code><a class="headerlink" href="#stdb.classes.StDbElement.azcorr" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.azcorr">
+<span class="sig-name descname"><span class="pre">azcorr</span></span><a class="headerlink" href="#stdb.classes.StDbElement.azcorr" title="Link to this definition"></a></dt>
 <dd><p>Azimuth correction</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>float</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="stdb.classes.StDbElement.restricted_status">
-<code class="sig-name descname"><span class="pre">restricted_status</span></code><a class="headerlink" href="#stdb.classes.StDbElement.restricted_status" title="Permalink to this definition">¶</a></dt>
+<dt class="sig sig-object py" id="stdb.classes.StDbElement.restricted_status">
+<span class="sig-name descname"><span class="pre">restricted_status</span></span><a class="headerlink" href="#stdb.classes.StDbElement.restricted_status" title="Link to this definition"></a></dt>
 <dd><p>Whether or not the data are restricted for a given station</p>
 <dl class="field-list simple">
-<dt class="field-odd">Type</dt>
+<dt class="field-odd">Type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>str</p>
 </dd>
 </dl>
@@ -329,56 +270,38 @@ database.</p>
 
 </dd></dl>
 
-</div>
-</div>
+</section>
+</section>
 
 
            </div>
-           
           </div>
-          <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="io.html" class="btn btn-neutral float-right" title="Module io" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="database.html" class="btn btn-neutral float-left" title="Database structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="database.html" class="btn btn-neutral float-left" title="Database structure" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="io.html" class="btn btn-neutral float-right" title="Module io" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
-  
 
   <hr/>
 
   <div role="contentinfo">
-    <p>
-        &copy; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet
-
-    </p>
+    <p>&#169; Copyright 2019, Andrew Schaeffer &amp; Pascal Audet.</p>
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
 
 </footer>
-
         </div>
       </div>
-
     </section>
-
   </div>
-  
-
-
-  <script type="text/javascript">
+  <script>
       jQuery(function () {
           SphinxRtdTheme.Navigation.enable(true);
       });
-  </script>
-
-  
-  
-    
-   
+  </script> 
 
 </body>
 </html>

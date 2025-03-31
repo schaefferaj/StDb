@@ -32,9 +32,10 @@ Usage
                             successful), instead of parsing the inventory, it is
                             instead pickled to <station file name>_query_debug.pkl
                             which can be loaded in ipython to examine manually.
-      -L, --long-keys       Specify Key format. Default is Net.Stn. Long keys are
+      --long-keys           Specify Key format. Default is Net.Stn. Long keys are
                             Net.Stn.Chn
-      -a, --ascii           Specify to write ascii Pickle files instead of binary.
+      -a, --ascii           Specify to write ascii Pickle files instead of
+                            binary.
                             Ascii are larger file size, but more likely to be
                             system independent.
 
@@ -50,6 +51,8 @@ Usage
                             (--User-Auth='username:authpassword') to access and
                             download restricted data. [Default no user and
                             password]
+        --baseurl=BASEURL   Enter the Client Base URL address. Note that this
+                            will overwrite the Server specification. [Default None]
 
       Channel Priority/Selection Settings:
         Settings associated with selecting the channels to retain.
@@ -57,8 +60,8 @@ Usage
         --channel-rank=CHNRANK
                             If requesting more than one type of channel, specify a
                             comma separated list of the first two lettres of the
-                            desired components to retain. Default is LH > BH > HH
-                            : [ 'LH','BH','HH']
+                            desired components to retain. Default is HH > BH > LH
+                            : [ 'HH','BH','LH']
 
       Station-Channel Settings:
         Options to narrow down the specific channels based on network,
@@ -69,6 +72,9 @@ Usage
                             search for [Default *]
         -S STNS, --stations=STNS
                             Specify a comma separated list of station names. If
+                            you want wildcards, enclose in quotes [Default *]
+        -L LOCS, --locations=LOCS
+                            Specify a comma separated list of location codes. If
                             you want wildcards, enclose in quotes [Default *]
         -C CHNS, --channels=CHNS
                             Specify a comma separated, wildcarded list of channel
