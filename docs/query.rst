@@ -42,13 +42,13 @@ Usage
       Server Settings:
         Settings associated with which datacenter to log into.
 
-        --Server=SERVER     Specify the server to connect to. Options include:
+        --server=SERVER     Specify the server to connect to. Options include:
                             BGR, ETH, GEONET, GFZ, INGV, IPGP, IRIS, KOERI, LMU,
                             NCEDC, NEIP, NERIES, ODC, ORFEUS, RESIF, SCEDC, USGS,
                             USP. [Default IRIS]
-        --User-Auth=USERAUTH
+        --user-auth=USERAUTH
                             Enter your IRIS Authentification Username and Password
-                            (--User-Auth='username:authpassword') to access and
+                            (--user-auth='username:authpassword') to access and
                             download restricted data. [Default no user and
                             password]
         --baseurl=BASEURL   Enter the Client Base URL address. Note that this

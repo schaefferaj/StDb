@@ -62,13 +62,13 @@ Usage
       Server Settings:
         Settings associated with which datacenter to log into.
 
-        --Server=SERVER     Specify the server to connect to. Options include:
+        --server=SERVER     Specify the server to connect to. Options include:
                             BGR, ETH, GEONET, GFZ, INGV, IPGP, IRIS, KOERI, LMU,
                             NCEDC, NEIP, NERIES, ODC, ORFEUS, RESIF, SCEDC, USGS,
                             USP. [Default IRIS]
-        --User-Auth=USERAUTH
+        --user-auth=USERAUTH
                             Enter your IRIS Authentification Username and Password
-                            (--User-Auth='username:authpassword') to access and
+                            (--user-auth='username:authpassword') to access and
                             download restricted data. [Default no user and
                             password]
 
@@ -217,13 +217,13 @@ def get_options():
     # Server Settings
     ServerGroup = OptionGroup(parser, title="Server Settings",
         description="Settings associated with which datacenter to log into.")
-    ServerGroup.add_option("--Server", action="store", type=str, dest="Server",
+    ServerGroup.add_option("--server", action="store", type=str, dest="server",
         default="IRIS", help=("Specify the server to connect to. Options "
         "include: BGR, ETH, GEONET, GFZ, INGV, IPGP, IRIS, KOERI, LMU, NCEDC, "
         "NEIP, NERIES, ODC, ORFEUS, RESIF, SCEDC, USGS, USP. [Default IRIS]"))
-    ServerGroup.add_option("--User-Auth", action="store", type=str,
-        dest="UserAuth", default="", help=("Enter your IRIS Authentification "
-        "Username and Password (--User-Auth='username:authpassword') to access "
+    ServerGroup.add_option("--user-auth", action="store", type=str,
+        dest="userauth", default="", help=("Enter your IRIS Authentification "
+        "Username and Password (--user-auth='username:authpassword') to access "
         "and download restricted data. [Default no user and password]"))
     ServerGroup.add_option("--baseurl",action="store", type=str,
         dest="baseurl", default=None,help=("Enter the Client Base URL address. "
@@ -357,16 +357,16 @@ def get_options():
             rmfile(outpref + ".pkl")
 
     # Parse User Authentification
-    if not len(opts.UserAuth) == 0:
-        tt = opts.UserAuth.split(':')
+    if not len(opts.userauth) == 0:
+        tt = opts.userauth.split(':')
         if not len(tt) == 2:
             msg = ("Error: Incorrect Username and Password Strings for User "
                    "Authentification")
             parser.errer(msg)
         else:
-            opts.UserAuth = tt
+            opts.userauth = tt
     else:
-        opts.UserAuth = []
+        opts.userauth = []
     
     # Parse Channel Rank to List
     opts.chnrank = opts.chnrank.split(',')
@@ -505,14 +505,14 @@ def main(args=None):
     (opts, outp) = get_options()
 
     # Initialize the client
-    stdout.writelines("Initializing Client ({0:s})...".format(opts.Server))
+    stdout.writelines("Initializing Client ({0:s})...".format(opts.server))
     if opts.baseurl is not None:
         client=Client(base_url=opts.baseurl)
-    elif len(opts.UserAuth) == 0:
-        client = Client(opts.Server)
+    elif len(opts.userauth) == 0:
+        client = Client(opts.server)
     else:
-        client = Client(opts.Server, user=opts.UserAuth[0],
-                        password=opts.UserAuth[1])
+        client = Client(opts.server, user=opts.userauth[0],
+                        password=opts.userauth[1])
     stdout.writelines("Done\n\n")
     
     # Search the Client for stations
