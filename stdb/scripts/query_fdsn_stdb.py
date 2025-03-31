@@ -225,6 +225,9 @@ def get_options():
         dest="UserAuth", default="", help=("Enter your IRIS Authentification "
         "Username and Password (--User-Auth='username:authpassword') to access "
         "and download restricted data. [Default no user and password]"))
+    ServerGroup.add_option("--baseurl",action="store", type=str,
+        dest="baseurl", default=None,help=("Enter the Client Base URL address. "
+        "Note that this will overwrite the Server specification. [Default None]"))
 
     # Selection Settings
     SelectGroup = OptionGroup(parser, title="Channel Priority/Selection Settings",
@@ -503,7 +506,9 @@ def main(args=None):
 
     # Initialize the client
     stdout.writelines("Initializing Client ({0:s})...".format(opts.Server))
-    if len(opts.UserAuth) == 0:
+    if opts.baseurl is not None:
+        client=Client(base_url=opts.baseurl)
+    elif len(opts.UserAuth) == 0:
         client = Client(opts.Server)
     else:
         client = Client(opts.Server, user=opts.UserAuth[0],
@@ -597,6 +602,8 @@ def main(args=None):
             else:
                 eddt = stn.end_date
             stat = stn.restricted_status
+            if stat is None:
+               stat=""
 
             print ("     Lon, Lat, Elev: {0:9.4f}, {1:8.4f}, {2:7.3f}".format(
                    lon, lat, elev))
@@ -612,21 +619,27 @@ def main(args=None):
                 # Do not keep overlapping time windows
                 # Select Channels based on those available compared to channel rank
                 chn = []
+                vcomp="Z"
                 for pchn in opts.chnrank:
-                    stnchn = stn.select(channel=pchn + "Z")
+                    stnchn = stn.select(channel=pchn + vcomp)
                     if len(stnchn.channels) > 0:
                         chn.append(pchn)
+                    else:
+                        stnchn = stn.select(channel=pchn + "3")
+                        if len(stnchn.channels) >0:
+                            chn.append(pchn)
+                            vcomp="3"
                 
                 #-- If no channels with Z found, skip        
                 if chn is None:
-                    if len(stn.select(channel='*Z')) == 0:
-                        print ("     Error: No Z component. Skipping")
+                    if len(stn.select(channel='*Z')) == 0 and len(sta.select(channel='*3')) == 0:
+                        print ("     Error: No Vertical (Z/3) component. Skipping")
                         continue
 
                 #-- loop through channels and select time windows
                 for pchn in chn:
                     locs=[]; stdts=[]; eddts=[]
-                    stnchn = stn.select(channel=pchn + "Z")
+                    stnchn = stn.select(channel=pchn + vcomp)
                     #--Collect Start/end Dates and locations
                     for chnl in stnchn:
                         chnlloc=chnl.location_code
@@ -671,9 +684,20 @@ def main(args=None):
                 # Select a single channel type if only short keys
                 chn = None; locs = []; stdts=[]; eddts=[]
                 for pchn in opts.chnrank:
+                    vcomp="Z"
                     stnchn = stn.select(channel=pchn + "Z")
                     if len(stnchn.channels) > 0:
+                        vcomp = "Z"
+                    else:
+                        stnchn = stn.select(channel=pchn + "3")
+                        if len(stnchn.channels)>0:
+                            vcomp="3"
+
+                    stnchn = stn.select(channel=pchn + vcomp)
+
+                    if len(stnchn.channels) > 0:
                         chn = pchn
+
                          #--Collect Start/end Dates and locations
                         for chnl in stnchn:
                             chnlloc=chnl.location_code
@@ -691,8 +715,8 @@ def main(args=None):
                             break
                 
                 if chn is None:
-                    if len(stn.select(channel='*Z')) == 0:
-                        print ("     Error: No Z component. Skipping")
+                    if len(stn.select(channel='*Z')) == 0 and len(stn.select(channel='*3')) == 0:
+                        print ("     Error: No Vertical (Z/3) component. Skipping")
                         continue
                 if len(locs) ==0:
                 	print("     Error: Location {} not available. Skipping".format(
