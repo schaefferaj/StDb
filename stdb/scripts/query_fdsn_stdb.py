@@ -74,7 +74,7 @@ def get_options():
             "‘GEOFON’, ‘GEONET’, ‘GFZ’, ‘ICGC’, ‘IESDMC’, ‘INGV’, ‘IPGP’, ‘IRIS’, "
             "‘IRISPH5’, ‘ISC’, ‘KNMI’, ‘KOERI’, ‘LMU’, ‘NCEDC’, ‘NIEP’, ‘NOA’, "
             "‘NRCAN’, ‘ODC’, ‘ORFEUS’, ‘RASPISHAKE’, ‘RESIF’, ‘RESIFPH5’, ‘SCEDC’, "
-            "‘TEXNET’, ‘UIB-NORSAR’, ‘USGS’, ‘USP’) [Default IRIS]"))
+            "‘TEXNET’, ‘UIB-NORSAR’, ‘USGS’, ‘USP’). [Default IRIS]"))
     ServerGroup.add_option("--user-auth", action="store", type=str,
         dest="userauth", default=None, help=("Enter your Authentification "
         "Username and Password (--user-auth='username:authpassword') to access "
@@ -85,7 +85,7 @@ def get_options():
         "If a token is provided, argument --user-auth will be ignored. "
         "This mechanism is only available on select EIDA nodes. The token can "
         "be provided in form of the PGP message as a string, or the filename of "
-        "a local file with the PGP message in it.")
+        "a local file with the PGP message in it. [Default None]")
 
     # Selection Settings
     SelectGroup = OptionGroup(parser, title="Channel Priority/Selection Settings",
@@ -223,7 +223,7 @@ def get_options():
             if not len(tt) == 2:
                 msg = ("Error: Incorrect Username and Password Strings for User "
                        "Authentification")
-                parser.errer(msg)
+                parser.error(msg)
             else:
                 opts.userauth = tt
         else:
@@ -369,7 +369,7 @@ def main(args=None):
     stdout.writelines("Initializing Client ({0:s})...".format(opts.server))
 
     client = Client(
-        opts.server, 
+        base_url=opts.server, 
         user=opts.userauth[0],
         password=opts.userauth[1], 
         eida_token=opts.tokenfile)
