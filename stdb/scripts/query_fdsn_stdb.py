@@ -23,156 +23,6 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-"""
-Program ``query_fdsn_stdb.py``
-------------------------------
-
-Description
------------
-Program to query a datacenter using the :mod:``obspy`` fdsn client. All stations 
-returned based on the query criteria are saved into a both a ``.csv`` file and a 
-stdb dictionary ``pickle`` file for future use.
-
-Usage
------
-
-.. code-block:: none
-
-    $ query_fdsn_stdb.py -h
-    Usage: query_fdsn_stdb.py [options] <station list filename>
-
-    Program to query a datacenter using the obspy fdsn client. All station
-    returned in this query are saved into both a csv format 1sls file as well as a
-    stationdb (stdb.StDbElement) pickled dictionary. The input argument, <station
-    file name> is the prefix for the output file, which is by default <station
-    file name>.csv and <station file name>.pkl.
-
-    Options:
-      -h, --help            show this help message and exit
-      -D, --debug           Debug mode. After the client query is complete (and
-                            successful), instead of parsing the inventory, it is
-                            instead pickled to <station file name>_query_debug.pkl
-                            which can be loaded in ipython to examine manually.
-      --long-keys           Specify Key format. Default is Net.Stn. Long keys are
-                            Net.Stn.Chn
-      -a, --ascii           Specify to write ascii Pickle files instead of binary.
-                            Ascii are larger file size, but more likely to be
-                            system independent.
-
-      Server Settings:
-        Settings associated with which datacenter to log into.
-
-        --server=SERVER     Specify the server to connect to. Options include:
-                            BGR, ETH, GEONET, GFZ, INGV, IPGP, IRIS, KOERI, LMU,
-                            NCEDC, NEIP, NERIES, ODC, ORFEUS, RESIF, SCEDC, USGS,
-                            USP. [Default IRIS]
-        --user-auth=USERAUTH
-                            Enter your IRIS Authentification Username and Password
-                            (--user-auth='username:authpassword') to access and
-                            download restricted data. [Default no user and
-                            password]
-
-      Channel Priority/Selection Settings:
-        Settings associated with selecting the channels to retain.
-
-        --channel-rank=CHNRANK
-                            If requesting more than one type of channel, specify a
-                            comma separated list of the first two lettres of the
-                            desired components to retain. Default is HH > BH > LH
-                            : [ 'HH','BH','LH']
-
-      Station-Channel Settings:
-        Options to narrow down the specific channels based on network,
-        station, etc
-
-        -N NETS, --networks=NETS
-                            Specify a comma separated list of network codes to
-                            search for [Default *]
-        -S STNS, --stations=STNS
-                            Specify a comma separated list of station names. If
-                            you want wildcards, enclose in quotes [Default *]
-        -C CHNS, --channels=CHNS
-                            Specify a comma separated, wildcarded list of channel
-                            names. [Default LH*,BH*,HH*]
-        -L LOCS, --locations=LOCS
-                            Specify a comma separated list of location ids. If you
-                            want the default empty id, use "--". If you want a wild-
-                            card, encluse in quotes. [Default *]
-
-      Geographic Lat/Lon Box Search:
-        Define the coordinates of a lat/lon box in which to select stations.
-        If filled out, takes precedence over values for Radius Search (below).
-
-        --minlat=MINLAT, --min-latitude=MINLAT
-                            Specify minimum latitude to search (must specify all
-                            of minlat, maxlat, minlon, maxlon).
-        --maxlat=MAXLAT, --max-latitude=MAXLAT
-                            Specify maximum latitude to search (must specify all
-                            of minlat, maxlat, minlon, maxlon).
-        --minlon=MINLON, --min-longitude=MINLON
-                            Specify minimum longitude to search (must specify all
-                            of minlat, maxlat, minlon, maxlon).
-        --maxlon=MAXLON, --max-longitude=MAXLON
-                            Specify maximum longitude to search (must specify all
-                            of minlat, maxlat, minlon, maxlon).
-
-      Geographic Radius Search:
-        Central point and min/max radius search settings. Box Search Settings
-        take precedence over radius search.
-
-        --lat=LAT, --latitude=LAT
-                            Specify a Lat (if any of --lon --min-radius and --max-
-                            radius are empty, an error will prompt).
-        --lon=LON, --longitude=LON
-                            Specify a Lon (if any of --lat --min-radius and --max-
-                            radius are empty, an error will prompt).
-        --minr=MINR, --min-radius=MINR
-                            Specify a minimum search radius (in degrees) around
-                            the point defined by --lat and --lon (if any of --lat
-                            --lon and --max-radius are empty, an error will
-                            prompt). [Default 0. degrees]
-        --maxr=MAXR, --max-radius=MAXR
-                            Specify a maximum search radius (in degrees) around
-                            the point defined by --lat and --lon (if any of --lat
-                            --lon and --min-radius are empty, an error will
-                            prompt).
-
-      Fixed Time Range Settings:
-        Find all stations operating within the start and end date/time. If
-        either are filled out, they take precedence over Non-Specific time
-        range search (below)
-
-        --start=STDATE, --start-date=STDATE
-                            Specify the Start Date/Time in a UTCDateTime
-                            compatible String (ie, 2010-01-15 15:15:45.2).
-                            [Default Blank]
-        --end=ENDDATE, --end-date=ENDDATE
-                            Specify the End Date/Time in a UTCDateTime compatible
-                            String (ie, 2010-01-15 15:15:45.2). [Default Blank]
-
-      Non-Specific Time Range Settings:
-        Time settings with less specificity. Ensure that those you specify do
-        not interfere with each other. If above Fixed Range values are set,
-        they will take precedence over these values.
-
-        --start-before=STBEFORE
-                            Specify a Date/Time which stations must start before
-                            (must be UTCDateTime compatible string, ie 2010-01-15
-                            15:15:45.2). [Default empty]
-        --start-after=STAFTER
-                            Specify a Date/Time which stations must start after
-                            (must be UTCDateTime compatible string, ie 2010-01-15
-                            15:15:45.2). [Default empty]
-        --end-before=ENDBEFORE
-                            Specify a Date/Time which stations must end before
-                            (must be UTCDateTime compatible string, ie 2010-01-15
-                            15:15:45.2). [Default empty]
-        --end-after=ENDAFTER
-                            Specify a Date/Time which stations must end after
-                            (must be UTCDateTime compatible string, ie 2010-01-15
-                            15:15:45.2). [Default empty]
-
-"""
 
 import pickle
 from sys import exit
@@ -218,16 +68,24 @@ def get_options():
     ServerGroup = OptionGroup(parser, title="Server Settings",
         description="Settings associated with which datacenter to log into.")
     ServerGroup.add_option("--server", action="store", type=str, dest="server",
-        default="IRIS", help=("Specify the server to connect to. Options "
-        "include: BGR, ETH, GEONET, GFZ, INGV, IPGP, IRIS, KOERI, LMU, NCEDC, "
-        "NEIP, NERIES, ODC, ORFEUS, RESIF, SCEDC, USGS, USP. [Default IRIS]"))
+        default="IRIS", help=("Base URL of FDSN web service compatible server "
+            "(e.g. “http://service.iris.edu”) or key string for recognized server "
+            "(one of ‘AUSPASS’, ‘BGR’, ‘EARTHSCOPE’, ‘EIDA’, ‘EMSC’, ‘ETH’, "
+            "‘GEOFON’, ‘GEONET’, ‘GFZ’, ‘ICGC’, ‘IESDMC’, ‘INGV’, ‘IPGP’, ‘IRIS’, "
+            "‘IRISPH5’, ‘ISC’, ‘KNMI’, ‘KOERI’, ‘LMU’, ‘NCEDC’, ‘NIEP’, ‘NOA’, "
+            "‘NRCAN’, ‘ODC’, ‘ORFEUS’, ‘RASPISHAKE’, ‘RESIF’, ‘RESIFPH5’, ‘SCEDC’, "
+            "‘TEXNET’, ‘UIB-NORSAR’, ‘USGS’, ‘USP’) [Default IRIS]"))
     ServerGroup.add_option("--user-auth", action="store", type=str,
-        dest="userauth", default="", help=("Enter your IRIS Authentification "
+        dest="userauth", default=None, help=("Enter your Authentification "
         "Username and Password (--user-auth='username:authpassword') to access "
         "and download restricted data. [Default no user and password]"))
-    ServerGroup.add_option("--baseurl",action="store", type=str,
-        dest="baseurl", default=None,help=("Enter the Client Base URL address. "
-        "Note that this will overwrite the Server specification. [Default None]"))
+    ServerGroup.add_option("--eida-token", action="store", type=str,
+        dest="tokenfile", default=None, help="Token for EIDA authentication "
+        "mechanism, see http://geofon.gfz-potsdam.de/waveform/archive/auth/index.php. "
+        "If a token is provided, argument --user-auth will be ignored. "
+        "This mechanism is only available on select EIDA nodes. The token can "
+        "be provided in form of the PGP message as a string, or the filename of "
+        "a local file with the PGP message in it.")
 
     # Selection Settings
     SelectGroup = OptionGroup(parser, title="Channel Priority/Selection Settings",
@@ -356,17 +214,20 @@ def get_options():
                    "It will be overwritten...").format(outpref)
             rmfile(outpref + ".pkl")
 
-    # Parse User Authentification
-    if not len(opts.userauth) == 0:
-        tt = opts.userauth.split(':')
-        if not len(tt) == 2:
-            msg = ("Error: Incorrect Username and Password Strings for User "
-                   "Authentification")
-            parser.errer(msg)
-        else:
-            opts.userauth = tt
+    # Parse restricted data settings
+    if opts.tokenfile is not None:
+        opts.userauth = [None, None]
     else:
-        opts.userauth = []
+        if opts.userauth is not None:
+            tt = opts.userauth.split(':')
+            if not len(tt) == 2:
+                msg = ("Error: Incorrect Username and Password Strings for User "
+                       "Authentification")
+                parser.errer(msg)
+            else:
+                opts.userauth = tt
+        else:
+            opts.userauth = [None, None]
     
     # Parse Channel Rank to List
     opts.chnrank = opts.chnrank.split(',')
@@ -506,13 +367,13 @@ def main(args=None):
 
     # Initialize the client
     stdout.writelines("Initializing Client ({0:s})...".format(opts.server))
-    if opts.baseurl is not None:
-        client=Client(base_url=opts.baseurl)
-    elif len(opts.userauth) == 0:
-        client = Client(opts.server)
-    else:
-        client = Client(opts.server, user=opts.userauth[0],
-                        password=opts.userauth[1])
+
+    client = Client(
+        opts.server, 
+        user=opts.userauth[0],
+        password=opts.userauth[1], 
+        eida_token=opts.tokenfile)
+
     stdout.writelines("Done\n\n")
     
     # Search the Client for stations
@@ -526,14 +387,33 @@ def main(args=None):
                 minradius=opts.minr, maxradius=opts.maxr,
                 minlatitude=opts.minlat, maxlatitude=opts.maxlat,
                 minlongitude=opts.minlon, maxlongitude=opts.maxlon,
-                includeavailability=None, includerestricted=True,
+                includeavailability=None, includerestricted=opts.restricted,
                 level='channel')
         stdout.writelines("Done\n\n")
     except Exception as e:
-        print ('Exception: Cannot complete query or no data in query...')
-        if opts.debug:
-            raise e
-        exit()
+        print ('Exception: Cannot complete query or no data in query... \n'+
+            'Trying again without the `includerestricted` kwarg')
+        # if opts.debug:
+        #     raise e
+
+        # This might be a problem with the `includerestricted` kwarg
+        try:             
+            inv = client.get_stations(network=opts.nets, station=opts.stns,
+                    channel=opts.chns, location=opts.locs, starttime=opts.stdate,
+                    endtime=opts.enddate, startbefore=opts.stbefore,
+                    startafter=opts.stafter, endbefore=opts.endbefore,
+                    endafter=opts.endafter, latitude=opts.lat, longitude=opts.lon,
+                    minradius=opts.minr, maxradius=opts.maxr,
+                    minlatitude=opts.minlat, maxlatitude=opts.maxlat,
+                    minlongitude=opts.minlon, maxlongitude=opts.maxlon,
+                    includeavailability=None,
+                    level='channel')
+            stdout.writelines("Done\n\n")
+        except Exception as e:
+            print ('Exception: Cannot complete query or no data in query...')
+            if opts.debug:
+                raise e
+            exit()
     
     # Summarize Search
     nstn = 0
