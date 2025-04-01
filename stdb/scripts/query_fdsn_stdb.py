@@ -387,12 +387,12 @@ def main(args=None):
                 minradius=opts.minr, maxradius=opts.maxr,
                 minlatitude=opts.minlat, maxlatitude=opts.maxlat,
                 minlongitude=opts.minlon, maxlongitude=opts.maxlon,
-                includeavailability=None, includerestricted=opts.restricted,
+                includeavailability=None, includerestricted=True,
                 level='channel')
         stdout.writelines("Done\n\n")
     except Exception as e:
-        print ('Exception: Cannot complete query or no data in query... \n'+
-            'Trying again without the `includerestricted` kwarg')
+        print ('Exception: Cannot complete query or no data in query...')
+        stdout.writelines('Trying again without the `includerestricted` kwarg...')
         # if opts.debug:
         #     raise e
 
