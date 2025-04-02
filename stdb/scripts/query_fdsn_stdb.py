@@ -93,8 +93,9 @@ def get_options():
     SelectGroup.add_option("--channel-rank", action="store", type=str,
         dest="chnrank", default="HH,BH,LH", help=("If requesting more than one "
         "type of channel, specify a comma separated list of the first two "
-        "lettres of the desired components to retain. Default is HH > BH > LH: "
-        "['HH,BH,LH']"))
+        "lettres of the desired components to retain. If only 1 channel is "
+        "specified by -C, then chnrank is replaced with that channel. "
+        "Default is HH > BH > LH: ['HH,BH,LH']"))
 
     # Channel Settings
     ChannelGroup=OptionGroup(parser, title="Station-Channel Settings",
@@ -230,7 +231,10 @@ def get_options():
             opts.userauth = [None, None]
     
     # Parse Channel Rank to List
-    opts.chnrank = opts.chnrank.split(',')
+    if len(opts.chns.split(','))>1:
+        opts.chnrank = opts.chnrank.split(',')
+    else:
+        opts.chnrank=opts.chns.split(',')
     
     # Check Geographic Settings
     if (opts.minlat is not None or
@@ -630,8 +634,8 @@ def main(args=None):
                     stations[key] = StDbElement(network=network,
                         station=station, channel=chn, location=locs,
                         latitude=lat, longitude=lon, elevation=elev,
-                        polarity=1., azcorr=0., startdate=stdt, enddate=eddt,
-                        restricted_status=stat)
+                        polarity=1., azcorr=0., startdate=stnchnstdt,
+                        enddate=stnchneddt, restricted_status=stat)
                     print ("    Added as: " + key)
                 else:
                     print ("    Warning: " + key + " already exists...Skip")
