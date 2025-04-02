@@ -91,11 +91,11 @@ def get_options():
     SelectGroup = OptionGroup(parser, title="Channel Priority/Selection Settings",
         description="Settings associated with selecting the channels to retain.")
     SelectGroup.add_option("--channel-rank", action="store", type=str,
-        dest="chnrank", default="HH,BH,LH", help=("If requesting more than one "
-        "type of channel, specify a comma separated list of the first two "
-        "lettres of the desired components to retain. If only 1 channel is "
-        "specified by -C, then chnrank is replaced with that channel. "
-        "Default is HH > BH > LH: ['HH,BH,LH']"))
+        dest="chnrank", default="", help=("Specify a ranking of channel priority. "
+        "This needs to be a comma separated list of the first two characters of "
+        "the desired components to retain. If left empty, then it will be filled "
+        "based on the channels specified in -C, ranked in the order they appear. "
+        "Default is no ranking ['']"))
 
     # Channel Settings
     ChannelGroup=OptionGroup(parser, title="Station-Channel Settings",
@@ -230,11 +230,23 @@ def get_options():
         else:
             opts.userauth = [None, None]
     
+    #-- Prep channel search
+    if len(opts.chns.split(',')) > 1:
+        if opts.chns.count('*')==0:
+            opts.chns.replace(',','*,')
+    elif len(opts.chns.split(','))== 1:
+        if opts.chns.count('*')==0:
+            opts.chns=opts.chns+"*"
+    else:
+        opts.chns = 'HH*,BH*,LH*'
+
+
     # Parse Channel Rank to List
-    if len(opts.chns.split(','))>1:
+    print(len(opts.chnrank))
+    if len(opts.chnrank)>0:
         opts.chnrank = opts.chnrank.split(',')
     else:
-        opts.chnrank=opts.chns.split(',')
+        opts.chnrank=opts.chns.replace('*','').split(',')
     
     # Check Geographic Settings
     if (opts.minlat is not None or
@@ -382,7 +394,9 @@ def main(args=None):
     
     # Search the Client for stations
     stdout.writelines("Querying client...")
+    print (opts.chns)
     try:
+        
         inv = client.get_stations(network=opts.nets, station=opts.stns,
                 channel=opts.chns, location=opts.locs, starttime=opts.stdate,
                 endtime=opts.enddate, startbefore=opts.stbefore,
