@@ -333,7 +333,7 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
                         for chnl in stnchn:
                             chnlloc = chnl.location_code
                             if len(chnlloc) == 0:
-                                chnlloc = "--"
+                                chnlloc = ""
                             for selloc in ['*']:
                                 # print(selloc, chnlloc)
                                 if selloc == '*' or chnlloc in selloc:
@@ -413,7 +413,7 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
                             for chnl in stnchn:
                                 chnlloc = chnl.location_code
                                 if len(chnlloc) == 0:
-                                    chnlloc = "--"
+                                    chnlloc = ""
                                 for selloc in ['*']:
                                     # print(selloc, chnlloc)
                                     if selloc == '*' or chnlloc in selloc:
