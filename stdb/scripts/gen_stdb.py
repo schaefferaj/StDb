@@ -66,6 +66,7 @@ Usage
 
 
 from sys import exit
+import copy
 import os.path as osp
 from obspy.core import UTCDateTime
 from stdb import write_db
@@ -283,7 +284,10 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
                     eddt = stn.end_date
                 stat = stn.restricted_status
                 if stat is None:
-                    stat = "Unknown"
+                    if eddt < UTCDateTime():
+                        stat = 'closed'
+                    else:
+                        stat = 'partial'
 
                 print(
                     "     Lon, Lat, Elev: {0:9.4f}, {1:8.4f}, {2:7.3f}".format(
@@ -331,18 +335,15 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
                         stnchn = stn.select(channel=pchn + vcomp)
                         # Collect Start/end Dates and locations
                         for chnl in stnchn:
-                            chnlloc = chnl.location_code
+                            chnlloc = copy.copy(chnl.location_code)
                             if len(chnlloc) == 0:
-                                chnlloc = ""
-                            for selloc in ['*']:
-                                # print(selloc, chnlloc)
-                                if selloc == '*' or chnlloc in selloc:
-                                    locs.append(chnlloc)
-                                    stdts.append(chnl.start_date)
-                                    if chnl.end_date is None:
-                                        eddts.append(UTCDateTime("2599-12-31"))
-                                    else:
-                                        eddts.append(chnl.end_date)
+                                chnlloc = "--"
+                            locs.append(chnlloc)
+                            stdts.append(chnl.start_date)
+                            if chnl.end_date is None:
+                                eddts.append(UTCDateTime("2599-12-31"))
+                            else:
+                                eddts.append(chnl.end_date)
 
                         # Unique set of locids
                         # get minmax time for channel across all locids
@@ -411,19 +412,16 @@ Each element corresponding to each dictionary key is saved as StDb.StbBElement c
 
                             # Collect Start/end Dates and locations
                             for chnl in stnchn:
-                                chnlloc = chnl.location_code
+                                chnlloc = copy.copy(chnl.location_code)
                                 if len(chnlloc) == 0:
-                                    chnlloc = ""
-                                for selloc in ['*']:
-                                    # print(selloc, chnlloc)
-                                    if selloc == '*' or chnlloc in selloc:
-                                        locs.append(chnlloc)
-                                        stdts.append(chnl.start_date)
-                                        if chnl.end_date is None:
-                                            eddts.append(
-                                                UTCDateTime("2599-12-31"))
-                                        else:
-                                            eddts.append(chnl.end_date)
+                                    chnlloc = "--"
+                                locs.append(chnlloc)
+                                stdts.append(chnl.start_date)
+                                if chnl.end_date is None:
+                                    eddts.append(
+                                        UTCDateTime("2599-12-31"))
+                                else:
+                                    eddts.append(chnl.end_date)
                             if len(locs) > 0:
                                 break
 
