@@ -6,14 +6,14 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Generate Database &mdash; StDb 0.2.5 documentation</title>
+  <title>Generate Database &mdash; StDb 0.2.7 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=cb850272"></script>
+      <script src="_static/documentation_options.js?v=58050c01"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
@@ -53,7 +53,6 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="io.html">Module io</a></li>
-<li class="toctree-l1"><a class="reference internal" href="convert.html">Module convert</a></li>
 <li class="toctree-l1"><a class="reference internal" href="gui.html">Module gui</a></li>
 <li class="toctree-l1"><a class="reference internal" href="kml.html">Module kml</a></li>
 </ul>
@@ -106,31 +105,23 @@
 </section>
 <section id="description">
 <h2>Description<a class="headerlink" href="#description" title="Link to this heading"></a></h2>
-<p>Create Station Database dictionary from input text file.</p>
+<p>Create Station Database dictionary from input text or stationXML file.</p>
 </section>
 <section id="usage">
 <h2>Usage<a class="headerlink" href="#usage" title="Link to this heading"></a></h2>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  $ gen_stdb -h
-  Usage: gen_stdb [options] &lt;station list&gt;
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gen_stdb -h
+Usage: gen_stdb [options] &lt;station list&gt;
 
-  Script to generate a pickled station database file.
+Script to generate a pickled station database file. Available input formats are .csv and .xml. Check the documentation for more information.
 
-  Options:
-    -h, --help       show this help message and exit
-    -L, --long-keys  Specify Key format. Default is Net.Stn. Long keys are
-                     Net.Stn.Chn
-    -a, --ascii      Specify to write ascii Pickle files instead of binary.
-                     Ascii are larger file size, but more likely to be system
-                     independent.
 
-Input File Type 1 (chS csv):
-NET[:NET2:...],STA,LOC[:LOC2:...],CHN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-
-DD,HH:MM:SS.SSS,lat,lon,elev,pol,azcor,status
-Input File Type 2 (IPO SPC):
-NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
-Output File Types:
-Each element corresponding to each dictionary key is saved as StDb.StbBElement
-class.
+Options:
+  -h, --help       show this help message and exit
+  -L, --long-keys  Specify Key format. Default is Net.Stn. Long keys are
+                   Net.Stn.Chn
+  -a, --ascii      Specify to write ascii Pickle files instead of binary.
+                   Ascii are larger file size, but more likely to be system
+                   independent.
 </pre></div>
 </div>
 </section>
@@ -194,17 +185,6 @@ The basic format of the &lt;space&gt;-separated file for some TA stations would 
 </tbody>
 </table>
 <p>We can generate a database using the program:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gen_stdb ta_table.txt
-
-Parse Station List ta_table.txt
-Adding key: TA.M31M
-Adding key: TA.N32M
-Adding key: TA.P33M
-  Pickling ta_table.txt.pkl
-</pre></div>
-</div>
-<p>Or if we used the alternative input file format with &lt;comma&gt;-separated values,
-we would get:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gen_stdb ta_table.csv
 
 Parse Station List ta_table.csv
@@ -214,54 +194,19 @@ Adding key: TA.P33M
   Pickling ta_table.pkl
 </pre></div>
 </div>
-<p>Now we can check that the databases contain the same list using the program
-<code class="docutils literal notranslate"><span class="pre">ls_stdy</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb ta_table.txt.pkl
+<p>Also, starting with version 0.2.7, StDb can now handle the conversion from stationXML (inventory) object to an StDb database. The function <code class="docutils literal notranslate"><span class="pre">load_db()</span></code> from the module <code class="docutils literal notranslate"><span class="pre">io</span></code> can now ingest an inventory object and convert it to an StDb database. Also, the script <code class="docutils literal notranslate"><span class="pre">gen_stdb</span></code> can generate an StDb database from a stationXML file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ gen_stdb ta_stations.xml
 
-Listing Station Pickle: ta_table.txt.pkl
-TA.M31M
---------------------------------------------------------------------------
-1) TA.M31M
-     Station: TA M31M
-      Alternate Networks: None
-      Channel: BH ;  Location:
-      Lon, Lat, Elev:  62.20240, -134.39060,   0.640
-      StartTime: 2015-10-17 00:00:00
-      EndTime:   2599-12-31 00:00:00
-      Status:
-      Polarity: 1
-      Azimuth Correction: 0.000000
-
-
-TA.N32M
---------------------------------------------------------------------------
-2) TA.N32M
-     Station: TA N32M
-      Alternate Networks: None
-      Channel: BH ;  Location:
-      Lon, Lat, Elev:  61.15120, -133.08180,   0.820
-      StartTime: 2016-05-11 00:00:00
-      EndTime:   2599-12-31 00:00:00
-      Status:
-      Polarity: 1
-      Azimuth Correction: 0.000000
-
-
-TA.P33M
---------------------------------------------------------------------------
-3) TA.P33M
-     Station: TA P33M
-      Alternate Networks: None
-      Channel: BH ;  Location:
-      Lon, Lat, Elev:  60.21140, -132.81740,   1.070
-      StartTime: 2015-10-15 00:00:00
-      EndTime:   2599-12-31 00:00:00
-      Status:
-      Polarity: 1
-      Azimuth Correction: 0.000000
+Parse Station XML: ta_stations.xml
+Search Complete:
+  3 stations in 1 networks
+  ...
+  Pickling to ta_stations.pkl
+  Saving csv to: ta_stations.csv
 </pre></div>
 </div>
-<p>and finally:</p>
+<p>Now we can check that the databases contain the same list using the program
+<code class="docutils literal notranslate"><span class="pre">ls_stdb</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ ls_stdb ta_table.pkl
 
 Listing Station Pickle: ta_table.pkl

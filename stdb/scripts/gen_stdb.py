@@ -84,18 +84,21 @@ def main(args=None):
     # Get options
     parser = MyParser(
         usage="Usage: %prog [options] <station list>",
-        description="Script to generate a pickled station database file.",
-        epilog="""Input File Type 1 (chS csv):                                                
-NET[:NET2:...],STA,LOC[:LOC2:...],CHN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-DD,HH:MM:SS.SSS,lat,lon,elev,pol,azcor,status
+        description="Script to generate a pickled station database file. " +
+                    "Available input formats are .csv and .xml. Check the " +
+                    "documentation for more information."
+#         epilog="""Input File Type 1 (chS csv):                                                
+# NET[:NET2:...],STA,LOC[:LOC2:...],CHN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-DD,HH:MM:SS.SSS,lat,lon,elev,pol,azcor,status
                                                                                                             
-Input File Type 2 (IPO SPC):                                                                            
-NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD                                                     
+# Input File Type 2 (IPO SPC):                                                                            
+# NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD                                                     
                                                                                                     
                                                                                                                                         
-Output File Types:                                                            
-Each element corresponding to each dictionary key is saved as StDb.StbBElement class.                                         
+# Output File Types:                                                            
+# Each element corresponding to each dictionary key is saved as StDb.StbBElement class.                                         
                                                                                                                                                                                                                                                     
-""")
+# """
+    )
     parser.add_option(
         "-L",
         "--long-keys",
