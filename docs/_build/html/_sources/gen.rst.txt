@@ -6,7 +6,7 @@ Program ``gen_stdb``
 
 Description
 -----------
-Create Station Database dictionary from input text file.
+Create Station Database dictionary from input text or stationXML file.
 
 Usage
 -----
@@ -16,7 +16,8 @@ Usage
     $ gen_stdb -h
     Usage: gen_stdb [options] <station list>
 
-    Script to generate a pickled station database file.
+    Script to generate a pickled station database file. Available input formats are .csv and .xml. Check the documentation for more information.
+
 
     Options:
       -h, --help       show this help message and exit
@@ -25,15 +26,6 @@ Usage
       -a, --ascii      Specify to write ascii Pickle files instead of binary.
                        Ascii are larger file size, but more likely to be system
                        independent.
-
-  Input File Type 1 (chS csv):
-  NET[:NET2:...],STA,LOC[:LOC2:...],CHN,YYYY-MM-DD,HH:MM:SS.SSS,YYYY-MM-
-  DD,HH:MM:SS.SSS,lat,lon,elev,pol,azcor,status
-  Input File Type 2 (IPO SPC):
-  NET STA CHAN lat lon elev YYYY-MM-DD YYYY-MM-DD
-  Output File Types:
-  Each element corresponding to each dictionary key is saved as StDb.StbBElement
-  class.
 
 Example
 -------
@@ -57,19 +49,6 @@ We can generate a database using the program:
 
 .. code-block::
 
-    $ gen_stdb ta_table.txt
-
-    Parse Station List ta_table.txt
-    Adding key: TA.M31M
-    Adding key: TA.N32M
-    Adding key: TA.P33M
-      Pickling ta_table.txt.pkl
-
-Or if we used the alternative input file format with <comma>-separated values,
-we would get:
-
-.. code-block::
-
     $ gen_stdb ta_table.csv
 
     Parse Station List ta_table.csv
@@ -78,57 +57,22 @@ we would get:
     Adding key: TA.P33M
       Pickling ta_table.pkl
 
-Now we can check that the databases contain the same list using the program
-``ls_stdy``:
+Also, starting with version 0.2.7, StDb can now handle the conversion from stationXML (inventory) object to an StDb database. The function ``load_db()`` from the module ``io`` can now ingest an inventory object and convert it to an StDb database. Also, the script ``gen_stdb`` can generate an StDb database from a stationXML file:
 
 .. code-block::
 
-    $ ls_stdb ta_table.txt.pkl
+    $ gen_stdb ta_stations.xml
 
-    Listing Station Pickle: ta_table.txt.pkl
-    TA.M31M
-    --------------------------------------------------------------------------
-    1) TA.M31M
-         Station: TA M31M 
-          Alternate Networks: None
-          Channel: BH ;  Location: 
-          Lon, Lat, Elev:  62.20240, -134.39060,   0.640
-          StartTime: 2015-10-17 00:00:00
-          EndTime:   2599-12-31 00:00:00
-          Status:    
-          Polarity: 1
-          Azimuth Correction: 0.000000
+    Parse Station XML: ta_stations.xml
+    Search Complete: 
+      3 stations in 1 networks
+      ...
+      Pickling to ta_stations.pkl
+      Saving csv to: ta_stations.csv
 
 
-    TA.N32M
-    --------------------------------------------------------------------------
-    2) TA.N32M
-         Station: TA N32M 
-          Alternate Networks: None
-          Channel: BH ;  Location: 
-          Lon, Lat, Elev:  61.15120, -133.08180,   0.820
-          StartTime: 2016-05-11 00:00:00
-          EndTime:   2599-12-31 00:00:00
-          Status:    
-          Polarity: 1
-          Azimuth Correction: 0.000000
-
-
-    TA.P33M
-    --------------------------------------------------------------------------
-    3) TA.P33M
-         Station: TA P33M 
-          Alternate Networks: None
-          Channel: BH ;  Location: 
-          Lon, Lat, Elev:  60.21140, -132.81740,   1.070
-          StartTime: 2015-10-15 00:00:00
-          EndTime:   2599-12-31 00:00:00
-          Status:    
-          Polarity: 1
-          Azimuth Correction: 0.000000
-
-
-and finally:
+Now we can check that the databases contain the same list using the program
+``ls_stdb``:
 
 .. code-block:: 
 

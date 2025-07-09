@@ -1,0 +1,42 @@
+[build-system]
+build-backend = "mesonpy"
+requires = ["meson-python>0.15.0", "numpy >= 1.25.0"]
+
+
+[project]
+name = "stdb"
+version = "0.2.7"
+description = "Python Module for managing Station Databases"
+authors = [
+    { name = "Andrew Schaeffer", email = "andrew.schaeffer@nrcan-rncan.gc.ca" },
+    { name = "Pascal Audet", email = "pascal.audet@uottawa.ca" }    
+]
+maintainers = [
+    { name = "Andrew Schaeffer", email = "andrew.schaeffer@nrcan-rncan.gc.ca" },
+    { name = "Pascal Audet", email = "pascal.audet@uottawa.ca" }
+]
+requires-python = ">=3.9"
+readme = "README.md"
+dependencies = ["numpy>=1.25", "obspy", "PyQt5"]
+classifiers = [
+    "Development Status :: 5 - Stable",
+    "Environment :: Console",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3 :: Only",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+[project.urls]
+Homepage = "https://github.com/schaefferaj/StDb"
+Documentation = "https://schaefferaj.github.io/StDb/"
+"Bug Tracker" = "https://github.com/schaefferaj/StDb/issues"
+
+[project.scripts]
+append_stdb = "stdb.scripts.append_stdb:main"
+dump_stdb = "stdb.scripts.dump_stdb:main"
+edit_stdb = "stdb.scripts.edit_stdb:main"
+gen_stdb = "stdb.scripts.gen_stdb:main"
+ls_stdb = "stdb.scripts.ls_stdb:main"
+merge_stdb = "stdb.scripts.merge_stdb:main"
+query_fdsn_stdb = "stdb.scripts.query_fdsn_stdb:main"
+stdb_to_kml = "stdb.scripts.stdb_to_kml:main"
