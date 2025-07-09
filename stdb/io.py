@@ -26,13 +26,14 @@ These functions are used in most scripts bundled with this package.
 
 """
 
+import re
 from stdb import StDbElement
 import pickle as pickle
-from obspy import UTCDateTime
+from obspy import UTCDateTime, read_inventory
 
 def load_db(fname, binp=True, keys=None ):
     """
-    Submodule to read the station database from pickle or .csv file
+    Submodule to read the station database from .pkl, .csv or .xml file
 
     Parameters
     ----------
@@ -63,7 +64,11 @@ def load_db(fname, binp=True, keys=None ):
             for line in f:
                 k, v = fromcsv(line)
                 stdb.update({k: v})
-    else:
+    elif fname.endswith('.xml'):
+        inv = read_inventory(fname)
+        stdb, stkeys = frominv(inv, keys=keys)
+        return stdb, stkeys
+    elif fname.endswith('.pkl'):
         stdb = pickle.load(open(fname, rflag))
 
     allkeys=stdb.keys()
@@ -219,3 +224,79 @@ def fromcsv(line="", lkey=False):
         
     else:
         return None, None
+
+
+def get_stkeys(inventory, keys=[]):
+
+    allkeys = []
+    station_list = inventory.get_contents()['stations']
+    allkeys = [s.split(' ')[0] for s in station_list]
+
+    if len(keys) > 0:
+        # Extract key subset
+
+        stkeys = []
+        for key in keys:
+            # Convert the pattern to a regex pattern
+            # Replace '.' with '\.' to match literal dots
+            # Replace '*' with '.*' to match any sequence of characters
+            # Replace '?' with '.' to match any single character
+            pattern = key.replace('.', r'\.').replace('*', '.*').replace('?', '.')
+
+            # Compile the regex pattern
+            regex = re.compile(f'^.*{pattern}.*$')
+
+            # Filter allkeys based on the compiled regex
+            stkeys.extend([key for key in allkeys if regex.match(key)])
+
+    else:
+        stkeys = allkeys
+
+    return stkeys
+
+
+def frominv(inventory, keys=[]):
+    """
+    Subroutine to convert an ObsPy inventory object into an StDbElement
+
+    Parameters
+    ----------
+    inventory : :class:`~obspy.core.inventory.inventory.Inventory`
+        Network inventory object
+    keys : list
+        List of keys used to search the database
+
+    Returns
+    -------
+    key : str
+        Key associated with each entry in database
+    entry : :class:`~stdb.classes.StDbElement`
+        Instance of :class:`~stdb.classes.StDbElement` class
+
+    """
+
+    stkeys = get_stkeys(inventory, keys)
+
+    stations = {}
+    for key in stkeys:
+        net = key.split('.')[0]
+        sta = key.split('.')[1]
+        cha = '?H?'
+        inv = inventory.select(network=net, station=sta, channel=cha)
+        seed_id = inv.get_contents()['channels'][0]
+        coords = inv.get_coordinates(seed_id)
+
+        stdb_element = StDbElement(
+            station=sta,
+            network=net,
+            channel=seed_id.split('.')[3][0:2],
+            location=seed_id.split('.')[2],
+            latitude=coords['latitude'],
+            longitude=coords['longitude'],
+            elevation=coords['elevation'],
+            startdate=inv[0].stations[0].start_date,
+            enddate=inv[0].stations[0].end_date
+            )
+        stations[key] = stdb_element
+
+    return stations, stkeys
