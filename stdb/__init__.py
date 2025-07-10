@@ -62,10 +62,10 @@ Installation
 Dependencies
 ++++++++++++
 
-The current version was developed using **Python3.7** \
+The current version was developed using **Python3.12** \
 Also, the following package is required:
 
-- `obspy <https://github.com/obspy/obspy/wiki>`_
+- `ObsPy <https://github.com/obspy/obspy/wiki>`_
 - `PyQt5 <https://pypi.org/project/PyQt5/>`_
 
 Conda environment
@@ -76,7 +76,7 @@ where ``telewavesim`` can be installed along with its dependencies.
 
 .. sourcecode:: bash
 
-   conda create -n stdb python=3.7 obspy -c conda-forge
+   conda create -n stdb python=3.12 obspy -c conda-forge
 
 Activate the newly created environment:
 
@@ -84,12 +84,12 @@ Activate the newly created environment:
 
    conda activate stdb
 
-Installing from Pypi
+Installing using pip
 ++++++++++++++++++++
 
 .. sourcecode:: bash
 
-   pip install stdb
+   pip install git+https://github.com/schaefferaj/stdb
 
 Installing from source
 ++++++++++++++++++++++
