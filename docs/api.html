@@ -49,7 +49,7 @@
 <li class="toctree-l1"><a class="reference internal" href="#installation">Installation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#dependencies">Dependencies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#conda-environment">Conda environment</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#installing-from-pypi">Installing from Pypi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-using-pip">Installing using pip</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#installing-from-source">Installing from source</a></li>
 </ul>
 </li>
@@ -131,9 +131,9 @@ SOFTWARE.</p>
 <h1>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
 <section id="dependencies">
 <h2>Dependencies<a class="headerlink" href="#dependencies" title="Link to this heading"></a></h2>
-<p>The current version was developed using <strong>Python3.7</strong> Also, the following package is required:</p>
+<p>The current version was developed using <strong>Python3.12</strong> Also, the following package is required:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/obspy/obspy/wiki">obspy</a></p></li>
+<li><p><a class="reference external" href="https://github.com/obspy/obspy/wiki">ObsPy</a></p></li>
 <li><p><a class="reference external" href="https://pypi.org/project/PyQt5/">PyQt5</a></p></li>
 </ul>
 </section>
@@ -141,7 +141,7 @@ SOFTWARE.</p>
 <h2>Conda environment<a class="headerlink" href="#conda-environment" title="Link to this heading"></a></h2>
 <p>We recommend creating a custom <code class="docutils literal notranslate"><span class="pre">conda</span></code> environment
 where <code class="docutils literal notranslate"><span class="pre">telewavesim</span></code> can be installed along with its dependencies.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>stdb<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7<span class="w"> </span>obspy<span class="w"> </span>-c<span class="w"> </span>conda-forge
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>stdb<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.12<span class="w"> </span>obspy<span class="w"> </span>-c<span class="w"> </span>conda-forge
 </pre></div>
 </div>
 <p>Activate the newly created environment:</p>
@@ -149,9 +149,9 @@ where <code class="docutils literal notranslate"><span class="pre">telewavesim</
 </pre></div>
 </div>
 </section>
-<section id="installing-from-pypi">
-<h2>Installing from Pypi<a class="headerlink" href="#installing-from-pypi" title="Link to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>stdb
+<section id="installing-using-pip">
+<h2>Installing using pip<a class="headerlink" href="#installing-using-pip" title="Link to this heading"></a></h2>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>git+https://github.com/schaefferaj/stdb
 </pre></div>
 </div>
 </section>
